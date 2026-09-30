@@ -89,7 +89,7 @@ function Dock({
   const isHovered = useMotionValue(0);
 
   const maxHeight = useMemo(() => {
-    return Math.max(DOCK_HEIGHT, magnification + magnification / 2 + 4);
+    return Math.max(DOCK_HEIGHT, magnification + 16);
   }, [magnification]);
 
   const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
@@ -101,7 +101,7 @@ function Dock({
         height: height,
         scrollbarWidth: 'none',
       }}
-      className='mx-auto flex max-w-full items-end overflow-visible'
+      className='mx-auto flex max-w-full items-center justify-center overflow-visible'
     >
       <motion.div
         onMouseMove={({ pageX }) => {
@@ -113,10 +113,10 @@ function Dock({
           mouseX.set(Infinity);
         }}
         className={cn(
-          'mx-auto flex w-fit gap-2 sm:gap-3 rounded-2xl sm:rounded-full bg-[#081726]/90 border border-[#163554] backdrop-blur-xl px-3 sm:px-4 items-end pb-2 sm:pb-2.5 shadow-2xl shadow-black/80',
+          'mx-auto flex w-fit gap-2 sm:gap-3 rounded-full bg-[#081726]/90 border border-[#163554] backdrop-blur-xl px-3 sm:px-4 items-center justify-center shadow-2xl shadow-black/80',
           className
         )}
-        style={{ height: panelHeight }}
+        style={{ minHeight: panelHeight }}
         role='toolbar'
         aria-label='Application dock'
       >
@@ -151,13 +151,13 @@ function DockItem({ children, className, onClick }: DockItemProps) {
   return (
     <motion.div
       ref={ref}
-      style={{ width }}
+      style={{ width, height: width }}
       onHoverStart={() => isHovered.set(1)}
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
       className={cn(
-        'relative inline-flex items-center justify-center aspect-square rounded-full transition-colors cursor-pointer select-none',
+        'relative inline-flex items-center justify-center aspect-square rounded-full transition-colors cursor-pointer select-none shrink-0',
         className
       )}
       tabIndex={0}

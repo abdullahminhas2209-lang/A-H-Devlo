@@ -37,10 +37,10 @@ export const BottomDock: React.FC<BottomDockProps> = ({
       <div className="absolute inset-0 bg-cyan-500/10 blur-xl rounded-full -z-10 pointer-events-none"></div>
 
       <Dock
-        magnification={66}
+        magnification={64}
         distance={130}
-        panelHeight={54}
-        className="items-end pb-2 bg-[#081726]/90 border border-[#163554] shadow-[0_12px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl px-2.5 sm:px-3.5 gap-2 sm:gap-2.5 rounded-full"
+        panelHeight={56}
+        className="items-center justify-center bg-[#081726]/92 border border-[#163554] shadow-[0_12px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl px-3 sm:px-4 py-2 gap-2 sm:gap-2.5 rounded-full"
       >
         {dockItems.map((item) => {
           const Icon = item.icon;
@@ -69,14 +69,14 @@ export const BottomDock: React.FC<BottomDockProps> = ({
 
               {/* Running App active dot indicator matching Apple macOS dock */}
               {isActive && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] pointer-events-none"></span>
+                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] pointer-events-none"></span>
               )}
             </DockItem>
           );
         })}
 
         {/* Apple Dock Separator */}
-        <div className="w-[1px] h-6 bg-[#163554]/80 self-center mx-0.5 rounded-full shrink-0" />
+        <div className="w-[1px] h-6 bg-[#163554]/90 self-center mx-0.5 rounded-full shrink-0" />
 
         {/* Start a Project Direct Action */}
         <DockItem
