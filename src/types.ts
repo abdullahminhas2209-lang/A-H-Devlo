@@ -30,11 +30,11 @@ export type DeviceMode = 'desktop' | 'tablet' | 'mobile';
 
 export interface InquiryFormData {
   serviceType: string;
+  businessName: string;
+  industry: string;
+  existingWebsite: string;
+  projectDescription: string;
   fullName: string;
   email: string;
-  businessName?: string;
-  projectDescription: string;
-  budget?: string;
-  timeline?: string;
-  phone?: string;
+  phone: string;
 }

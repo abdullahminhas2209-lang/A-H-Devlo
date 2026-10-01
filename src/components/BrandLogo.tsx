@@ -25,22 +25,19 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           src="/brand/logo-transparent.png"
           onError={() => setImageError(true)}
           alt="A&H Devlo Logo"
-          width={180}
-          height={48}
-          decoding="async"
           className={`${heights[size]} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-md`}
         />
       ) : (
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 rounded border border-[#22252A] bg-[#141618] flex items-center justify-center font-bold text-xs tracking-tight text-[#F4F2ED]">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center font-bold text-sm tracking-tight text-white shadow">
             A&amp;H
           </div>
           <div>
-            <span className="text-base font-bold tracking-tight text-[#F4F2ED] block font-heading leading-tight">
+            <span className="text-lg font-bold tracking-tight text-white block font-heading leading-tight">
               A&amp;H Devlo
             </span>
-            <span className="text-[10px] tracking-wider uppercase text-[#8E9298] font-body block">
-              Web Studio
+            <span className="text-[10px] tracking-widest uppercase text-cyan-400 font-medium block">
+              Design &amp; Dev Studio
             </span>
           </div>
         </div>

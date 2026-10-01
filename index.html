@@ -2,203 +2,28 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A&amp;H Devlo — Web Design &amp; Development Studio</title>
-    <meta name="description" content="A&amp;H Devlo designs and develops clean, high-performance websites and landing pages for small businesses, practices, and local establishments." />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://a-h-devlo.vercel.app/" />
-
-    <!-- Favicons & Manifest -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0C0D0E" />
-    <meta name="color-scheme" content="dark" />
-
-    <!-- Open Graph / Facebook -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A&amp;H Devlo — Web Design &amp; Development Studio</title>
+    <meta name="description" content="We design and develop clean, professional websites and landing pages for small businesses that want to build a stronger online presence." />
+    <meta name="keywords" content="web design studio, small business websites, landing page development, website redesign, clean web design, A&H Devlo" />
+    
+    <!-- Open Graph / Meta -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://a-h-devlo.vercel.app/" />
     <meta property="og:title" content="A&amp;H Devlo — Web Design &amp; Development Studio" />
-    <meta property="og:description" content="Clean, high-performance websites and landing pages that help small businesses build credibility and stand out online." />
+    <meta property="og:description" content="We design and develop clean, professional websites and landing pages that help businesses build credibility and stand out online." />
     <meta property="og:site_name" content="A&amp;H Devlo" />
-    <meta property="og:image" content="https://a-h-devlo.vercel.app/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="A&amp;H Devlo Studio — Websites that make small businesses look professional" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="A&amp;H Devlo — Web Design &amp; Development Studio" />
-    <meta name="twitter:description" content="Clean, high-performance websites and landing pages that help small businesses build credibility and stand out online." />
-    <meta name="twitter:image" content="https://a-h-devlo.vercel.app/og-image.jpg" />
-    <meta name="twitter:image:alt" content="A&amp;H Devlo Studio — Websites that make small businesses look professional" />
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": ["ProfessionalService", "Organization"],
-          "@id": "https://a-h-devlo.vercel.app/#organization",
-          "name": "A&H Devlo",
-          "alternateName": "A&H Devlo Web Design & Development Studio",
-          "url": "https://a-h-devlo.vercel.app/",
-          "logo": "https://a-h-devlo.vercel.app/favicon.png",
-          "image": "https://a-h-devlo.vercel.app/og-image.jpg",
-          "description": "Independent web design and development studio crafting clean, high-performance websites and landing pages for small businesses.",
-          "priceRange": "$$",
-          "email": "devlobyah@gmail.com",
-          "telephone": "+92 333 3875790",
-          "sameAs": [
-            "https://www.linkedin.com/company/a-h-devlo/",
-            "https://www.instagram.com/ah_devlo/#"
-          ],
-          "currenciesAccepted": "USD, EUR, GBP, CAD",
-          "paymentAccepted": "Credit Card, Wire Transfer, Stripe",
-          "areaServed": "Global",
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Web Design & Development Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Business Websites",
-                  "description": "Bespoke multipage websites engineered to establish market credibility and convert visitors."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Conversion Landing Pages",
-                  "description": "High-impact single-page experiences focused on driving qualified client leads."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Website Redesigns",
-                  "description": "Full visual and architectural modernization for outdated business websites."
-                }
-              }
-            ]
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://a-h-devlo.vercel.app/#website",
-          "url": "https://a-h-devlo.vercel.app/",
-          "name": "A&H Devlo",
-          "description": "Web Design & Development Studio for Small Businesses",
-          "publisher": {
-            "@id": "https://a-h-devlo.vercel.app/#organization"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://a-h-devlo.vercel.app/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How long does a website take to design and launch?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Most small business websites and landing pages are completed within 2 to 3 weeks from kickoff to live deployment."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What do I need to prepare before starting?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Basic information about your business, any existing branding or logos, and your core services. We assist with content structure and copywriting guidance."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do I own the website and domain after launch?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, 100%. You retain full ownership of all custom design assets, code, domains, and hosting configurations with no proprietary lock-in."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What technologies do you use?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "We build with modern semantic HTML, React, TypeScript, and modern CSS frameworks, deployed on global edge networks like Vercel for instant sub-second load times."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Are revisions included in the project scope?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, all project tiers include structured review rounds during both design and development stages to ensure complete satisfaction."
-              }
-            }
-          ]
-        }
-      ]
-    }
-    </script>
-
+    <!-- Google Fonts: Outfit (Display & Headings) + Inter (Body & UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-[#0C0D0E] text-[#F4F2ED] antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden">
-    <div id="root">
-      <!-- Static Semantic HTML for Initial Crawl & SEO Bot Indexability -->
-      <header style="padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #22252A;">
-        <div style="font-weight: 700; font-size: 1.15rem; color: #F4F2ED;">A&amp;H Devlo</div>
-        <nav aria-label="Initial Navigation">
-          <a href="#work" style="color: #8E9298; margin-right: 16px; text-decoration: none;">Work</a>
-          <a href="#services" style="color: #8E9298; margin-right: 16px; text-decoration: none;">Services</a>
-          <a href="#process" style="color: #8E9298; margin-right: 16px; text-decoration: none;">Process</a>
-          <a href="#about" style="color: #8E9298; margin-right: 16px; text-decoration: none;">About</a>
-          <a href="#faq" style="color: #8E9298; margin-right: 16px; text-decoration: none;">FAQ</a>
-        </nav>
-      </header>
-
-      <main style="max-width: 1200px; margin: 0 auto; padding: 48px 24px;">
-        <section id="hero">
-          <p style="color: #8E9298; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;">
-            Independent Web Design &amp; Development Studio
-          </p>
-          <h1 style="font-size: 3rem; font-weight: 700; line-height: 1.1; margin: 16px 0; color: #F4F2ED;">
-            We design and build fast, custom websites for small businesses.
-          </h1>
-          <p style="font-size: 1.15rem; color: #8E9298; max-width: 600px; line-height: 1.6;">
-            Every project is built from scratch around your business, delivered in 2 to 3 weeks with clean code, full ownership, and zero templates.
-          </p>
-        </section>
-
-        <section id="services" style="margin-top: 64px;">
-          <h2 style="font-size: 1.75rem; font-weight: 700; color: #F4F2ED;">Services &amp; Pricing</h2>
-          <p style="color: #8E9298;">Fixed-scope deliverables with transparent timelines.</p>
-          <ul>
-            <li><strong>Business Websites:</strong> Custom multipage sites built to establish credibility and convert visitors. Delivered in 2–3 weeks.</li>
-            <li><strong>Landing Pages:</strong> High-impact single-page sites for campaigns and launches. Delivered in 5–7 days.</li>
-            <li><strong>Website Rebuilds:</strong> Overhauls that replace outdated templates with fast, modern code. Delivered in 2–3 weeks.</li>
-          </ul>
-        </section>
-
-        <section id="work" style="margin-top: 64px;">
-          <h2 style="font-size: 1.75rem; font-weight: 700; color: #F4F2ED;">Selected Work &amp; Concepts</h2>
-          <ul>
-            <li><strong>Osteria Riva:</strong> Hospitality concept exploring digital menu architecture and reservation flows.</li>
-            <li><strong>Apex Athletic:</strong> Performance gym concept focused on class timetables and trial sign-ups.</li>
-            <li><strong>Maison Forme:</strong> Independent apparel concept featuring minimal lookbook layouts.</li>
-          </ul>
-        </section>
-      </main>
-    </div>
+  <body class="bg-[#030B14] text-[#F8FAFC] antialiased selection:bg-cyan-500 selection:text-slate-950">
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
