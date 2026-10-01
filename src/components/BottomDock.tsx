@@ -33,9 +33,6 @@ export const BottomDock: React.FC<BottomDockProps> = ({
 
   return (
     <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
-      {/* Ambient Glow behind dock */}
-      <div className="absolute inset-0 bg-[var(--accent-blue)]/15 blur-xl rounded-full -z-10 pointer-events-none"></div>
-
       <Dock
         magnification={64}
         distance={130}
@@ -53,8 +50,8 @@ export const BottomDock: React.FC<BottomDockProps> = ({
               className={cn(
                 'relative aspect-square rounded-full flex items-center justify-center transition-colors',
                 isActive
-                  ? 'bg-[var(--accent-blue)]/20 border border-[var(--accent-blue)] text-[var(--color-heading)] shadow-[0_0_12px_rgba(47,123,255,0.35)]'
-                  : 'bg-[#0B1E32]/70 hover:bg-[#102B48] border border-[var(--border-subtle)] text-[var(--text-muted)] hover:text-white'
+                  ? 'bg-white/10 border border-white/20 text-white'
+                  : 'bg-[#0B1E32]/60 hover:bg-[#102B48]/80 border border-[var(--border-subtle)] text-[var(--text-muted)] hover:text-white'
               )}
             >
               <DockLabel>{item.label}</DockLabel>
@@ -62,14 +59,14 @@ export const BottomDock: React.FC<BottomDockProps> = ({
                 <Icon
                   className={cn(
                     'w-full h-full transition-colors',
-                    isActive ? 'text-[var(--color-heading)] stroke-[2.2]' : 'text-slate-300 stroke-[1.8]'
+                    isActive ? 'text-white stroke-[2.2]' : 'text-slate-400 stroke-[1.8]'
                   )}
                 />
               </DockIcon>
 
-              {/* Running App active dot indicator matching Apple macOS dock */}
+              {/* Clean minimal active indicator dot */}
               {isActive && (
-                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] shadow-[0_0_8px_var(--accent-blue)] pointer-events-none"></span>
+                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white/80 pointer-events-none"></span>
               )}
             </DockItem>
           );
@@ -81,7 +78,7 @@ export const BottomDock: React.FC<BottomDockProps> = ({
         {/* Start a Project Direct Action */}
         <DockItem
           onClick={onOpenInquiry}
-          className="relative aspect-square rounded-full flex items-center justify-center bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white border border-blue-400/40 shadow-[0_0_16px_rgba(47,123,255,0.4)] transition-all"
+          className="relative aspect-square rounded-full flex items-center justify-center bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white border border-blue-400/30 shadow-md transition-all"
         >
           <DockLabel>Start a Project</DockLabel>
           <DockIcon>
