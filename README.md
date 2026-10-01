@@ -68,6 +68,29 @@ npm run lint
 
 ---
 
+## ✦ Contact Configuration
+
+Official studio communication channels are centralized in [`src/config/contact.ts`](src/config/contact.ts). You can override defaults via environment variables (see [`.env.example`](.env.example)):
+
+```bash
+# Business email
+VITE_CONTACT_EMAIL=devlobyah@gmail.com
+
+# WhatsApp Business number (international digits only, no + or spaces)
+VITE_CONTACT_WHATSAPP=923333875790
+
+# LinkedIn company profile URL
+VITE_CONTACT_LINKEDIN=https://www.linkedin.com/company/a-h-devlo/
+```
+
+Helper utilities generate:
+- Direct **Gmail Web Compose** links with prefilled subject/body.
+- Standard **mailto:** fallback links.
+- **WhatsApp Web & mobile** deep links with prefilled greetings.
+- Official **LinkedIn** company profile target links.
+
+---
+
 ## ✦ License
 
 © 2026 A&H Devlo. All rights reserved.

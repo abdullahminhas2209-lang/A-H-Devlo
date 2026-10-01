@@ -1,6 +1,8 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, CheckCircle2, Mail, MessageSquare } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, CheckCircle2, Mail } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { CONTACT_CONFIG, getWhatsAppUrl, getMailtoUrl } from '../config/contact';
+import { WhatsAppIcon } from './icons';
 
 interface FinalCTAProps {
   onOpenInquiry: () => void;
@@ -46,12 +48,13 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
               </button>
 
               <a
-                href="https://wa.me/923000000000?text=Hi%20A%26H%20Devlo,%20I%20am%20interested%20in%20a%20website%20for%20my%20business."
+                href={getWhatsAppUrl("Hi A&H Devlo, I'd like to discuss a website project.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-4 rounded-full bg-[#0E243A] hover:bg-[#133252] text-emerald-400 hover:text-emerald-300 font-semibold text-base border border-emerald-500/30 hover:border-emerald-500/50 transition-all duration-200 cursor-pointer font-body focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                aria-label="Chat with A&H Devlo on WhatsApp (opens in a new tab)"
               >
-                <MessageSquare className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4 text-emerald-400" />
                 <span>Chat on WhatsApp</span>
               </a>
 
@@ -67,11 +70,12 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
             {/* Direct Channel Alternatives */}
             <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 border-t border-[#14304D]/80">
               <a
-                href="mailto:hello@ahdevlo.com"
-                className="inline-flex items-center space-x-1.5 hover:text-cyan-300 transition-colors"
+                href={getMailtoUrl("Website project inquiry", "Hi A&H Devlo,\n\nI'm interested in starting a website project for my business.\n\nBest regards,")}
+                className="inline-flex items-center space-x-1.5 hover:text-cyan-300 transition-colors focus:outline-none focus:ring-1 focus:ring-cyan-400 rounded px-1"
+                aria-label={`Email A&H Devlo directly at ${CONTACT_CONFIG.email}`}
               >
                 <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Direct: hello@ahdevlo.com</span>
+                <span>Direct: {CONTACT_CONFIG.email}</span>
               </a>
               <span className="text-slate-600 hidden sm:inline">•</span>
               <span className="font-mono text-slate-400">⚡ Typical turnaround: 2–3 weeks</span>

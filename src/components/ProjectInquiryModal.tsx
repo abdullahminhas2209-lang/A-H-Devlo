@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, CheckCircle2, Mail, MessageSquare, X } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Mail, X } from 'lucide-react';
 import type { InquiryFormData } from '../types';
+import { CONTACT_CONFIG, getMailtoUrl, getWhatsAppUrl } from '../config/contact';
+import { WhatsAppIcon } from './icons';
 
 interface ProjectInquiryModalProps {
   isOpen: boolean;
@@ -191,8 +193,8 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 </h2>
                 <p className="mt-1 text-xs sm:text-sm text-slate-400 font-body">
                   Provide a few details below or email directly at{' '}
-                  <a href="mailto:hello@ahdevlo.com" className="text-cyan-400 hover:underline">
-                    hello@ahdevlo.com
+                  <a href={getMailtoUrl()} className="text-cyan-400 hover:underline">
+                    {CONTACT_CONFIG.email}
                   </a>.
                 </p>
               </div>
@@ -443,19 +445,21 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 <span className="font-mono text-[10px]">Or contact directly:</span>
                 <div className="flex items-center space-x-3 text-xs">
                   <a
-                    href="mailto:hello@ahdevlo.com"
-                    className="inline-flex items-center space-x-1 text-cyan-400 hover:underline"
+                    href={getMailtoUrl()}
+                    className="inline-flex items-center space-x-1.5 text-cyan-400 hover:underline focus:outline-none focus:ring-1 focus:ring-cyan-400 rounded px-1"
+                    aria-label={`Email A&H Devlo directly at ${CONTACT_CONFIG.email}`}
                   >
                     <Mail className="w-3.5 h-3.5" />
-                    <span>hello@ahdevlo.com</span>
+                    <span>{CONTACT_CONFIG.email}</span>
                   </a>
                   <a
-                    href="https://wa.me/923000000000?text=Hi%20A%26H%20Devlo,%20I%20would%20like%20to%20discuss%20a%20website%20project."
+                    href={getWhatsAppUrl("Hi A&H Devlo, I would like to discuss a website project.")}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-1 text-emerald-400 hover:underline"
+                    className="inline-flex items-center space-x-1.5 text-emerald-400 hover:underline focus:outline-none focus:ring-1 focus:ring-emerald-400 rounded px-1"
+                    aria-label="Chat with A&H Devlo on WhatsApp (opens in a new tab)"
                   >
-                    <MessageSquare className="w-3.5 h-3.5" />
+                    <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
                     <span>WhatsApp</span>
                   </a>
                 </div>
