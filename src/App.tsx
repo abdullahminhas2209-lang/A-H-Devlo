@@ -118,6 +118,7 @@ export const App: React.FC = () => {
       <Navbar
         onOpenInquiry={handleOpenInquiry}
         onNavigate={handleNavigate}
+        activeSection={activeSection}
       />
 
       {/* Main Studio Landing Body with safe bottom padding for the Dock */}

@@ -203,7 +203,7 @@ function DockLabel({ children, className, ...rest }: DockLabelProps) {
           exit={{ opacity: 0, y: 0, scale: 0.9 }}
           transition={{ duration: 0.15, ease: 'easeOut' }}
           className={cn(
-            'absolute -top-7 left-1/2 w-fit whitespace-pre rounded-lg border border-[#18395B] bg-[#030B14]/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-mono font-semibold tracking-wider text-cyan-300 shadow-xl shadow-black/80 pointer-events-none z-50',
+            'absolute -top-7 left-1/2 w-fit whitespace-pre rounded-lg border border-[#18395B] bg-[#030B14]/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-body font-semibold tracking-wider text-cyan-300 shadow-xl shadow-black/80 pointer-events-none z-50',
             className
           )}
           role='tooltip'

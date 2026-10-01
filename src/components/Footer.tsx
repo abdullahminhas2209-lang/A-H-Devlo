@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({
               <BrandLogo size="md" />
             </button>
 
-            <h3 className="text-white font-bold text-lg font-heading tracking-tight pt-1">
+            <h3 className="text-white font-bold text-lg font-body tracking-tight pt-1">
               Contact With Us:
             </h3>
 
@@ -125,7 +125,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Essential Heading 2: Services (3 cols) */}
           <div className="md:col-span-1 lg:col-span-3 space-y-3">
-            <h3 className="text-white font-bold text-lg font-heading tracking-tight mb-4">
+            <h3 className="text-white font-bold text-lg font-body tracking-tight mb-4">
               Services
             </h3>
             <ul className="space-y-2.5 text-sm font-body">
@@ -158,7 +158,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Essential Heading 3: About (3 cols) */}
           <div className="md:col-span-1 lg:col-span-3 space-y-3">
-            <h3 className="text-white font-bold text-lg font-heading tracking-tight mb-4">
+            <h3 className="text-white font-bold text-lg font-body tracking-tight mb-4">
               About
             </h3>
             <ul className="space-y-2.5 text-sm font-body">
