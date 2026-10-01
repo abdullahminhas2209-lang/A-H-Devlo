@@ -1,0 +1,27 @@
+{
+  "name": "A&H Devlo — Web Design & Development Studio",
+  "short_name": "A&H Devlo",
+  "description": "We design and develop clean, professional websites and landing pages for small businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030B14",
+  "theme_color": "#030B14",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

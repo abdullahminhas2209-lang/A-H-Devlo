@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://a-h-devlo.vercel.app/sitemap.xml
