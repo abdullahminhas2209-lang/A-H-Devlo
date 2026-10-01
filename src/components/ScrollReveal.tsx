@@ -13,14 +13,19 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   delayMs = 0,
   direction = 'up',
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Check user's OS accessibility preference for reduced motion
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(motionQuery.matches);
 
     const handleMotionChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
@@ -31,7 +36,6 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     }
 
     if (motionQuery.matches) {
-      setIsVisible(true);
       return () => {
         if (motionQuery.removeEventListener) {
           motionQuery.removeEventListener('change', handleMotionChange);
