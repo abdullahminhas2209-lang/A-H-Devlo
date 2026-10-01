@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Check, Compass, Layout, RefreshCw } from 'lucide-react';
+import { ArrowUpRight, Check, Clock, Compass, Layout, RefreshCw } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface ServicesProps {
@@ -12,46 +12,52 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
       number: '01',
       title: 'Business Websites',
       icon: Layout,
+      timeline: '2–3 weeks typical',
+      pricingModel: '[STARTING FROM $X,XXX / FIXED QUOTE]',
       summary:
-        'Professional websites designed to establish credibility and clearly communicate what your business offers.',
+        'Custom websites engineered to establish authority, communicate your unique value, and convert casual visitors into qualified clients.',
       features: [
-        'Custom bespoke design (no templates)',
+        'Custom bespoke architecture (zero templates)',
         'Responsive mobile, tablet & desktop development',
-        'Business-focused architecture & copywriting structure',
-        'Contact & customer inquiry functionality',
-        'Modern interactions & fluid micro-animations',
+        'Business-focused copywriting structure & flow',
+        'Lead capture form with spam protection',
+        'SEO foundations, sitemaps & Open Graph tags',
       ],
-      idealFor: 'Small businesses, practices, local establishments, & consultancy firms.',
+      idealFor: 'Small businesses, professional practices, local establishments, & consultancy firms.',
     },
     {
       number: '02',
       title: 'Landing Pages',
       icon: Compass,
+      timeline: '5–7 business days',
+      pricingModel: '[STARTING FROM $X,XXX / FIXED QUOTE]',
       summary:
-        'Focused pages designed around a specific product, service, campaign or business goal.',
+        'Focused, single-page digital experiences designed around a single conversion goal: generating calls, bookings, or inquiries.',
       features: [
-        'Conversion-focused layout & message pacing',
-        'Strong visual hierarchy guiding user attention',
-        'Fully responsive design optimized for paid traffic',
-        'Clear, unmissable calls-to-action (forms/calls/chat)',
-        'Fast-loading assets & zero script bloat',
+        'High-converting editorial copy & message hierarchy',
+        'Strong visual storytelling directing attention',
+        'Optimized for mobile traffic and social campaigns',
+        'Clear, unmissable calls-to-action (forms/chat/calls)',
+        'Sub-second page speeds with zero script bloat',
       ],
-      idealFor: 'Promotional campaigns, product launches, service offers, & lead capture.',
+      idealFor: 'Promotional campaigns, product launches, service offerings, & direct paid traffic.',
     },
     {
       number: '03',
       title: 'Website Redesigns',
       icon: RefreshCw,
+      timeline: '2–3 weeks typical',
+      pricingModel: '[STARTING FROM $X,XXX / FIXED QUOTE]',
       summary:
-        'Transform an outdated website into a modern and professional digital presence.',
+        'Transform an outdated, slow, or template-heavy site into a fast, modern digital presence that instills immediate customer confidence.',
       features: [
-        'Complete visual redesign aligned with modern standards',
-        'Better content hierarchy & streamlined navigation',
-        'Responsive improvements for modern smartphones',
-        'Modern UI systems & typography overhaul',
-        'Performance-focused development & clean code structure',
+        'Complete visual overhaul aligned with modern UI standards',
+        'Streamlined content hierarchy & intuitive navigation',
+        'Mobile responsiveness overhaul for modern phones',
+        'Performance optimization & clean semantic code',
+        'Full asset & domain handover with zero lock-in',
       ],
-      idealFor: 'Businesses whose current website looks dated, slow, or broken on mobile.',
+      idealFor: 'Established businesses whose current website looks outdated or broken on mobile.',
     },
   ];
 
@@ -108,6 +114,17 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
                       </p>
                     </div>
 
+                    {/* Timeline & Pricing Badges */}
+                    <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono">
+                      <div className="px-2.5 py-1 rounded-md bg-[#040E1A] border border-[#163352] text-slate-300 flex items-center space-x-1.5">
+                        <Clock className="w-3 h-3 text-cyan-400" />
+                        <span>{service.timeline}</span>
+                      </div>
+                      <div className="px-2.5 py-1 rounded-md bg-cyan-950/50 border border-cyan-800/40 text-cyan-300 font-semibold flex items-center space-x-1">
+                        <span>{service.pricingModel}</span>
+                      </div>
+                    </div>
+
                     {/* Feature Checklist */}
                     <div className="pt-4 border-t border-[#14304D] space-y-2.5">
                       <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-400 block">
@@ -132,7 +149,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
                   <div className="pt-8">
                     <button
                       onClick={() => onOpenInquiry(service.title)}
-                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 cursor-pointer shadow group-hover:shadow-md"
+                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 cursor-pointer shadow group-hover:shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     >
                       <span>Let&apos;s build yours</span>
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

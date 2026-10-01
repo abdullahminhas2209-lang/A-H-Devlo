@@ -94,13 +94,28 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="text-xs text-slate-300 leading-relaxed font-body">
               Have an upcoming website project or redesign? Tell us about your goals and we will respond with scope details.
             </p>
-            <button
-              onClick={onOpenInquiry}
-              className="inline-flex items-center space-x-1.5 px-5 py-2.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-xs font-bold tracking-tight transition-colors shadow cursor-pointer font-heading"
-            >
-              <span>Start a Project</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
+            <div className="flex flex-wrap gap-2 pt-1">
+              <button
+                onClick={onOpenInquiry}
+                className="inline-flex items-center space-x-1.5 px-5 py-2.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-xs font-bold tracking-tight transition-colors shadow cursor-pointer font-heading"
+              >
+                <span>Start a Project</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+            <div className="pt-2 flex flex-col space-y-1 text-xs text-slate-400 font-mono">
+              <a href="mailto:hello@ahdevlo.com" className="hover:text-cyan-300 transition-colors">
+                Email: hello@ahdevlo.com
+              </a>
+              <a
+                href="https://wa.me/923000000000?text=Hi%20A%26H%20Devlo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-emerald-400 transition-colors"
+              >
+                WhatsApp: Direct Chat ↗
+              </a>
+            </div>
           </div>
         </div>
 

@@ -8,6 +8,8 @@ import { SelectedWork } from './components/SelectedWork';
 import { Services } from './components/Services';
 import { WhyDevlo } from './components/WhyDevlo';
 import { Process } from './components/Process';
+import { Testimonials } from './components/Testimonials';
+import { FAQ } from './components/FAQ';
 import { About } from './components/About';
 import { TrustStatement } from './components/TrustStatement';
 import { FinalCTA } from './components/FinalCTA';
@@ -25,7 +27,7 @@ export const App: React.FC = () => {
 
   // Scroll spy to update activeSection in the dock as user scrolls
   useEffect(() => {
-    const sectionIds = ['hero', 'work', 'services', 'why', 'process', 'about'];
+    const sectionIds = ['hero', 'work', 'services', 'why', 'process', 'about', 'faq'];
     const handleScroll = () => {
       const scrollPos = window.scrollY + window.innerHeight * 0.35;
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -143,13 +145,19 @@ export const App: React.FC = () => {
         {/* 5. Process Section (5 Steps) */}
         <Process onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 6. About Section */}
+        {/* 6. Testimonials Section (Social Proof Placeholders) */}
+        <Testimonials />
+
+        {/* 7. About Section */}
         <About onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 7. Trust Statement */}
+        {/* 8. FAQ Section (6 Essential Questions) */}
+        <FAQ onOpenInquiry={() => handleOpenInquiry()} />
+
+        {/* 9. Trust Statement */}
         <TrustStatement onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 8. Final CTA */}
+        {/* 10. Final CTA */}
         <FinalCTA
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}

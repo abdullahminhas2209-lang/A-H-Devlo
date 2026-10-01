@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, CheckCircle2, Mail, MessageSquare } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface FinalCTAProps {
@@ -32,41 +32,66 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
 
             {/* Supporting Text */}
             <p className="text-base sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto font-body">
-              Tell us about your business and what you want your website to achieve.
+              Tell us about your business goals. We review all requirements and respond within 24 hours with a transparent, fixed-scope proposal.
             </p>
 
             {/* Action Buttons */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={onOpenInquiry}
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-base transition-all duration-200 shadow-xl shadow-cyan-950/50 hover:shadow-cyan-400/30 hover:-translate-y-0.5 cursor-pointer font-heading"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-base transition-all duration-200 shadow-xl shadow-cyan-950/50 hover:shadow-cyan-400/30 hover:-translate-y-0.5 cursor-pointer font-heading focus:outline-none focus:ring-2 focus:ring-white"
               >
                 <span>Start a Project</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </button>
+
+              <a
+                href="https://wa.me/923000000000?text=Hi%20A%26H%20Devlo,%20I%20am%20interested%20in%20a%20website%20for%20my%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-4 rounded-full bg-[#0E243A] hover:bg-[#133252] text-emerald-400 hover:text-emerald-300 font-semibold text-base border border-emerald-500/30 hover:border-emerald-500/50 transition-all duration-200 cursor-pointer font-body focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
+              </a>
 
               <button
                 onClick={onViewWork}
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-4 rounded-full bg-[#081726] hover:bg-[#0C1F35] text-slate-200 hover:text-white font-medium text-base border border-[#14304D] hover:border-cyan-500/50 transition-all duration-200 cursor-pointer font-body"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-4 rounded-full bg-transparent hover:bg-white/5 text-slate-300 hover:text-white font-medium text-base border border-[#14304D] hover:border-cyan-500/50 transition-all duration-200 cursor-pointer font-body focus:outline-none focus:ring-2 focus:ring-cyan-400"
               >
                 <span>View Our Work</span>
                 <ArrowDown className="w-4 h-4 text-slate-400" />
               </button>
             </div>
 
+            {/* Direct Channel Alternatives */}
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 border-t border-[#14304D]/80">
+              <a
+                href="mailto:hello@ahdevlo.com"
+                className="inline-flex items-center space-x-1.5 hover:text-cyan-300 transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Direct: hello@ahdevlo.com</span>
+              </a>
+              <span className="text-slate-600 hidden sm:inline">•</span>
+              <span className="font-mono text-slate-400">⚡ Typical turnaround: 2–3 weeks</span>
+              <span className="text-slate-600 hidden sm:inline">•</span>
+              <span className="font-mono text-slate-400">100% full client code ownership</span>
+            </div>
+
             {/* Reassurance points */}
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400">
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400">
               <span className="flex items-center space-x-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Prompt project review</span>
+                <span>Prompt 24-hour review</span>
               </span>
               <span className="flex items-center space-x-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Clear fixed quote</span>
+                <span>Transparent fixed quotes</span>
               </span>
               <span className="flex items-center space-x-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Direct designer communication</span>
+                <span>Direct designer &amp; developer contact</span>
               </span>
             </div>
           </div>
