@@ -6,7 +6,6 @@ import {
   getGmailComposeUrl,
   getMailtoUrl,
   getWhatsAppUrl,
-  getInstagramDmUrl,
 } from '../config/contact';
 
 interface FooterProps {
@@ -19,7 +18,6 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigate,
-  onOpenInquiry,
   onOpenLegal,
 }) => {
   return (
@@ -32,11 +30,11 @@ export const Footer: React.FC<FooterProps> = ({
       }}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-12">
-        {/* Main 4-Column Footer Grid matching reference design */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+        {/* Main Footer Grid with ONLY essential, non-duplicative headings */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
-          {/* Column 1: Contact With Us & Circular Social Buttons (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Essential Heading 1: Contact With Us (6 cols) */}
+          <div className="md:col-span-2 lg:col-span-6 space-y-4">
             <button
               onClick={() => onNavigate('hero')}
               className="focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded cursor-pointer transition-transform hover:scale-[1.02]"
@@ -49,11 +47,11 @@ export const Footer: React.FC<FooterProps> = ({
               Contact With Us:
             </h3>
 
-            <p className="text-slate-300 text-sm leading-relaxed font-body max-w-sm">
+            <p className="text-slate-300 text-sm leading-relaxed font-body max-w-md">
               Stay connected with A&amp;H Devlo on social media! Follow us on Instagram, LinkedIn, WhatsApp and Gmail.
             </p>
 
-            {/* Circular Social Media Icon Buttons matching reference */}
+            {/* Circular Social Media Icon Buttons */}
             <div className="flex items-center space-x-3 pt-2">
               {/* Instagram */}
               <a
@@ -101,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             {/* Direct Contact Text Details */}
-            <div className="pt-3 space-y-1.5 text-xs font-mono text-slate-400">
+            <div className="pt-2 space-y-1 text-xs font-mono text-slate-400">
               <div>
                 <span className="text-slate-500">Email: </span>
                 <a
@@ -125,8 +123,41 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Column 2: About (3 cols) */}
-          <div className="lg:col-span-3 space-y-3 sm:pl-2 lg:pl-6">
+          {/* Essential Heading 2: Services (3 cols) */}
+          <div className="md:col-span-1 lg:col-span-3 space-y-3">
+            <h3 className="text-white font-bold text-lg font-heading tracking-tight mb-4">
+              Services
+            </h3>
+            <ul className="space-y-2.5 text-sm font-body">
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
+                >
+                  Business Websites
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
+                >
+                  Landing Pages
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
+                >
+                  Website Redesigns
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Essential Heading 3: About (3 cols) */}
+          <div className="md:col-span-1 lg:col-span-3 space-y-3">
             <h3 className="text-white font-bold text-lg font-heading tracking-tight mb-4">
               About
             </h3>
@@ -136,64 +167,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('about')}
                   className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
                 >
-                  History &amp; Story
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('about')}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Our Team
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('why')}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Brand Guidelines &amp; Principles
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenLegal('terms')}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Terms &amp; Condition
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenLegal('privacy')}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Privacy Policy
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Services (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-white font-bold text-lg font-heading tracking-tight mb-4">
-              Services
-            </h3>
-            <ul className="space-y-2.5 text-sm font-body">
-              <li>
-                <button
-                  onClick={onOpenInquiry}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  How to Order / Start
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('services')}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Our Products &amp; Websites
+                  About the Studio
                 </button>
               </li>
               <li>
@@ -209,32 +183,15 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('process')}
                   className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
                 >
-                  Turnaround &amp; Process
+                  How We Work
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('services')}
+                  onClick={() => onNavigate('why')}
                   className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
                 >
-                  Payment Methods &amp; Pricing
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Other (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-white font-bold text-lg font-heading tracking-tight mb-4">
-              Other
-            </h3>
-            <ul className="space-y-2.5 text-sm font-body">
-              <li>
-                <button
-                  onClick={onOpenInquiry}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Contact Us
+                  Studio Principles
                 </button>
               </li>
               <li>
@@ -242,25 +199,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('faq')}
                   className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
                 >
-                  Help &amp; FAQ
-                </button>
-              </li>
-              <li>
-                <a
-                  href={getInstagramDmUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-300 hover:text-pink-400 transition-colors block focus:outline-none focus-visible:ring-1 focus-visible:ring-pink-400 rounded"
-                >
-                  Message on Instagram
-                </a>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenLegal('privacy')}
-                  className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
-                >
-                  Privacy
+                  Frequently Asked Questions
                 </button>
               </li>
             </ul>
@@ -268,7 +207,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         </div>
 
-        {/* Bottom Bar: Clean, human, authentic copyright line */}
+        {/* Bottom Bar: Copyright & Consolidated Legal Links (No duplication) */}
         <div className="pt-8 border-t border-[#14304D]/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
           <div>
             &copy; {CURRENT_YEAR} A&amp;H Devlo. All rights reserved.
