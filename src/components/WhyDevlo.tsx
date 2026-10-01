@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionTransition } from './SectionTransition';
 
 export const WhyDevlo: React.FC = () => {
   const commitments = [
@@ -29,8 +30,9 @@ export const WhyDevlo: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+    <section id="why" className="py-24 sm:py-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionTransition>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Studio Point of View (5 cols) */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
@@ -67,6 +69,7 @@ export const WhyDevlo: React.FC = () => {
             ))}
           </div>
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

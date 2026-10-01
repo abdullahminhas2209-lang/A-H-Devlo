@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { SectionTransition } from './SectionTransition';
 
 interface AboutProps {
   onOpenInquiry: () => void;
@@ -22,8 +23,9 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <section id="about" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+    <section id="about" className="py-24 sm:py-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 space-y-16 sm:space-y-20">
+        <SectionTransition>
         {/* Top Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 space-y-4">
@@ -100,6 +102,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
             <ArrowUpRight className="w-4 h-4 stroke-[2]" />
           </button>
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

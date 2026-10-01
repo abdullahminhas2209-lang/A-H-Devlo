@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionTransition } from './SectionTransition';
 
 export const Testimonials: React.FC = () => {
   const reviews = [
@@ -21,8 +22,9 @@ export const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A]">
+    <section className="py-24 sm:py-32 bg-[#0C0D0E]">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 space-y-14">
+        <SectionTransition>
         {/* Header */}
         <div className="max-w-3xl space-y-4">
           <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
@@ -64,6 +66,7 @@ export const Testimonials: React.FC = () => {
             </div>
           ))}
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

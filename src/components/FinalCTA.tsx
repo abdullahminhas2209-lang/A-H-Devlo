@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { CONTACT_CONFIG, getWhatsAppUrl, getMailtoUrl } from '../config/contact';
 import { WhatsAppIcon, InstagramIcon } from './icons';
+import { SectionTransition } from './SectionTransition';
 
 interface FinalCTAProps {
   onOpenInquiry: () => void;
@@ -10,8 +11,9 @@ interface FinalCTAProps {
 
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
   return (
-    <section className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] relative">
+    <section className="py-24 sm:py-32 bg-[#0C0D0E] relative">
       <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-8">
+        <SectionTransition>
         <div className="space-y-4">
           <div className="inline-flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
             <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
@@ -71,6 +73,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
           <span className="text-[#22252A] hidden sm:inline">•</span>
           <span className="font-mono text-[#8E9298]">Typical turnaround: 2–3 weeks</span>
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

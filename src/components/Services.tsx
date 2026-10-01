@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { SectionTransition } from './SectionTransition';
 
 interface ServicesProps {
   onOpenInquiry: (serviceType?: string) => void;
@@ -56,8 +57,9 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <section id="services" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+    <section id="services" className="py-24 sm:py-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionTransition>
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20 space-y-4">
           <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
@@ -136,6 +138,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
             </div>
           ))}
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

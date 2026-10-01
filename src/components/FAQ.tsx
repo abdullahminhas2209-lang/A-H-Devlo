@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { SectionTransition } from './SectionTransition';
 
 interface FAQProps {
   onOpenInquiry: () => void;
@@ -51,8 +52,9 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenInquiry }) => {
   };
 
   return (
-    <section id="faq" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+    <section id="faq" className="py-24 sm:py-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-4xl mx-auto px-5 sm:px-8 space-y-14">
+        <SectionTransition>
         {/* Header */}
         <div className="space-y-4">
           <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
@@ -120,6 +122,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenInquiry }) => {
             Ask us directly →
           </button>
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

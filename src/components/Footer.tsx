@@ -7,6 +7,7 @@ import {
   getMailtoUrl,
   getWhatsAppUrl,
 } from '../config/contact';
+import { SectionTransition } from './SectionTransition';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -23,9 +24,10 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="contact"
-      className="bg-[#0C0D0E] border-t border-[#22252A] pt-16 md:pt-20 pb-12 md:pb-16 text-[#8E9298] text-sm scroll-mt-24 relative"
+      className="bg-[#0C0D0E] pt-16 md:pt-20 pb-12 md:pb-16 text-[#8E9298] text-sm scroll-mt-24 relative"
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 space-y-12">
+        <SectionTransition>
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
@@ -217,6 +219,7 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
           </div>
         </div>
+        </SectionTransition>
       </div>
     </footer>
   );

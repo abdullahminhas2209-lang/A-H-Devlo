@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { SectionTransition } from './SectionTransition';
 
 interface ProcessProps {
   onOpenInquiry: () => void;
@@ -38,8 +39,9 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <section id="process" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+    <section id="process" className="py-24 sm:py-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionTransition>
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20 space-y-4">
           <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
@@ -93,6 +95,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
+        </SectionTransition>
       </div>
     </section>
   );

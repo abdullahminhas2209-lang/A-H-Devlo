@@ -15,6 +15,7 @@ import { Footer } from './components/Footer';
 import { CaseStudyModal } from './components/CaseStudyModal';
 import { ProjectInquiryModal } from './components/ProjectInquiryModal';
 import { LegalModal } from './components/LegalModal';
+import { SectionDivider } from './components/SectionDivider';
 
 export const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -128,6 +129,8 @@ export const App: React.FC = () => {
           onSelectProject={handleSelectProject}
         />
 
+        <SectionDivider />
+
         {/* 2. Selected Work Section */}
         <SelectedWork
           projects={projects}
@@ -135,23 +138,37 @@ export const App: React.FC = () => {
           onOpenInquiry={() => handleOpenInquiry()}
         />
 
+        <SectionDivider />
+
         {/* 3. Services Section */}
         <Services onOpenInquiry={handleOpenInquiry} />
+
+        <SectionDivider />
 
         {/* 4. Why A&H Devlo (4 Principles) */}
         <WhyDevlo />
 
-        {/* 5. Process Section (5 Steps) */}
+        <SectionDivider />
+
+        {/* 5. Process Section (4 Steps) */}
         <Process onOpenInquiry={() => handleOpenInquiry()} />
+
+        <SectionDivider />
 
         {/* 6. Testimonials Section (Social Proof Placeholders) */}
         <Testimonials />
 
+        <SectionDivider />
+
         {/* 7. About Section */}
         <About onOpenInquiry={() => handleOpenInquiry()} />
 
+        <SectionDivider />
+
         {/* 8. FAQ Section (6 Essential Questions) */}
         <FAQ onOpenInquiry={() => handleOpenInquiry()} />
+
+        <SectionDivider />
 
         {/* 9. Final CTA */}
         <FinalCTA
@@ -189,6 +206,7 @@ export const App: React.FC = () => {
       />
 
       {/* Footer */}
+      <SectionDivider />
       <Footer
         onNavigate={handleNavigate}
         onOpenInquiry={() => handleOpenInquiry()}

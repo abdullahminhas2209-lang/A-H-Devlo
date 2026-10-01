@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
 
 interface HeroProps {
   onOpenInquiry: () => void;
@@ -11,10 +12,17 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenInquiry,
   onViewWork,
 }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="hero" className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="space-y-8 sm:space-y-10 max-w-4xl">
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-8 sm:space-y-10 max-w-4xl"
+        >
           {/* Eyebrow Label */}
           <div className="flex items-center space-x-2.5 text-[11px] sm:text-xs uppercase tracking-widest text-[#8E9298] font-body">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shrink-0" />
@@ -49,10 +57,15 @@ export const Hero: React.FC<HeroProps> = ({
               <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Studio Specs Bar: Architectural Proof Points */}
-        <div className="mt-20 sm:mt-28 pt-10 border-t border-[#22252A] grid grid-cols-2 md:grid-cols-4 gap-8">
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-20 sm:mt-28 pt-10 border-t border-[#22252A] grid grid-cols-2 md:grid-cols-4 gap-8"
+        >
           <div>
             <span className="text-xs text-[#8E9298] font-mono block mb-1">01 / TIMELINE</span>
             <span className="text-sm sm:text-base font-semibold text-[#F4F2ED] block font-heading">2 to 3 weeks</span>
@@ -76,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({
             <span className="text-sm sm:text-base font-semibold text-[#F4F2ED] block font-heading">100% yours</span>
             <span className="text-xs text-[#8E9298] font-body mt-0.5 block">Full code, assets, and DNS handover</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

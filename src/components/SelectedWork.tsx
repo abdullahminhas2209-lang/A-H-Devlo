@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import type { ProjectData } from '../types';
 import { BrowserMockup } from './BrowserMockup';
+import { SectionTransition } from './SectionTransition';
 
 interface SelectedWorkProps {
   projects: ProjectData[];
@@ -15,8 +16,9 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
   onOpenInquiry,
 }) => {
   return (
-    <section id="work" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+    <section id="work" className="py-24 sm:py-32 bg-[#0C0D0E] scroll-mt-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionTransition>
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-24 space-y-4">
           <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
@@ -155,6 +157,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
             Start a project
           </button>
         </div>
+        </SectionTransition>
       </div>
     </section>
   );
