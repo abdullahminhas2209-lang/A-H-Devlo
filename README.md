@@ -85,6 +85,9 @@ VITE_CONTACT_LINKEDIN=https://www.linkedin.com/company/a-h-devlo/
 # Instagram profile URL and handle
 VITE_INSTAGRAM_URL=https://www.instagram.com/ah_devlo/#
 VITE_INSTAGRAM_HANDLE=ah_devlo
+
+# Optional: Formspree or custom form backend endpoint
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
 ```
 
 Helper utilities generate:
@@ -93,6 +96,31 @@ Helper utilities generate:
 - **WhatsApp Web & mobile** deep links with prefilled greetings.
 - Official **LinkedIn** company profile target links.
 - Official **Instagram** profile links and direct message (**ig.me DM**) deep links.
+
+---
+
+## ✦ Protected Design Architecture
+
+The studio identity is protected and maintained across:
+- **Base Background**: Dark navy `#030B14`
+- **Neon Accents**: Cyan `#22D3EE` (`cyan-400`, `cyan-500`) with hairline glowing dividers (`border-[#163554]`)
+- **macOS Floating Dock**: Motion magnification with animated tooltips and running active dots
+- **3D Hero Mockup Deck**: Interactive perspective cards with hover-to-front physics
+- **Self-Hosted Typography**: Outfit (Display) and Inter (Body) via `@fontsource` with zero CLS
+
+---
+
+## ✦ Rollback Guide
+
+To revert changes made in Phase 2 or restore pristine state:
+```bash
+# To rollback to the clean Phase 1 restore commit:
+git checkout restore-original-design
+git reset --hard 5fb8ad9
+
+# To return to main:
+git checkout main
+```
 
 ---
 
