@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { projects } from './data/projects';
 import type { ProjectData } from './types';
 import { Navbar } from './components/Navbar';
-import { BottomDock } from './components/BottomDock';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
 import { Services } from './components/Services';
@@ -105,11 +104,11 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030B14] text-[#F8FAFC] flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 relative">
+    <div className="min-h-screen bg-[#0C0D0E] text-[#F4F2ED] flex flex-col font-sans selection:bg-blue-600 selection:text-white relative">
       {/* Skip to Content Accessible Bypass Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-full focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#F4F2ED] focus:text-[#0C0D0E] focus:font-semibold focus:rounded-md focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Skip to main content
       </a>
@@ -121,8 +120,8 @@ export const App: React.FC = () => {
         activeSection={activeSection}
       />
 
-      {/* Main Studio Landing Body with safe bottom padding for the Dock */}
-      <main id="main-content" tabIndex={-1} className="flex-1 pb-24 sm:pb-28 focus:outline-none">
+      {/* Main Studio Landing Body */}
+      <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
         {/* 1. Hero Section */}
         <Hero
           onOpenInquiry={() => handleOpenInquiry()}
@@ -164,13 +163,6 @@ export const App: React.FC = () => {
           onViewWork={() => handleNavigate('work')}
         />
       </main>
-
-      {/* Floating Apple Dock Navbar pinned at the bottom */}
-      <BottomDock
-        activeSection={activeSection}
-        onNavigate={handleNavigate}
-        onOpenInquiry={() => handleOpenInquiry()}
-      />
 
       {/* Reusable Case Study View */}
       {selectedProject && (

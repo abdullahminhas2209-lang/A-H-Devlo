@@ -23,11 +23,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="contact"
-      className="bg-[#030B14] border-t border-[#14304D] pt-16 md:pt-20 text-slate-300 text-sm scroll-mt-24 sm:scroll-mt-28 relative"
-      style={{
-        // Safe bottom padding ensuring floating Apple Dock never obscures footer content
-        paddingBottom: 'max(9.5rem, calc(8.5rem + env(safe-area-inset-bottom, 0px)))',
-      }}
+      className="bg-[#0C0D0E] border-t border-[#22252A] pt-16 md:pt-20 pb-12 md:pb-16 text-[#8E9298] text-sm scroll-mt-24 relative"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-12">
         {/* Main Footer Grid with ONLY essential, non-duplicative headings */}
