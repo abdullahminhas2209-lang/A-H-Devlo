@@ -9,7 +9,7 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
   return (
-    <section id="about" className="py-24 md:py-36 bg-[#030B14] relative">
+    <section id="about" className="py-24 md:py-36 bg-[#030B14] relative scroll-mt-24 sm:scroll-mt-28">
       {/* Section Transition Top Divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
 

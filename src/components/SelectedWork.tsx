@@ -16,7 +16,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
   onOpenInquiry,
 }) => {
   return (
-    <section id="work" className="py-24 md:py-36 bg-[#030B14] relative">
+    <section id="work" className="py-24 md:py-36 bg-[#030B14] relative scroll-mt-24 sm:scroll-mt-28">
       {/* Section Transition Top Divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
 
@@ -50,8 +50,17 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                   <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center`}>
                     {/* Visual Preview Side (7 cols) */}
                     <div
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View ${project.title} case study visual preview`}
                       onClick={() => onSelectProject(project.id)}
-                      className={`lg:col-span-7 cursor-pointer transition-transform duration-500 ease-out group-hover:scale-[1.02] ${
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          onSelectProject(project.id);
+                        }
+                      }}
+                      className={`lg:col-span-7 cursor-pointer transition-transform duration-500 ease-out group-hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-xl ${
                         isEven ? 'lg:order-1' : 'lg:order-2'
                       }`}
                     >
@@ -87,11 +96,13 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                         <span className="text-xs text-slate-400 font-mono block mb-1">
                           0{index + 1} — {project.category}
                         </span>
-                        <h3
-                          onClick={() => onSelectProject(project.id)}
-                          className="text-2xl sm:text-4xl font-bold text-white tracking-tight hover:text-cyan-300 transition-colors cursor-pointer font-heading"
-                        >
-                          {project.title}
+                        <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight font-heading">
+                          <button
+                            onClick={() => onSelectProject(project.id)}
+                            className="text-left text-white hover:text-cyan-300 transition-colors cursor-pointer focus:outline-none focus:underline"
+                          >
+                            {project.title}
+                          </button>
                         </h3>
                       </div>
 
@@ -116,7 +127,8 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                       <div className="pt-2">
                         <button
                           onClick={() => onSelectProject(project.id)}
-                          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 group-hover:translate-x-1 cursor-pointer shadow"
+                          aria-label={`View Case Study: ${project.title}`}
+                          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 group-hover:translate-x-1 cursor-pointer shadow focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                           <span>View Case Study</span>
                           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

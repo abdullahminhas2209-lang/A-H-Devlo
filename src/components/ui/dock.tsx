@@ -164,6 +164,12 @@ function DockItem({ children, className, onClick }: DockItemProps) {
       role='button'
       aria-haspopup='true'
       onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
     >
       {Children.map(children, (child) => {
         if (!React.isValidElement(child)) return child;

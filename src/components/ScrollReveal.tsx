@@ -14,15 +14,36 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   direction = 'up',
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check user's OS accessibility preference for reduced motion
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(motionQuery.matches);
+
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', handleMotionChange);
+    }
+
+    if (motionQuery.matches) {
+      setIsVisible(true);
+      return () => {
+        if (motionQuery.removeEventListener) {
+          motionQuery.removeEventListener('change', handleMotionChange);
+        }
+      };
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Once revealed, keep it visible
             if (domRef.current) observer.unobserve(domRef.current);
           }
         });
@@ -38,30 +59,36 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
     return () => {
       if (current) observer.unobserve(current);
+      if (motionQuery.removeEventListener) {
+        motionQuery.removeEventListener('change', handleMotionChange);
+      }
     };
   }, []);
 
   const getTransform = () => {
+    if (prefersReducedMotion) {
+      return 'opacity-100 transform-none';
+    }
     if (isVisible) return 'opacity-100 translate-x-0 translate-y-0 scale-100';
     switch (direction) {
       case 'up':
-        return 'opacity-0 translate-y-10 scale-[0.98]';
+        return 'opacity-0 translate-y-8 scale-[0.99]';
       case 'down':
-        return 'opacity-0 -translate-y-10 scale-[0.98]';
+        return 'opacity-0 -translate-y-8 scale-[0.99]';
       case 'left':
-        return 'opacity-0 translate-x-10 scale-[0.98]';
+        return 'opacity-0 translate-x-8 scale-[0.99]';
       case 'right':
-        return 'opacity-0 -translate-x-10 scale-[0.98]';
+        return 'opacity-0 -translate-x-8 scale-[0.99]';
       case 'fade':
       default:
-        return 'opacity-0 scale-[0.97]';
+        return 'opacity-0 scale-[0.98]';
     }
   };
 
   return (
     <div
       ref={domRef}
-      style={{ transitionDelay: `${delayMs}ms` }}
+      style={{ transitionDelay: prefersReducedMotion ? '0ms' : `${delayMs}ms` }}
       className={`transition-all duration-700 ease-out transform ${getTransform()} ${className}`}
     >
       {children}

@@ -29,19 +29,33 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 }) => {
   const [device, setDevice] = useState<DeviceMode>('desktop');
 
-  // Lock body scroll when modal is open
+  // Lock body scroll and listen for Escape key when modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   const prevProject = allProjects.find((p) => p.id === project.prevProjectId) || allProjects[0];
   const nextProject = allProjects.find((p) => p.id === project.nextProjectId) || allProjects[1];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0B0C10] text-[#F8FAFC] animate-in fade-in duration-200">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="case-study-title"
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#0B0C10] text-[#F8FAFC] animate-in fade-in duration-200"
+    >
       {/* Top Floating Utility Bar */}
       <div className="sticky top-0 z-40 bg-[#0B0C10]/90 backdrop-blur-md border-b border-[#232938] px-5 sm:px-8 py-4 flex items-center justify-between">
         <button
@@ -71,7 +85,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         </div>
       </div>
 
-      <main className="max-w-6xl mx-auto px-5 sm:px-8 py-12 md:py-20 space-y-16 md:space-y-24">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-12 md:py-20 space-y-16 md:space-y-24">
         {/* Header Block */}
         <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-3">
@@ -88,9 +102,9 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             <span className="text-xs text-slate-400 font-mono hidden sm:inline">Year: {project.year}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 id="case-study-title" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
             {project.title}
-          </h1>
+          </h2>
 
           <p className="text-lg sm:text-2xl text-slate-300 font-normal max-w-3xl leading-relaxed">
             {project.overview}
@@ -306,7 +320,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             </button>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };

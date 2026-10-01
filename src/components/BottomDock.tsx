@@ -32,15 +32,15 @@ export const BottomDock: React.FC<BottomDockProps> = ({
   ];
 
   return (
-    <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+    <div className="fixed bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto max-w-[calc(100vw-1rem)] px-1 sm:px-0">
       {/* Ambient Glow behind dock */}
       <div className="absolute inset-0 bg-cyan-500/10 blur-xl rounded-full -z-10 pointer-events-none"></div>
 
       <Dock
-        magnification={64}
-        distance={130}
-        panelHeight={56}
-        className="items-center justify-center bg-[#081726]/92 border border-[#163554] shadow-[0_12px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl px-3 sm:px-4 py-2 gap-2 sm:gap-2.5 rounded-full"
+        magnification={60}
+        distance={120}
+        panelHeight={52}
+        className="items-center justify-center bg-[#081726]/95 border border-[#163554] shadow-[0_12px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl px-2.5 sm:px-4 py-1.5 sm:py-2 gap-1.5 sm:gap-2.5 rounded-full overflow-x-auto max-w-full"
       >
         {dockItems.map((item) => {
           const Icon = item.icon;
@@ -50,6 +50,7 @@ export const BottomDock: React.FC<BottomDockProps> = ({
             <DockItem
               key={item.id}
               onClick={() => onNavigate(item.id)}
+              aria-label={`Navigate to ${item.label}`}
               className={cn(
                 'relative aspect-square rounded-full flex items-center justify-center transition-colors',
                 isActive
@@ -76,11 +77,12 @@ export const BottomDock: React.FC<BottomDockProps> = ({
         })}
 
         {/* Apple Dock Separator */}
-        <div className="w-[1px] h-6 bg-[#163554]/90 self-center mx-0.5 rounded-full shrink-0" />
+        <div className="w-[1px] h-5 sm:h-6 bg-[#163554]/90 self-center mx-0.5 rounded-full shrink-0" />
 
         {/* Start a Project Direct Action */}
         <DockItem
           onClick={onOpenInquiry}
+          aria-label="Open Start a Project inquiry modal"
           className="relative aspect-square rounded-full flex items-center justify-center bg-gradient-to-tr from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 border border-cyan-300/40 shadow-[0_0_16px_rgba(6,182,212,0.35)] transition-all"
         >
           <DockLabel>Start a Project</DockLabel>

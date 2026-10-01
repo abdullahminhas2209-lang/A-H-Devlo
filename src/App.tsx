@@ -104,6 +104,14 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#030B14] text-[#F8FAFC] flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 relative">
+      {/* Skip to Content Accessible Bypass Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-full focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Skip to main content
+      </a>
+
       {/* Top Header with Brand Logo & Quick Action */}
       <Navbar
         onOpenInquiry={handleOpenInquiry}
@@ -111,7 +119,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Studio Landing Body with safe bottom padding for the Dock */}
-      <main className="flex-1 pb-24 sm:pb-28">
+      <main id="main-content" tabIndex={-1} className="flex-1 pb-24 sm:pb-28 focus:outline-none">
         {/* 1. Hero Section */}
         <Hero
           onOpenInquiry={() => handleOpenInquiry()}

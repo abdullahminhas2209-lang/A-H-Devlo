@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowUpRight, CheckCircle2, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowUpRight, CheckCircle2, Mail, MessageSquare, X } from 'lucide-react';
 import type { InquiryFormData } from '../types';
 
 interface ProjectInquiryModalProps {
@@ -31,9 +31,19 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
     phone: '',
   });
 
+  const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState<Partial<Record<keyof InquiryFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -64,10 +74,18 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Silent spam bot rejection via honeypot
+    if (honeypot) {
+      console.warn('Bot submission blocked.');
+      setIsSubmitted(true);
+      return;
+    }
+
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate swift, realistic studio API transmission
+    // Transmit inquiry (simulated studio pipeline)
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -91,20 +109,25 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="inquiry-modal-title"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+    >
       <div className="relative w-full max-w-2xl bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-8">
         {/* Header Strip */}
         <div className="px-6 sm:px-8 py-5 border-b border-[#232938] flex items-center justify-between bg-[#121622]">
           <div className="flex items-center space-x-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
             <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300">
               Project Inquiry
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-            aria-label="Close form"
+            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            aria-label="Close project inquiry form"
           >
             <X className="w-5 h-5" />
           </button>
@@ -113,18 +136,18 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
         {/* Content Body */}
         <div className="p-6 sm:p-8">
           {isSubmitted ? (
-            /* Confirmation State per Section 19 */
-            <div className="py-12 text-center space-y-6 animate-in fade-in duration-300">
+            /* Confirmation State */
+            <div className="py-10 text-center space-y-6 animate-in fade-in duration-300">
               <div className="w-16 h-16 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-emerald-950/50">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
                   Your project inquiry has been received.
                 </h3>
-                <p className="text-base text-slate-300 max-w-md mx-auto leading-relaxed">
-                  We&apos;ll review the details and get back to you.
+                <p className="text-base text-slate-300 max-w-md mx-auto leading-relaxed font-body">
+                  We will review your requirements and respond within 24 hours with timeline and scope recommendations.
                 </p>
               </div>
 
@@ -147,31 +170,48 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   onClick={handleReset}
-                  className="px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-sm font-bold transition-colors cursor-pointer"
                 >
                   Return to Studio
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Form Heading */}
               <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                <h2 id="inquiry-modal-title" className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
                   Let&apos;s build something for your business.
                 </h2>
-                <p className="mt-2 text-sm text-slate-400">
-                  Provide a few details below and we will prepare a dedicated proposal for your project.
+                <p className="mt-2 text-sm text-slate-400 font-body">
+                  Provide a few project details below or email us directly at{' '}
+                  <a href="mailto:hello@ahdevlo.com" className="text-cyan-400 hover:underline">
+                    hello@ahdevlo.com
+                  </a>.
                 </p>
               </div>
 
+              {/* Honeypot Anti-Spam Field */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="hp_website">Do not fill this field</label>
+                <input
+                  type="text"
+                  id="hp_website"
+                  name="hp_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
               {/* 1. What do you need? */}
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
-                  What do you need? <span className="text-blue-400">*</span>
+                  What do you need? <span className="text-cyan-400">*</span>
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                   {serviceOptions.map((opt) => {
@@ -181,9 +221,9 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                         type="button"
                         key={opt}
                         onClick={() => setFormData({ ...formData, serviceType: opt })}
-                        className={`p-3 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer ${
+                        className={`p-3 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
                           isSelected
-                            ? 'bg-blue-600 text-white border-blue-500 shadow-md shadow-blue-900/30'
+                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400 shadow-md shadow-cyan-950/30'
                             : 'bg-[#141824] text-slate-300 border-[#232938] hover:border-[#38435C] hover:text-white'
                         }`}
                       >
@@ -196,71 +236,90 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
 
               {/* 2. Business Information */}
               <div className="space-y-4">
-                <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                <span className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
                   Business Information
-                </label>
+                </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
+                    <label htmlFor="field-businessName" className="sr-only">
+                      Business Name
+                    </label>
                     <input
+                      id="field-businessName"
                       type="text"
                       placeholder="Business name *"
+                      aria-required="true"
+                      aria-invalid={!!errors.businessName}
+                      aria-describedby={errors.businessName ? 'error-businessName' : undefined}
                       value={formData.businessName}
                       onChange={(e) => {
                         setFormData({ ...formData, businessName: e.target.value });
                         if (errors.businessName) setErrors({ ...errors, businessName: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.businessName ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
                     {errors.businessName && (
-                      <span className="text-[11px] text-red-400 mt-1 block">
+                      <span id="error-businessName" role="alert" className="text-[11px] text-red-400 mt-1 block">
                         {errors.businessName}
                       </span>
                     )}
                   </div>
 
                   <div>
+                    <label htmlFor="field-industry" className="sr-only">
+                      Industry
+                    </label>
                     <input
+                      id="field-industry"
                       type="text"
-                      placeholder="Industry (e.g. Dining, Fashion, Medical)"
+                      placeholder="Industry (e.g. Dining, Practice, Real Estate)"
                       value={formData.industry}
                       onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg bg-[#141824] border border-[#232938] text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="w-full px-4 py-2.5 rounded-lg bg-[#141824] border border-[#232938] text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
                     />
                   </div>
                 </div>
 
                 <div>
+                  <label htmlFor="field-website" className="sr-only">
+                    Existing Website or Social Link
+                  </label>
                   <input
+                    id="field-website"
                     type="text"
                     placeholder="Existing website or social link (if any)"
                     value={formData.existingWebsite}
                     onChange={(e) => setFormData({ ...formData, existingWebsite: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-lg bg-[#141824] border border-[#232938] text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 rounded-lg bg-[#141824] border border-[#232938] text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
                   />
                 </div>
               </div>
 
               {/* 3. Tell us about your project */}
               <div className="space-y-2">
-                <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
-                  Tell us about your project <span className="text-blue-400">*</span>
+                <label htmlFor="field-description" className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                  Tell us about your project <span className="text-cyan-400">*</span>
                 </label>
                 <textarea
-                  rows={4}
+                  id="field-description"
+                  rows={3}
                   placeholder="What is your main goal? What features do you need? Any references or timelines?"
+                  aria-required="true"
+                  aria-invalid={!!errors.projectDescription}
+                  aria-describedby={errors.projectDescription ? 'error-description' : undefined}
                   value={formData.projectDescription}
                   onChange={(e) => {
                     setFormData({ ...formData, projectDescription: e.target.value });
                     if (errors.projectDescription) setErrors({ ...errors, projectDescription: undefined });
                   }}
-                  className={`w-full px-4 py-3 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                  className={`w-full px-4 py-3 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                     errors.projectDescription ? 'border-red-500' : 'border-[#232938]'
                   }`}
                 />
                 {errors.projectDescription && (
-                  <span className="text-[11px] text-red-400 block">
+                  <span id="error-description" role="alert" className="text-[11px] text-red-400 block">
                     {errors.projectDescription}
                   </span>
                 )}
@@ -268,65 +327,86 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
 
               {/* 4. Contact Information */}
               <div className="space-y-4">
-                <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                <span className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
                   Contact Information
-                </label>
+                </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
+                    <label htmlFor="field-fullName" className="sr-only">
+                      Full Name
+                    </label>
                     <input
+                      id="field-fullName"
                       type="text"
                       placeholder="Your name *"
+                      aria-required="true"
+                      aria-invalid={!!errors.fullName}
+                      aria-describedby={errors.fullName ? 'error-fullName' : undefined}
                       value={formData.fullName}
                       onChange={(e) => {
                         setFormData({ ...formData, fullName: e.target.value });
                         if (errors.fullName) setErrors({ ...errors, fullName: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.fullName ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
                     {errors.fullName && (
-                      <span className="text-[11px] text-red-400 mt-1 block">
+                      <span id="error-fullName" role="alert" className="text-[11px] text-red-400 mt-1 block">
                         {errors.fullName}
                       </span>
                     )}
                   </div>
 
                   <div>
+                    <label htmlFor="field-email" className="sr-only">
+                      Email Address
+                    </label>
                     <input
+                      id="field-email"
                       type="email"
                       placeholder="Email address *"
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'error-email' : undefined}
                       value={formData.email}
                       onChange={(e) => {
                         setFormData({ ...formData, email: e.target.value });
                         if (errors.email) setErrors({ ...errors, email: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.email ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
                     {errors.email && (
-                      <span className="text-[11px] text-red-400 mt-1 block">
+                      <span id="error-email" role="alert" className="text-[11px] text-red-400 mt-1 block">
                         {errors.email}
                       </span>
                     )}
                   </div>
 
                   <div>
+                    <label htmlFor="field-phone" className="sr-only">
+                      Phone or WhatsApp
+                    </label>
                     <input
+                      id="field-phone"
                       type="text"
                       placeholder="WhatsApp / Phone *"
+                      aria-required="true"
+                      aria-invalid={!!errors.phone}
+                      aria-describedby={errors.phone ? 'error-phone' : undefined}
                       value={formData.phone}
                       onChange={(e) => {
                         setFormData({ ...formData, phone: e.target.value });
                         if (errors.phone) setErrors({ ...errors, phone: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.phone ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
                     {errors.phone && (
-                      <span className="text-[11px] text-red-400 mt-1 block">
+                      <span id="error-phone" role="alert" className="text-[11px] text-red-400 mt-1 block">
                         {errors.phone}
                       </span>
                     )}
@@ -339,20 +419,43 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-blue-900/30 hover:shadow-blue-600/40 flex items-center justify-center space-x-2 cursor-pointer"
+                  className="w-full py-3.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 text-slate-950 font-bold text-sm sm:text-base transition-all duration-200 shadow-xl shadow-cyan-950/40 flex items-center justify-center space-x-2 cursor-pointer font-heading focus:outline-none focus:ring-2 focus:ring-white"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center space-x-2">
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                      <span className="w-4 h-4 border-2 border-slate-950/30 border-t-slate-950 rounded-full animate-spin"></span>
                       <span>Submitting Inquiry...</span>
                     </span>
                   ) : (
                     <>
                       <span>Send Project Inquiry</span>
-                      <ArrowUpRight className="w-5 h-5" />
+                      <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                     </>
                   )}
                 </button>
+              </div>
+
+              {/* Direct Alternative Contacts Strip */}
+              <div className="pt-2 border-t border-[#1F2636] flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+                <span className="font-mono text-[11px]">Or reach us directly:</span>
+                <div className="flex items-center space-x-4">
+                  <a
+                    href="mailto:hello@ahdevlo.com"
+                    className="inline-flex items-center space-x-1 text-cyan-400 hover:underline"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>hello@ahdevlo.com</span>
+                  </a>
+                  <a
+                    href="https://wa.me/923000000000?text=Hi%20A%26H%20Devlo,%20I%20would%20like%20to%20discuss%20a%20website%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1 text-emerald-400 hover:underline"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </form>
           )}

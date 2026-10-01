@@ -38,25 +38,25 @@ export const TrustStatement: React.FC<TrustStatementProps> = ({ onOpenInquiry })
           <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
             <div className="p-4 rounded-xl bg-[#081726]/80 border border-[#14304D] shadow-md">
               <Eye className="w-5 h-5 text-cyan-400 mb-2" />
-              <h4 className="text-sm font-bold text-white font-heading">Visual Authority</h4>
+              <h3 className="text-sm font-bold text-white font-heading">Visual Authority</h3>
               <p className="text-xs text-slate-400 mt-1 font-body">Establishes instant market credibility on the first screen.</p>
             </div>
 
             <div className="p-4 rounded-xl bg-[#081726]/80 border border-[#14304D] shadow-md">
               <Zap className="w-5 h-5 text-amber-400 mb-2" />
-              <h4 className="text-sm font-bold text-white font-heading">Speed &amp; Performance</h4>
+              <h3 className="text-sm font-bold text-white font-heading">Speed &amp; Performance</h3>
               <p className="text-xs text-slate-400 mt-1 font-body">Ultra-fast load times prevent mobile visitors from bouncing.</p>
             </div>
 
             <div className="p-4 rounded-xl bg-[#081726]/80 border border-[#14304D] shadow-md">
               <ShieldCheck className="w-5 h-5 text-teal-400 mb-2" />
-              <h4 className="text-sm font-bold text-white font-heading">Semantic Code</h4>
+              <h3 className="text-sm font-bold text-white font-heading">Semantic Code</h3>
               <p className="text-xs text-slate-400 mt-1 font-body">Clean, standard web code with zero fragile proprietary plugins.</p>
             </div>
 
             <div className="p-4 rounded-xl bg-[#081726]/80 border border-[#14304D] shadow-md">
               <HeartHandshake className="w-5 h-5 text-indigo-400 mb-2" />
-              <h4 className="text-sm font-bold text-white font-heading">Full Ownership</h4>
+              <h3 className="text-sm font-bold text-white font-heading">Full Ownership</h3>
               <p className="text-xs text-slate-400 mt-1 font-body">You own 100% of your assets, domain, and codebase forever.</p>
             </div>
           </div>

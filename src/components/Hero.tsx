@@ -16,7 +16,7 @@ export const Hero: React.FC<HeroProps> = ({
   const [activeCard, setActiveCard] = useState<number>(0);
 
   return (
-    <section id="hero" className="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden bg-[#030B14]">
+    <section id="hero" className="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden bg-[#030B14] scroll-mt-24 sm:scroll-mt-28">
       {/* Subtle Studio Ambient Lighting */}
       <div className="absolute top-1/4 left-1/3 w-[700px] h-[350px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
       <div className="absolute top-1/3 right-10 w-[600px] h-[350px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
@@ -78,9 +78,18 @@ export const Hero: React.FC<HeroProps> = ({
             
             {/* CARD 1: Top-Back Layer (Fashion / Atelier) */}
             <div
+              role="button"
+              tabIndex={0}
+              aria-label="View case study for Maison Forme"
               onMouseEnter={() => setActiveCard(1)}
               onClick={() => onSelectProject('maison-forme')}
-              className={`absolute top-4 sm:top-8 left-4 sm:left-10 w-[82%] sm:w-[72%] max-w-[430px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl ${
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectProject('maison-forme');
+                }
+              }}
+              className={`absolute top-4 sm:top-8 left-4 sm:left-10 w-[82%] sm:w-[72%] max-w-[430px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
                 activeCard === 1
                   ? 'z-30 scale-105 rotate-0 border-cyan-400 shadow-cyan-950/60 translate-y-0'
                   : 'z-10 -rotate-6 scale-95 border-[#2A344A] hover:border-cyan-400/50 shadow-black/80'
@@ -121,9 +130,18 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* CARD 2: Large Dominant Center-Right Layer (Restaurant / Osteria Riva) */}
             <div
+              role="button"
+              tabIndex={0}
+              aria-label="View case study for Osteria Riva"
               onMouseEnter={() => setActiveCard(0)}
               onClick={() => onSelectProject('osteria-riva')}
-              className={`absolute top-12 sm:top-16 right-0 sm:right-4 w-[90%] sm:w-[82%] max-w-[490px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl ${
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectProject('osteria-riva');
+                }
+              }}
+              className={`absolute top-12 sm:top-16 right-0 sm:right-4 w-[90%] sm:w-[82%] max-w-[490px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl focus:outline-none focus:ring-2 focus:ring-amber-400 ${
                 activeCard === 0
                   ? 'z-30 scale-100 rotate-0 border-amber-400/80 shadow-amber-950/40 translate-y-0'
                   : 'z-20 rotate-3 scale-95 border-[#3E3832] hover:border-amber-400/60 shadow-black/90'
@@ -146,15 +164,15 @@ export const Hero: React.FC<HeroProps> = ({
                   <div className="text-[11px] font-mono tracking-widest uppercase text-[#8A7E6E] font-bold">
                     OSTERIA RIVA
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#1A1815] mt-1 font-heading leading-tight">
+                  <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#1A1815] mt-1 font-heading leading-tight">
                     A TABLE WORTH MAKING TIME FOR.
-                  </h3>
+                  </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <button className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold shadow">
+                  <span className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold shadow">
                     Book a table
-                  </button>
+                  </span>
                   <span className="text-xs text-[#7A7062] font-medium">Tasting Menu &amp; Cellar</span>
                 </div>
 
@@ -174,9 +192,18 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* CARD 3: Foreground Left Floating Layer (Fitness / Train With Intent) */}
             <div
+              role="button"
+              tabIndex={0}
+              aria-label="View case study for Apex Athletic Lab"
               onMouseEnter={() => setActiveCard(2)}
               onClick={() => onSelectProject('apex-athletic-lab')}
-              className={`absolute bottom-2 sm:bottom-6 left-2 sm:left-8 w-[72%] sm:w-[62%] max-w-[360px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl ${
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectProject('apex-athletic-lab');
+                }
+              }}
+              className={`absolute bottom-2 sm:bottom-6 left-2 sm:left-8 w-[72%] sm:w-[62%] max-w-[360px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-400 ${
                 activeCard === 2
                   ? 'z-30 scale-105 rotate-0 border-emerald-400 shadow-emerald-950/60 translate-y-0'
                   : 'z-25 -rotate-2 scale-95 border-[#3E4D2B] hover:border-emerald-400/70 shadow-black/90'
@@ -198,9 +225,9 @@ export const Hero: React.FC<HeroProps> = ({
                   <div className="text-[10px] font-mono tracking-widest uppercase text-[#54681E] font-bold">
                     APEX ATHLETIC LAB
                   </div>
-                  <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-[#192405] mt-1 font-heading">
+                  <div className="text-lg sm:text-xl font-extrabold tracking-tight text-[#192405] mt-1 font-heading">
                     TRAIN WITH INTENT.
-                  </h3>
+                  </div>
                 </div>
 
                 <div className="space-y-1 text-xs text-[#3E4F12]">
@@ -208,9 +235,9 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
 
                 <div>
-                  <button className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold shadow hover:bg-blue-500 transition-colors">
+                  <span className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold shadow">
                     Start here ↗
-                  </button>
+                  </span>
                 </div>
               </div>
             </div>
