@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, CheckCircle2, X } from 'lucide-react';
 import type { InquiryFormData } from '../types';
-import { CONTACT_CONFIG, getMailtoUrl, getWhatsAppUrl } from '../config/contact';
+import { getMailtoUrl, getWhatsAppUrl } from '../config/contact';
 import { WhatsAppIcon } from './icons';
 
 interface ProjectInquiryModalProps {

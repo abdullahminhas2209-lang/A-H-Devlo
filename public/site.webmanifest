@@ -4,8 +4,8 @@
   "description": "We design and develop clean, professional websites and landing pages for small businesses.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#030B14",
-  "theme_color": "#030B14",
+  "background_color": "#0C0D0E",
+  "theme_color": "#0C0D0E",
   "icons": [
     {
       "src": "/favicon-32x32.png",
