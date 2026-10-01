@@ -111,11 +111,11 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030B14] text-[#F8FAFC] flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 relative">
+    <div className="min-h-screen bg-transparent text-[var(--text-body)] flex flex-col font-sans selection:bg-[var(--accent-blue)] selection:text-white relative">
       {/* Skip to Main Content Accessibility Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-full focus:shadow-[0_0_20px_rgba(6,182,212,0.6)] focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--accent-blue)] focus:text-white focus:font-bold focus:rounded-full focus:shadow-[0_0_20px_rgba(47,123,255,0.6)] focus:outline-none"
       >
         Skip to main content
       </a>

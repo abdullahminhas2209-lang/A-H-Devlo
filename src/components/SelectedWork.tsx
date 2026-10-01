@@ -16,22 +16,22 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
   onOpenInquiry,
 }) => {
   return (
-    <section id="work" className="py-24 md:py-36 bg-[#030B14] relative">
+    <section id="work" className="py-24 md:py-36 bg-transparent relative">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-24 space-y-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
+            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>01 / SELECTED WORK</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Work we&apos;re proud of.
             </h2>
-            <p className="text-base sm:text-xl text-slate-300 font-normal leading-relaxed font-body">
+            <p className="text-base sm:text-xl text-[var(--text-body)] font-normal leading-relaxed font-body">
               A selection of websites and digital experiences designed and developed by A&amp;H Devlo.
             </p>
           </div>
@@ -45,7 +45,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
             return (
               <ScrollReveal key={project.id} delayMs={index * 100}>
                 <div
-                  className="group relative rounded-2xl bg-[#081726]/90 border border-[#14304D] hover:border-cyan-500/50 transition-all duration-500 overflow-hidden p-6 sm:p-8 lg:p-12 shadow-xl hover:shadow-cyan-950/40"
+                  className="group relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] backdrop-blur-md transition-all duration-500 overflow-hidden p-6 sm:p-8 lg:p-12 shadow-xl hover:shadow-[0_12px_40px_rgba(0,10,25,0.7)]"
                 >
                   <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center`}>
                     {/* Visual Preview Side (7 cols) */}
@@ -75,7 +75,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 rounded-full bg-[#0E243A] border border-[#163352] text-cyan-200 text-[10px] font-mono uppercase tracking-wider"
+                            className="px-2.5 py-1 rounded-full bg-[#0E243A]/70 border border-[var(--border-subtle)] text-cyan-200 text-[10px] font-mono uppercase tracking-wider"
                           >
                             {tag}
                           </span>
@@ -84,29 +84,29 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
                       {/* Title */}
                       <div>
-                        <span className="text-xs text-slate-400 font-mono block mb-1">
+                        <span className="text-xs text-[var(--text-muted)] font-mono block mb-1">
                           0{index + 1} — {project.category}
                         </span>
                         <h3
                           onClick={() => onSelectProject(project.id)}
-                          className="text-2xl sm:text-4xl font-bold text-white tracking-tight hover:text-cyan-300 transition-colors cursor-pointer font-heading"
+                          className="text-2xl sm:text-4xl font-bold text-[var(--color-heading)] tracking-tight hover:text-white transition-colors cursor-pointer font-heading"
                         >
                           {project.title}
                         </h3>
                       </div>
 
                       {/* Description */}
-                      <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-body">
+                      <p className="text-[var(--text-body)] text-sm sm:text-base leading-relaxed font-body">
                         {project.description}
                       </p>
 
                       {/* Highlights Preview */}
-                      <div className="space-y-2 pt-2 border-t border-[#14304D]">
+                      <div className="space-y-2 pt-2 border-t border-[var(--border-subtle)]">
                         {project.highlights.slice(0, 2).map((item, hIdx) => (
-                          <div key={hIdx} className="text-xs text-slate-300 flex items-start space-x-2">
-                            <span className="text-cyan-400 font-mono font-semibold">0{hIdx + 1}.</span>
+                          <div key={hIdx} className="text-xs text-[var(--text-body)] flex items-start space-x-2">
+                            <span className="text-[var(--accent-blue)] font-mono font-semibold">0{hIdx + 1}.</span>
                             <span>
-                              <strong className="text-white font-medium">{item.title}:</strong> {item.description}
+                              <strong className="text-[var(--color-heading)] font-medium">{item.title}:</strong> {item.description}
                             </span>
                           </div>
                         ))}
@@ -116,7 +116,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                       <div className="pt-2">
                         <button
                           onClick={() => onSelectProject(project.id)}
-                          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 group-hover:translate-x-1 cursor-pointer shadow"
+                          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#0E243A]/80 hover:bg-[var(--accent-blue)] text-white text-xs sm:text-sm font-semibold border border-[var(--border-subtle)] hover:border-[var(--accent-blue)] transition-all duration-200 group-hover:translate-x-1 cursor-pointer shadow"
                         >
                           <span>View Case Study</span>
                           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -132,18 +132,18 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
         {/* Portfolio Bottom Strip */}
         <ScrollReveal delayMs={200}>
-          <div className="mt-16 p-8 rounded-2xl bg-[#081726]/90 border border-[#14304D] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="mt-16 p-8 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
             <div>
-              <h4 className="text-lg font-bold text-white tracking-tight font-heading">
+              <h4 className="text-lg font-bold text-[var(--color-heading)] tracking-tight font-heading">
                 Looking for something tailored to your industry?
               </h4>
-              <p className="text-sm text-slate-300 mt-1 font-body">
+              <p className="text-sm text-[var(--text-body)] mt-1 font-body">
                 Every website we build is designed specifically around your customer journey and business goals.
               </p>
             </div>
             <button
               onClick={onOpenInquiry}
-              className="inline-flex items-center space-x-2 px-7 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all duration-200 shadow-md shadow-blue-900/30 hover:shadow-blue-600/40 shrink-0 cursor-pointer"
+              className="inline-flex items-center space-x-2 px-7 py-3 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-sm font-semibold transition-all duration-200 shadow-md shadow-blue-900/40 shrink-0 cursor-pointer"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="w-4 h-4" />

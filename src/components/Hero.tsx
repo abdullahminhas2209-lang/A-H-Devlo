@@ -16,10 +16,10 @@ export const Hero: React.FC<HeroProps> = ({
   const [activeCard, setActiveCard] = useState<number>(0);
 
   return (
-    <section id="hero" className="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden bg-[#030B14]">
+    <section id="hero" className="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden bg-transparent">
       {/* Subtle Studio Ambient Lighting */}
-      <div className="absolute top-1/4 left-1/3 w-[700px] h-[350px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
-      <div className="absolute top-1/3 right-10 w-[600px] h-[350px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+      <div className="absolute top-1/4 left-1/3 w-[700px] h-[350px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+      <div className="absolute top-1/3 right-10 w-[600px] h-[350px] bg-cyan-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -27,13 +27,13 @@ export const Hero: React.FC<HeroProps> = ({
           {/* LEFT COLUMN: Editorial Headline & Actions matching user reference */}
           <div className="lg:col-span-6 space-y-8 z-20">
             {/* Top Eyebrow */}
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
+            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>WEB DESIGN × DEVELOPMENT</span>
             </div>
 
             {/* Stacked Editorial Headline */}
-            <h1 className="text-5xl sm:text-7xl lg:text-[5.4rem] font-extrabold tracking-tight text-white leading-[1.02] font-heading">
+            <h1 className="text-5xl sm:text-7xl lg:text-[5.4rem] font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.02] font-heading">
               Websites<br />
               that make<br />
               small<br />
@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-md font-body leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-[var(--text-body)] max-w-md font-body leading-relaxed font-normal">
               We design and develop clean, modern websites and landing pages that help businesses build credibility and stand out online.
             </p>
 
@@ -51,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={onOpenInquiry}
-                className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition-all duration-200 shadow-xl shadow-cyan-950/50 hover:shadow-cyan-400/30 hover:-translate-y-0.5 cursor-pointer font-heading"
+                className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-bold text-sm transition-all duration-200 shadow-xl shadow-blue-950/50 hover:shadow-[0_0_20px_rgba(47,123,255,0.45)] hover:-translate-y-0.5 cursor-pointer font-heading"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
@@ -59,16 +59,16 @@ export const Hero: React.FC<HeroProps> = ({
 
               <button
                 onClick={onViewWork}
-                className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-transparent hover:bg-white/5 text-white font-medium text-sm border border-white/20 hover:border-white/40 transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-transparent hover:bg-white/5 text-[var(--color-heading)] font-medium text-sm border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] transition-all duration-200 cursor-pointer"
               >
                 <span>View Our Work</span>
-                <ArrowDown className="w-4 h-4 text-slate-300" />
+                <ArrowDown className="w-4 h-4 text-[var(--text-muted)]" />
               </button>
             </div>
 
             {/* Bottom Eyebrow matching reference */}
-            <div className="pt-6 flex items-center space-x-2 text-[11px] font-mono tracking-widest text-slate-400 uppercase">
-              <span className="w-4 h-[1px] bg-slate-600 inline-block"></span>
+            <div className="pt-6 flex items-center space-x-2 text-[11px] font-mono tracking-widest text-[var(--text-muted)] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shrink-0"></span>
               <span>SMALL STUDIO. SERIOUS WEBSITES.</span>
             </div>
           </div>

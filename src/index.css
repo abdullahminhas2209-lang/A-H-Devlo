@@ -1,34 +1,85 @@
 @import "tailwindcss";
 
+:root {
+  /* Step 2: Design Tokens (single source of truth) */
+  --color-heading: #E6FBFF;
+
+  /* Image 1 Palette */
+  --bg-glow-top: #0B3B61;    /* lighter blue glow at top */
+  --bg-mid: #021F33;         /* mid navy */
+  --bg-deep: #00141F;        /* darkest centre/sides */
+  --bg-glow-bottom: #052C47; /* faint glow at bottom edge */
+
+  --text-body: rgba(230, 251, 255, 0.72);    /* softer tint of the heading colour */
+  --text-muted: rgba(230, 251, 255, 0.5);
+  --accent-blue: #2F7BFF;                    /* eyebrow dot / links, matches Image 3 */
+  --accent-blue-hover: #488BFF;
+  --border-subtle: rgba(230, 251, 255, 0.12);
+  --border-subtle-hover: rgba(230, 251, 255, 0.25);
+  --surface-card: rgba(2, 31, 51, 0.45);
+  --surface-card-hover: rgba(11, 59, 97, 0.35);
+}
+
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-heading: 'Outfit', sans-serif;
+  --color-heading: var(--color-heading);
+  --color-accent-blue: var(--accent-blue);
 }
 
-html, body {
+html {
+  background-color: var(--bg-deep);
+  color-scheme: dark;
+}
+
+body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #0B0C10;
-  color: #F8FAFC;
+  color: var(--text-body);
+  background-color: var(--bg-deep);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
+/* Step 3: Fixed background matching Image 1 across the whole UI */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 35% at 50% 0%, var(--bg-glow-top) 0%, transparent 70%),
+    linear-gradient(to bottom, transparent 85%, var(--bg-glow-bottom) 100%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.35), transparent 15%, transparent 85%, rgba(0, 0, 0, 0.35)),
+    linear-gradient(to bottom, var(--bg-glow-top) 0%, var(--bg-mid) 24%, var(--bg-deep) 54%, var(--bg-mid) 84%, var(--bg-glow-bottom) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Step 4: Main headings use --color-heading (#E6FBFF) */
+h1, h2, h3, h4, h5, h6,
+.font-heading,
+.section-title,
+.hero-title,
+.section-heading {
   font-family: 'Outfit', sans-serif;
   letter-spacing: -0.02em;
+  color: var(--color-heading);
 }
 
 .font-body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-body);
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: transparent;
 }
 
 /* Subtle, refined scrollbar */
@@ -37,39 +88,39 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0C10;
+  background: var(--bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: #232938;
+  background: #0B3B61;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3B82F6;
+  background: var(--accent-blue);
 }
 
-/* Studio subtle utility classes */
+/* Studio translucent utility classes */
 .glass-panel {
-  background: rgba(18, 21, 30, 0.75);
+  background: var(--surface-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(35, 41, 56, 0.8);
+  border: 1px solid var(--border-subtle);
 }
 
 .subtle-border {
-  border: 1px solid #232938;
+  border: 1px solid var(--border-subtle);
 }
 
 .subtle-border-t {
-  border-top: 1px solid #232938;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .subtle-border-b {
-  border-bottom: 1px solid #232938;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 /* Accessible focus ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #22D3EE !important;
+  outline: 2px solid var(--accent-blue) !important;
   outline-offset: 3px !important;
 }
 

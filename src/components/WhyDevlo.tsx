@@ -35,22 +35,22 @@ export const WhyDevlo: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-24 md:py-36 bg-[#030B14] relative">
+    <section id="why" className="py-24 md:py-36 bg-transparent relative">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Top Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
+            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>03 / OUR PRINCIPLES</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Why work with A&amp;H Devlo?
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed font-body">
+            <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed font-body">
               We operate with a clear philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
             </p>
           </div>
@@ -61,29 +61,29 @@ export const WhyDevlo: React.FC = () => {
           {principles.map((principle, index) => (
             <ScrollReveal key={principle.number} delayMs={index * 80}>
               <div
-                className="relative p-8 sm:p-10 rounded-2xl bg-[#081726]/80 border border-[#14304D] hover:border-cyan-500/40 hover:bg-[#0C1F35]/90 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg"
+                className="relative p-8 sm:p-10 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] hover:bg-[var(--surface-card-hover)] backdrop-blur-md transition-all duration-300 group flex flex-col justify-between h-full shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono tracking-tighter">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-mono tracking-tighter">
                       {principle.number}
                     </span>
-                    <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">
+                    <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest">
                       Standard of Craft
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4 group-hover:text-cyan-300 transition-colors font-heading">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[var(--color-heading)] tracking-tight mb-4 group-hover:text-white transition-colors font-heading">
                     {principle.title}
                   </h3>
 
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-body">
+                  <p className="text-[var(--text-body)] text-sm sm:text-base leading-relaxed font-body">
                     {principle.description}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-[#14304D]/60 flex items-center space-x-2 text-xs font-medium text-slate-400">
-                  <Check className="w-4 h-4 text-teal-400 shrink-0" />
+                <div className="mt-8 pt-4 border-t border-[var(--border-subtle)] flex items-center space-x-2 text-xs font-medium text-[var(--text-muted)]">
+                  <Check className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
                   <span>{principle.takeaway}</span>
                 </div>
               </div>

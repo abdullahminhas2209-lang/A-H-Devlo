@@ -140,21 +140,21 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
       aria-labelledby="inquiry-modal-title"
       className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-2xl bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-8">
+      <div className="relative w-full max-w-2xl bg-[var(--bg-deep)]/95 border border-[var(--border-subtle)] rounded-2xl shadow-2xl overflow-hidden my-8 backdrop-blur-xl">
         {/* Header Strip */}
-        <div className="px-6 sm:px-8 py-5 border-b border-[#232938] flex items-center justify-between bg-[#121622]">
+        <div className="px-6 sm:px-8 py-5 border-b border-[var(--border-subtle)] flex items-center justify-between bg-[var(--surface-card)]">
           <div className="flex items-center space-x-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-[var(--accent-blue)] animate-pulse shadow-[0_0_8px_var(--accent-blue)]"></div>
             <span
               id="inquiry-modal-title"
-              className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300"
+              className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--color-heading)]"
             >
               Project Inquiry
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
+            className="p-1 rounded-md text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] cursor-pointer"
             aria-label="Close project inquiry dialog"
           >
             <X className="w-5 h-5" />
@@ -166,35 +166,35 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
           {isSubmitted ? (
             /* Confirmation State with Honest Response Timing */
             <div className="py-10 text-center space-y-6 animate-in fade-in duration-300">
-              <div className="w-16 h-16 rounded-full bg-cyan-950/60 border border-cyan-400/50 text-cyan-300 flex items-center justify-center mx-auto shadow-lg shadow-cyan-950/50">
+              <div className="w-16 h-16 rounded-full bg-blue-950/60 border border-[var(--accent-blue)]/50 text-[var(--accent-blue)] flex items-center justify-center mx-auto shadow-lg shadow-blue-950/50">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--color-heading)] tracking-tight font-heading">
                   Inquiry received.
                 </h3>
-                <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed font-body">
+                <p className="text-sm text-[var(--text-body)] max-w-md mx-auto leading-relaxed font-body">
                   Thank you! We review every project inquiry directly and will respond within 24 hours with an estimated scope and pricing.
                 </p>
               </div>
 
               {/* Inquiry Summary Review Box */}
-              <div className="bg-[#141824] border border-[#232938] rounded-xl p-5 text-left text-xs space-y-2 max-w-md mx-auto">
-                <div className="text-cyan-400 font-mono text-[11px] uppercase tracking-wider font-semibold">
+              <div className="bg-[var(--surface-card)] border border-[var(--border-subtle)] rounded-xl p-5 text-left text-xs space-y-2 max-w-md mx-auto">
+                <div className="text-[var(--accent-blue)] font-mono text-[11px] uppercase tracking-wider font-semibold">
                   Submission Summary
                 </div>
-                <div className="flex justify-between border-b border-[#22283A] pb-1 text-slate-300">
-                  <span className="text-slate-400">Service:</span>
-                  <span className="font-semibold text-white">{formData.serviceType}</span>
+                <div className="flex justify-between border-b border-[var(--border-subtle)] pb-1 text-[var(--text-body)]">
+                  <span className="text-[var(--text-muted)]">Service:</span>
+                  <span className="font-semibold text-[var(--color-heading)]">{formData.serviceType}</span>
                 </div>
-                <div className="flex justify-between border-b border-[#22283A] pb-1 text-slate-300">
-                  <span className="text-slate-400">Business:</span>
-                  <span className="font-semibold text-white">{formData.businessName}</span>
+                <div className="flex justify-between border-b border-[var(--border-subtle)] pb-1 text-[var(--text-body)]">
+                  <span className="text-[var(--text-muted)]">Business:</span>
+                  <span className="font-semibold text-[var(--color-heading)]">{formData.businessName}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
-                  <span className="text-slate-400">Contact:</span>
-                  <span className="font-semibold text-white">{formData.fullName} ({formData.email})</span>
+                <div className="flex justify-between text-[var(--text-body)]">
+                  <span className="text-[var(--text-muted)]">Contact:</span>
+                  <span className="font-semibold text-[var(--color-heading)]">{formData.fullName} ({formData.email})</span>
                 </div>
               </div>
 
@@ -212,7 +212,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
 
                 <button
                   onClick={handleReset}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#182338] hover:bg-[#202E4A] border border-[#2A3B5C] text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[var(--surface-card)] hover:bg-[#1E293B] border border-[var(--border-subtle)] text-[var(--text-body)] text-xs font-semibold transition-colors cursor-pointer"
                 >
                   Close &amp; Return to Studio
                 </button>
@@ -236,10 +236,10 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
 
               {/* Form Heading */}
               <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--color-heading)] tracking-tight">
                   Let&apos;s build something for your business.
                 </h2>
-                <p className="mt-2 text-sm text-slate-400">
+                <p className="mt-2 text-sm text-[var(--text-muted)]">
                   Provide a few details below and we will prepare a dedicated proposal for your project.
                 </p>
               </div>
@@ -415,7 +415,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-blue-900/30 hover:shadow-blue-600/40 flex items-center justify-center space-x-2 cursor-pointer"
+                  className="w-full py-4 rounded-lg bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] disabled:opacity-50 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-blue-900/40 hover:shadow-[0_0_20px_rgba(47,123,255,0.4)] flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center space-x-2">

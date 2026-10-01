@@ -56,22 +56,22 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <section id="services" className="py-24 md:py-36 bg-[#030B14] relative">
+    <section id="services" className="py-24 md:py-36 bg-transparent relative">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
+            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>02 / WHAT WE DO</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Everything your business needs to look professional online.
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed font-body">
+            <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed font-body">
               We focus on clean, high-impact web design and development that helps small businesses establish credibility, communicate value, and win client trust.
             </p>
           </div>
@@ -85,45 +85,45 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
             return (
               <ScrollReveal key={service.number} delayMs={index * 120}>
                 <div
-                  className="group relative rounded-2xl bg-[#081726]/90 border border-[#14304D] hover:border-cyan-500/50 p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 shadow-xl hover:shadow-cyan-950/40 h-full"
+                  className="group relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] backdrop-blur-md p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 shadow-xl hover:shadow-[0_12px_40px_rgba(0,10,25,0.7)] h-full"
                 >
                   <div className="space-y-6">
                     {/* Top Bar: Number & Icon */}
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-mono font-bold text-cyan-400">
+                      <span className="text-sm font-mono font-bold text-[var(--accent-blue)]">
                         {service.number}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-[#0E243A] border border-[#163352] flex items-center justify-center text-slate-300 group-hover:text-cyan-400 group-hover:border-cyan-500/50 transition-colors shadow">
+                      <div className="w-10 h-10 rounded-xl bg-[#0E243A]/80 border border-[var(--border-subtle)] flex items-center justify-center text-slate-300 group-hover:text-[var(--color-heading)] group-hover:border-[var(--accent-blue)]/50 transition-colors shadow">
                         <Icon className="w-5 h-5" />
                       </div>
                     </div>
 
                     {/* Title & Summary */}
                     <div>
-                      <h3 className="text-2xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors font-heading">
+                      <h3 className="text-2xl font-bold text-[var(--color-heading)] tracking-tight group-hover:text-white transition-colors font-heading">
                         {service.title}
                       </h3>
-                      <p className="mt-3 text-sm text-slate-300 leading-relaxed font-normal font-body">
+                      <p className="mt-3 text-sm text-[var(--text-body)] leading-relaxed font-normal font-body">
                         {service.summary}
                       </p>
                     </div>
 
                     {/* Feature Checklist */}
-                    <div className="pt-4 border-t border-[#14304D] space-y-2.5">
-                      <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-400 block">
+                    <div className="pt-4 border-t border-[var(--border-subtle)] space-y-2.5">
+                      <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
                         Key Deliverables
                       </span>
                       {service.features.map((feature, fIdx) => (
-                        <div key={fIdx} className="flex items-start space-x-2.5 text-xs text-slate-300">
-                          <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                        <div key={fIdx} className="flex items-start space-x-2.5 text-xs text-[var(--text-body)]">
+                          <Check className="w-4 h-4 text-[var(--accent-blue)] shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Ideal For Note */}
-                    <div className="pt-3 text-[11px] text-slate-300 bg-[#040E1A] p-3.5 rounded-xl border border-[#0E243A]">
-                      <span className="text-cyan-300 font-semibold">Best For: </span>
+                    <div className="pt-3 text-[11px] text-[var(--text-body)] bg-[var(--bg-mid)]/60 p-3.5 rounded-xl border border-[var(--border-subtle)]">
+                      <span className="text-[var(--color-heading)] font-semibold">Best For: </span>
                       {service.idealFor}
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
                   <div className="pt-8">
                     <button
                       onClick={() => onOpenInquiry(service.title)}
-                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 cursor-pointer shadow group-hover:shadow-md"
+                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-full bg-[#0E243A]/80 hover:bg-[var(--accent-blue)] text-white text-xs sm:text-sm font-semibold border border-[var(--border-subtle)] hover:border-[var(--accent-blue)] transition-all duration-200 cursor-pointer shadow group-hover:shadow-md"
                     >
                       <span>Let&apos;s build yours</span>
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
