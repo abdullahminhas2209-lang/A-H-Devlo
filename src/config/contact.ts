@@ -9,6 +9,8 @@ export interface ContactConfig {
   whatsappNumber: string;
   formattedWhatsapp: string;
   linkedinUrl: string;
+  instagramUrl: string;
+  instagramHandle: string;
   gmailSubject: string;
   gmailBody: string;
   whatsappMessage: string;
@@ -16,17 +18,29 @@ export interface ContactConfig {
 
 export const CONTACT_CONFIG: ContactConfig = {
   // Official Business Email
-  email: import.meta.env.VITE_CONTACT_EMAIL || 'devlobyah@gmail.com',
+  email: import.meta.env?.VITE_CONTACT_EMAIL || 'devlobyah@gmail.com',
 
   // Official WhatsApp Business Number (international digits only: 923333875790)
-  whatsappNumber: import.meta.env.VITE_CONTACT_WHATSAPP || '923333875790',
+  whatsappNumber: import.meta.env?.VITE_CONTACT_WHATSAPP || '923333875790',
 
   // Human-readable formatted phone for UI display & copy
   formattedWhatsapp: '+92 333 3875790',
 
   // Official LinkedIn Company Page
   linkedinUrl:
-    import.meta.env.VITE_CONTACT_LINKEDIN || 'https://www.linkedin.com/company/a-h-devlo/',
+    import.meta.env?.VITE_CONTACT_LINKEDIN || 'https://www.linkedin.com/company/a-h-devlo/',
+
+  // Official Instagram Profile & Handle
+  instagramUrl:
+    import.meta.env?.VITE_INSTAGRAM_URL ||
+    import.meta.env?.VITE_CONTACT_INSTAGRAM_URL ||
+    'https://www.instagram.com/ah_devlo/#',
+
+  // Instagram handle without @
+  instagramHandle:
+    (import.meta.env?.VITE_INSTAGRAM_HANDLE ||
+      import.meta.env?.VITE_CONTACT_INSTAGRAM_HANDLE ||
+      'ah_devlo').replace(/^@/, ''),
 
   // Prefilled Subject for Gmail Compose & Mailto
   gmailSubject: 'Website project inquiry — A&H Devlo',
@@ -73,3 +87,14 @@ export const getWhatsAppUrl = (
   const cleanNumber = number.replace(/[^0-9]/g, '');
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
 };
+
+/**
+ * Builds the direct Instagram Direct Message (DM) URL using the ig.me deep link.
+ */
+export const getInstagramDmUrl = (
+  handle: string = CONTACT_CONFIG.instagramHandle
+): string => {
+  const cleanHandle = handle.replace(/^@/, '');
+  return `https://ig.me/m/${cleanHandle}`;
+};
+

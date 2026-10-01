@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Copy, ExternalLink, Mail, Phone } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
-import { GmailIcon, WhatsAppIcon, LinkedInIcon } from './icons';
-import { CONTACT_CONFIG, getGmailComposeUrl, getMailtoUrl, getWhatsAppUrl } from '../config/contact';
+import { GmailIcon, WhatsAppIcon, LinkedInIcon, InstagramIcon } from './icons';
+import {
+  CONTACT_CONFIG,
+  getGmailComposeUrl,
+  getMailtoUrl,
+  getWhatsAppUrl,
+  getInstagramDmUrl,
+} from '../config/contact';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -19,6 +25,7 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedInstagram, setCopiedInstagram] = useState(false);
 
   const handleCopyEmail = async () => {
     try {
@@ -46,6 +53,17 @@ export const Footer: React.FC<FooterProps> = ({
     } catch {
       setCopiedPhone(true);
       setTimeout(() => setCopiedPhone(false), 2200);
+    }
+  };
+
+  const handleCopyInstagram = async () => {
+    try {
+      await navigator.clipboard.writeText(`@${CONTACT_CONFIG.instagramHandle}`);
+      setCopiedInstagram(true);
+      setTimeout(() => setCopiedInstagram(false), 2200);
+    } catch {
+      setCopiedInstagram(true);
+      setTimeout(() => setCopiedInstagram(false), 2200);
     }
   };
 
@@ -95,8 +113,8 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* 2. QUICK NAVIGATION (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
+          {/* 2. QUICK NAVIGATION (2 cols) */}
+          <div className="lg:col-span-2 space-y-4">
             <h3 className="text-xs font-mono font-semibold uppercase tracking-widest text-slate-300">
               Quick Navigation
             </h3>
@@ -162,8 +180,8 @@ export const Footer: React.FC<FooterProps> = ({
             </nav>
           </div>
 
-          {/* 3. CONTACT US SECTION WITH 3 ACTION BUTTONS & COPY DETAILS (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* 3. CONTACT US SECTION WITH 4 ACTION BUTTONS & COPY DETAILS (6 cols) */}
+          <div className="lg:col-span-6 space-y-6">
             <div>
               <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-wider text-cyan-400 uppercase mb-2">
                 <span className="w-4 h-[1.5px] bg-cyan-400 inline-block"></span>
@@ -177,15 +195,15 @@ export const Footer: React.FC<FooterProps> = ({
               </p>
             </div>
 
-            {/* Three Primary Channels: Gmail, WhatsApp, LinkedIn */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {/* Four Primary Channels: Gmail, WhatsApp, LinkedIn, Instagram */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
               {/* Button 1: Gmail Compose */}
               <a
                 href={getGmailComposeUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Email A&H Devlo via Gmail (opens compose window in a new tab)"
-                className="group relative flex flex-col justify-between p-3.5 sm:p-4 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-red-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
+                className="group relative flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-red-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
               >
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-red-950/40 border border-red-800/40 flex items-center justify-center text-red-400 group-hover:scale-105 transition-transform">
@@ -197,7 +215,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <span className="font-bold text-sm text-white group-hover:text-red-300 transition-colors block font-heading">
                     Gmail
                   </span>
-                  <span className="text-[11px] text-slate-400 font-mono block">
+                  <span className="text-[11px] text-slate-400 font-mono block truncate">
                     Compose email ↗
                   </span>
                 </div>
@@ -209,7 +227,7 @@ export const Footer: React.FC<FooterProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat with A&H Devlo on WhatsApp (opens in a new tab)"
-                className="group relative flex flex-col justify-between p-3.5 sm:p-4 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-emerald-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+                className="group relative flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-emerald-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
               >
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-emerald-950/40 border border-emerald-800/40 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
@@ -221,7 +239,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <span className="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors block font-heading">
                     WhatsApp
                   </span>
-                  <span className="text-[11px] text-slate-400 font-mono block">
+                  <span className="text-[11px] text-slate-400 font-mono block truncate">
                     Direct chat ↗
                   </span>
                 </div>
@@ -233,7 +251,7 @@ export const Footer: React.FC<FooterProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="A&H Devlo on LinkedIn (opens official company profile in a new tab)"
-                className="group relative flex flex-col justify-between p-3.5 sm:p-4 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-sky-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                className="group relative flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-sky-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
               >
                 <div className="flex items-center justify-between">
                   <div className="w-8 h-8 rounded-lg bg-sky-950/40 border border-sky-800/40 flex items-center justify-center text-sky-400 group-hover:scale-105 transition-transform">
@@ -245,20 +263,53 @@ export const Footer: React.FC<FooterProps> = ({
                   <span className="font-bold text-sm text-white group-hover:text-sky-300 transition-colors block font-heading">
                     LinkedIn
                   </span>
-                  <span className="text-[11px] text-slate-400 font-mono block">
+                  <span className="text-[11px] text-slate-400 font-mono block truncate">
                     Company page ↗
+                  </span>
+                </div>
+              </a>
+
+              {/* Button 4: Instagram Profile */}
+              <a
+                href={CONTACT_CONFIG.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="A&H Devlo on Instagram (opens in a new tab)"
+                className="group relative flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[#081726]/90 hover:bg-[#0E243A] border border-[#163554] hover:border-pink-500/50 transition-all duration-200 min-h-[96px] cursor-pointer shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-lg bg-pink-950/40 border border-pink-800/40 flex items-center justify-center text-pink-400 group-hover:scale-105 transition-transform">
+                    <InstagramIcon className="w-4 h-4" />
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-400 transition-colors" />
+                </div>
+                <div>
+                  <span className="font-bold text-sm text-white group-hover:text-pink-300 transition-colors block font-heading">
+                    Instagram
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono block truncate" title={`@${CONTACT_CONFIG.instagramHandle}`}>
+                    @{CONTACT_CONFIG.instagramHandle} ↗
                   </span>
                 </div>
               </a>
             </div>
 
-            {/* Secondary fallback mailto text link */}
-            <div className="text-right">
+            {/* Secondary fallback mailto & Instagram DM text links */}
+            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-slate-400">
+              <a
+                href={getInstagramDmUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-pink-400 underline underline-offset-2 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-pink-400 rounded"
+                aria-label="Message A&H Devlo on Instagram Direct (opens in a new tab)"
+              >
+                Message us on Instagram (DM) ↗
+              </a>
               <a
                 href={getMailtoUrl()}
-                className="text-[11px] font-mono text-slate-400 hover:text-cyan-300 underline underline-offset-2 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
+                className="hover:text-cyan-300 underline underline-offset-2 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 rounded"
               >
-                Not using Gmail? Use default email app (mailto) ↗
+                Not using Gmail? Default email app ↗
               </a>
             </div>
 
@@ -275,7 +326,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <a
                     href={getMailtoUrl()}
                     className="text-slate-200 hover:text-cyan-300 transition-colors truncate"
-                    title="Send email to devlobyah@gmail.com"
+                    title={`Send email to ${CONTACT_CONFIG.email}`}
                   >
                     {CONTACT_CONFIG.email}
                   </a>
@@ -309,7 +360,7 @@ export const Footer: React.FC<FooterProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-slate-200 hover:text-emerald-300 transition-colors truncate"
-                    title="Open WhatsApp chat with +92 333 3875790"
+                    title={`Open WhatsApp chat with ${CONTACT_CONFIG.formattedWhatsapp}`}
                   >
                     {CONTACT_CONFIG.formattedWhatsapp}
                   </a>
@@ -321,6 +372,40 @@ export const Footer: React.FC<FooterProps> = ({
                   className="shrink-0 inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-[#0E243A] hover:bg-[#163554] active:bg-[#1E4369] text-xs text-slate-300 hover:text-white transition-all cursor-pointer border border-[#163554] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   {copiedPhone ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400 font-semibold">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Instagram handle display with copy handle & DM link */}
+              <div className="flex items-center justify-between gap-3 text-xs sm:text-sm font-mono bg-[#040E1A] p-2.5 rounded-lg border border-[#0E243A]">
+                <div className="flex items-center space-x-2.5 truncate">
+                  <InstagramIcon className="w-4 h-4 text-pink-400 shrink-0" />
+                  <a
+                    href={CONTACT_CONFIG.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-200 hover:text-pink-300 transition-colors truncate"
+                    title={`Instagram profile @${CONTACT_CONFIG.instagramHandle}`}
+                  >
+                    @{CONTACT_CONFIG.instagramHandle}
+                  </a>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopyInstagram}
+                  aria-label="Copy Instagram username to clipboard"
+                  className="shrink-0 inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-[#0E243A] hover:bg-[#163554] active:bg-[#1E4369] text-xs text-slate-300 hover:text-white transition-all cursor-pointer border border-[#163554] focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
+                >
+                  {copiedInstagram ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
                       <span className="text-emerald-400 font-semibold">Copied!</span>

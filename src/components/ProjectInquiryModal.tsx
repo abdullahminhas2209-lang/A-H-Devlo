@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, CheckCircle2, Mail, X } from 'lucide-react';
 import type { InquiryFormData } from '../types';
 import { CONTACT_CONFIG, getMailtoUrl, getWhatsAppUrl } from '../config/contact';
-import { WhatsAppIcon } from './icons';
+import { WhatsAppIcon, InstagramIcon } from './icons';
 
 interface ProjectInquiryModalProps {
   isOpen: boolean;
@@ -443,7 +443,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               {/* Direct Alternative Contacts Strip */}
               <div className="pt-2 border-t border-[#1F2636] flex flex-wrap items-center justify-between gap-2.5 text-xs text-slate-400">
                 <span className="font-mono text-[10px]">Or contact directly:</span>
-                <div className="flex items-center space-x-3 text-xs">
+                <div className="flex flex-wrap items-center gap-3 text-xs">
                   <a
                     href={getMailtoUrl()}
                     className="inline-flex items-center space-x-1.5 text-cyan-400 hover:underline focus:outline-none focus:ring-1 focus:ring-cyan-400 rounded px-1"
@@ -461,6 +461,16 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                   >
                     <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
                     <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href={CONTACT_CONFIG.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-pink-400 hover:underline focus:outline-none focus:ring-1 focus:ring-pink-400 rounded px-1"
+                    aria-label="A&H Devlo on Instagram (opens in a new tab)"
+                  >
+                    <InstagramIcon className="w-3.5 h-3.5 text-pink-400" />
+                    <span>@{CONTACT_CONFIG.instagramHandle}</span>
                   </a>
                 </div>
               </div>

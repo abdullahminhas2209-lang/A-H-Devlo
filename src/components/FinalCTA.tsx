@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowDown, ArrowUpRight, CheckCircle2, Mail } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import { CONTACT_CONFIG, getWhatsAppUrl, getMailtoUrl } from '../config/contact';
-import { WhatsAppIcon } from './icons';
+import { WhatsAppIcon, InstagramIcon } from './icons';
 
 interface FinalCTAProps {
   onOpenInquiry: () => void;
@@ -76,6 +76,17 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
               >
                 <Mail className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Direct: {CONTACT_CONFIG.email}</span>
+              </a>
+              <span className="text-slate-600 hidden sm:inline">•</span>
+              <a
+                href={CONTACT_CONFIG.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1.5 hover:text-pink-400 transition-colors focus:outline-none focus:ring-1 focus:ring-pink-400 rounded px-1"
+                aria-label="A&H Devlo on Instagram (opens in a new tab)"
+              >
+                <InstagramIcon className="w-3.5 h-3.5 text-pink-400" />
+                <span>@{CONTACT_CONFIG.instagramHandle}</span>
               </a>
               <span className="text-slate-600 hidden sm:inline">•</span>
               <span className="font-mono text-slate-400">⚡ Typical turnaround: 2–3 weeks</span>

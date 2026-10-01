@@ -81,6 +81,10 @@ VITE_CONTACT_WHATSAPP=923333875790
 
 # LinkedIn company profile URL
 VITE_CONTACT_LINKEDIN=https://www.linkedin.com/company/a-h-devlo/
+
+# Instagram profile URL and handle
+VITE_INSTAGRAM_URL=https://www.instagram.com/ah_devlo/#
+VITE_INSTAGRAM_HANDLE=ah_devlo
 ```
 
 Helper utilities generate:
@@ -88,6 +92,7 @@ Helper utilities generate:
 - Standard **mailto:** fallback links.
 - **WhatsApp Web & mobile** deep links with prefilled greetings.
 - Official **LinkedIn** company profile target links.
+- Official **Instagram** profile links and direct message (**ig.me DM**) deep links.
 
 ---
 
