@@ -11,6 +11,18 @@ interface BrowserMockupProps {
   accentColor?: string;
 }
 
+const getPictureSources = (src: string) => {
+  if (src.endsWith('.jpg') || src.endsWith('.png')) {
+    const base = src.replace(/\.(jpg|png)$/, '');
+    return {
+      avif: `${base}.avif`,
+      webp: `${base}.webp`,
+      fallback: src,
+    };
+  }
+  return null;
+};
+
 export const BrowserMockup: React.FC<BrowserMockupProps> = ({
   imageSrc,
   title,
@@ -19,6 +31,8 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
   className = '',
   accentColor = '#3B82F6',
 }) => {
+  const sources = getPictureSources(imageSrc);
+
   if (device === 'mobile') {
     return (
       <div className={`mx-auto max-w-[340px] rounded-[36px] p-3 bg-[#161A26] border border-[#2B3247] shadow-2xl relative ${className}`}>
@@ -30,12 +44,31 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
 
         {/* Screen container */}
         <div className="rounded-[28px] overflow-hidden bg-[#0B0C10] border border-[#232938] aspect-[9/18.5] relative group">
-          <img
-            src={imageSrc}
-            alt={`${title} Mobile Preview`}
-            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            loading="lazy"
-          />
+          {sources ? (
+            <picture>
+              <source srcSet={sources.avif} type="image/avif" />
+              <source srcSet={sources.webp} type="image/webp" />
+              <img
+                src={sources.fallback}
+                alt={`${title} Mobile Preview`}
+                width={340}
+                height={700}
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          ) : (
+            <img
+              src={imageSrc}
+              alt={`${title} Mobile Preview`}
+              width={340}
+              height={700}
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-20"></div>
         </div>
       </div>
@@ -51,12 +84,31 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
         </div>
         {/* Screen */}
         <div className="rounded-[18px] overflow-hidden bg-[#0B0C10] border border-[#232938] aspect-[4/3] relative group">
-          <img
-            src={imageSrc}
-            alt={`${title} Tablet Preview`}
-            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            loading="lazy"
-          />
+          {sources ? (
+            <picture>
+              <source srcSet={sources.avif} type="image/avif" />
+              <source srcSet={sources.webp} type="image/webp" />
+              <img
+                src={sources.fallback}
+                alt={`${title} Tablet Preview`}
+                width={620}
+                height={465}
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          ) : (
+            <img
+              src={imageSrc}
+              alt={`${title} Tablet Preview`}
+              width={620}
+              height={465}
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
         </div>
       </div>
     );
@@ -94,12 +146,31 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
 
       {/* Screen View */}
       <div className="relative aspect-[16/10] overflow-hidden bg-[#0B0C10] group">
-        <img
-          src={imageSrc}
-          alt={`${title} Preview`}
-          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          loading="lazy"
-        />
+        {sources ? (
+          <picture>
+            <source srcSet={sources.avif} type="image/avif" />
+            <source srcSet={sources.webp} type="image/webp" />
+            <img
+              src={sources.fallback}
+              alt={`${title} Preview`}
+              width={1280}
+              height={800}
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        ) : (
+          <img
+            src={imageSrc}
+            alt={`${title} Preview`}
+            width={1280}
+            height={800}
+            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0C10]/40 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { projects } from './data/projects';
 import type { ProjectData } from './types';
 import { Navbar } from './components/Navbar';
@@ -12,9 +12,17 @@ import { About } from './components/About';
 import { TrustStatement } from './components/TrustStatement';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
-import { CaseStudyModal } from './components/CaseStudyModal';
-import { ProjectInquiryModal } from './components/ProjectInquiryModal';
-import { LegalModal } from './components/LegalModal';
+
+// Code-split heavy modals to optimize initial bundle size
+const CaseStudyModal = lazy(() =>
+  import('./components/CaseStudyModal').then((m) => ({ default: m.CaseStudyModal }))
+);
+const ProjectInquiryModal = lazy(() =>
+  import('./components/ProjectInquiryModal').then((m) => ({ default: m.ProjectInquiryModal }))
+);
+const LegalModal = lazy(() =>
+  import('./components/LegalModal').then((m) => ({ default: m.LegalModal }))
+);
 
 export const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -156,32 +164,34 @@ export const App: React.FC = () => {
       />
 
       {/* Reusable Case Study View */}
-      {selectedProject && (
-        <CaseStudyModal
-          project={selectedProject}
-          allProjects={projects}
-          onClose={handleCloseProject}
-          onSelectProject={handleSelectProject}
-          onOpenInquiry={(service) => {
-            handleCloseProject();
-            handleOpenInquiry(service);
-          }}
+      <Suspense fallback={null}>
+        {selectedProject && (
+          <CaseStudyModal
+            project={selectedProject}
+            allProjects={projects}
+            onClose={handleCloseProject}
+            onSelectProject={handleSelectProject}
+            onOpenInquiry={(service) => {
+              handleCloseProject();
+              handleOpenInquiry(service);
+            }}
+          />
+        )}
+
+        {/* Structured Project Inquiry Modal */}
+        <ProjectInquiryModal
+          isOpen={isInquiryOpen}
+          onClose={handleCloseInquiry}
+          initialService={inquiryService}
         />
-      )}
 
-      {/* Structured Project Inquiry Modal */}
-      <ProjectInquiryModal
-        isOpen={isInquiryOpen}
-        onClose={handleCloseInquiry}
-        initialService={inquiryService}
-      />
-
-      {/* Legal Disclosures Modal */}
-      <LegalModal
-        isOpen={legalType !== null}
-        type={legalType}
-        onClose={() => setLegalType(null)}
-      />
+        {/* Legal Disclosures Modal */}
+        <LegalModal
+          isOpen={legalType !== null}
+          type={legalType}
+          onClose={() => setLegalType(null)}
+        />
+      </Suspense>
 
       {/* Footer */}
       <Footer
