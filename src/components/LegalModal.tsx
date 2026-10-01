@@ -24,26 +24,28 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
       role="dialog"
       aria-modal="true"
       aria-labelledby="legal-modal-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-start sm:items-center justify-center p-3 sm:p-4 md:p-6 animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-2xl bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-8">
-        <div className="px-6 py-4 border-b border-[#232938] flex items-center justify-between bg-[#121622]">
+      <div className="relative w-full max-w-lg bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[90vh] sm:max-h-[85vh] flex flex-col">
+        {/* Sticky Header Strip */}
+        <div className="sticky top-0 z-30 shrink-0 px-5 sm:px-6 py-3.5 border-b border-[#232938] flex items-center justify-between bg-[#121622] shadow-sm">
           <div className="flex items-center space-x-2">
-            <Shield className="w-4 h-4 text-blue-400" />
+            <Shield className="w-4 h-4 text-cyan-400" />
             <h2 id="legal-modal-title" className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300">
               {type === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
             </h2>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            aria-label="Close modal"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
+            aria-label="Close legal modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6 sm:p-8 space-y-6 text-sm text-slate-300 leading-relaxed max-h-[70vh] overflow-y-auto">
+        <div className="p-5 sm:p-6 space-y-5 text-sm text-slate-300 leading-relaxed overflow-y-auto flex-1">
           {type === 'privacy' ? (
             <>
               <h3 className="text-xl font-bold text-white">Privacy Policy</h3>

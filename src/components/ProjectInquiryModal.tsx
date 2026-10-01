@@ -113,47 +113,49 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="inquiry-modal-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-start sm:items-center justify-center p-3 sm:p-4 md:p-6 animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-2xl bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-8">
-        {/* Header Strip */}
-        <div className="px-6 sm:px-8 py-5 border-b border-[#232938] flex items-center justify-between bg-[#121622]">
+      {/* Compact Dialog Box with guaranteed viewport height fit & permanent sticky cross button */}
+      <div className="relative w-full max-w-lg bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] sm:max-h-[88vh] flex flex-col">
+        {/* Sticky Header Strip — ALWAYS visible regardless of scroll or zoom level */}
+        <div className="sticky top-0 z-30 shrink-0 px-5 sm:px-6 py-3.5 sm:py-4 border-b border-[#232938] flex items-center justify-between bg-[#121622] shadow-sm">
           <div className="flex items-center space-x-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300">
+            <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-300">
               Project Inquiry
             </span>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            aria-label="Close project inquiry form"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
+            aria-label="Close project inquiry dialog"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Content Body */}
-        <div className="p-6 sm:p-8">
+        {/* Scrollable Content Body */}
+        <div className="overflow-y-auto flex-1 p-5 sm:p-6 space-y-5">
           {isSubmitted ? (
             /* Confirmation State */
-            <div className="py-10 text-center space-y-6 animate-in fade-in duration-300">
-              <div className="w-16 h-16 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-emerald-950/50">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="py-8 text-center space-y-5 animate-in fade-in duration-300">
+              <div className="w-14 h-14 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-emerald-950/50">
+                <CheckCircle2 className="w-7 h-7" />
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
+              <div className="space-y-2">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-heading">
                   Your project inquiry has been received.
                 </h3>
-                <p className="text-base text-slate-300 max-w-md mx-auto leading-relaxed font-body">
+                <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed font-body">
                   We will review your requirements and respond within 24 hours with timeline and scope recommendations.
                 </p>
               </div>
 
               {/* Inquiry Summary Review Box */}
-              <div className="bg-[#141824] border border-[#232938] rounded-xl p-5 text-left text-xs space-y-2 max-w-md mx-auto">
-                <div className="text-slate-400 font-mono text-[11px] uppercase tracking-wider">
+              <div className="bg-[#141824] border border-[#232938] rounded-xl p-4 text-left text-xs space-y-2 max-w-md mx-auto">
+                <div className="text-slate-400 font-mono text-[10px] uppercase tracking-wider">
                   Summary of Submission
                 </div>
                 <div className="flex justify-between border-b border-[#22283A] pb-1 text-slate-300">
@@ -170,24 +172,25 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
+                  type="button"
                   onClick={handleReset}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-sm font-bold transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-xs sm:text-sm font-bold transition-colors cursor-pointer shadow"
                 >
                   Return to Studio
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {/* Form Heading */}
               <div>
-                <h2 id="inquiry-modal-title" className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
+                <h2 id="inquiry-modal-title" className="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-heading">
                   Let&apos;s build something for your business.
                 </h2>
-                <p className="mt-2 text-sm text-slate-400 font-body">
-                  Provide a few project details below or email us directly at{' '}
+                <p className="mt-1 text-xs sm:text-sm text-slate-400 font-body">
+                  Provide a few details below or email directly at{' '}
                   <a href="mailto:hello@ahdevlo.com" className="text-cyan-400 hover:underline">
                     hello@ahdevlo.com
                   </a>.
@@ -209,11 +212,11 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               </div>
 
               {/* 1. What do you need? */}
-              <div className="space-y-2.5">
-                <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              <div className="space-y-2">
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
                   What do you need? <span className="text-cyan-400">*</span>
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {serviceOptions.map((opt) => {
                     const isSelected = formData.serviceType === opt;
                     return (
@@ -221,7 +224,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                         type="button"
                         key={opt}
                         onClick={() => setFormData({ ...formData, serviceType: opt })}
-                        className={`p-3 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
+                        className={`p-2.5 rounded-lg text-xs font-medium border text-center transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 ${
                           isSelected
                             ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400 shadow-md shadow-cyan-950/30'
                             : 'bg-[#141824] text-slate-300 border-[#232938] hover:border-[#38435C] hover:text-white'
@@ -235,11 +238,11 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               </div>
 
               {/* 2. Business Information */}
-              <div className="space-y-4">
-                <span className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              <div className="space-y-2.5">
+                <span className="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
                   Business Information
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <div>
                     <label htmlFor="field-businessName" className="sr-only">
                       Business Name
@@ -256,7 +259,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                         setFormData({ ...formData, businessName: e.target.value });
                         if (errors.businessName) setErrors({ ...errors, businessName: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
+                      className={`w-full px-3.5 py-2 rounded-lg bg-[#141824] border text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.businessName ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
@@ -277,7 +280,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                       placeholder="Industry (e.g. Dining, Practice, Real Estate)"
                       value={formData.industry}
                       onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg bg-[#141824] border border-[#232938] text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+                      className="w-full px-3.5 py-2 rounded-lg bg-[#141824] border border-[#232938] text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
                     />
                   </div>
                 </div>
@@ -292,19 +295,19 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                     placeholder="Existing website or social link (if any)"
                     value={formData.existingWebsite}
                     onChange={(e) => setFormData({ ...formData, existingWebsite: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-lg bg-[#141824] border border-[#232938] text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+                    className="w-full px-3.5 py-2 rounded-lg bg-[#141824] border border-[#232938] text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
                   />
                 </div>
               </div>
 
               {/* 3. Tell us about your project */}
-              <div className="space-y-2">
-                <label htmlFor="field-description" className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              <div className="space-y-1.5">
+                <label htmlFor="field-description" className="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
                   Tell us about your project <span className="text-cyan-400">*</span>
                 </label>
                 <textarea
                   id="field-description"
-                  rows={3}
+                  rows={2.5}
                   placeholder="What is your main goal? What features do you need? Any references or timelines?"
                   aria-required="true"
                   aria-invalid={!!errors.projectDescription}
@@ -314,7 +317,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                     setFormData({ ...formData, projectDescription: e.target.value });
                     if (errors.projectDescription) setErrors({ ...errors, projectDescription: undefined });
                   }}
-                  className={`w-full px-4 py-3 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
+                  className={`w-full px-3.5 py-2 rounded-lg bg-[#141824] border text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 resize-none ${
                     errors.projectDescription ? 'border-red-500' : 'border-[#232938]'
                   }`}
                 />
@@ -326,11 +329,11 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               </div>
 
               {/* 4. Contact Information */}
-              <div className="space-y-4">
-                <span className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              <div className="space-y-2">
+                <span className="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
                   Contact Information
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                   <div>
                     <label htmlFor="field-fullName" className="sr-only">
                       Full Name
@@ -347,7 +350,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                         setFormData({ ...formData, fullName: e.target.value });
                         if (errors.fullName) setErrors({ ...errors, fullName: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
+                      className={`w-full px-3.5 py-2 rounded-lg bg-[#141824] border text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.fullName ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
@@ -374,7 +377,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                         setFormData({ ...formData, email: e.target.value });
                         if (errors.email) setErrors({ ...errors, email: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
+                      className={`w-full px-3.5 py-2 rounded-lg bg-[#141824] border text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.email ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
@@ -401,7 +404,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                         setFormData({ ...formData, phone: e.target.value });
                         if (errors.phone) setErrors({ ...errors, phone: undefined });
                       }}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-[#141824] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
+                      className={`w-full px-3.5 py-2 rounded-lg bg-[#141824] border text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 ${
                         errors.phone ? 'border-red-500' : 'border-[#232938]'
                       }`}
                     />
@@ -415,11 +418,11 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               </div>
 
               {/* Submit CTA */}
-              <div className="pt-2">
+              <div className="pt-1">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 text-slate-950 font-bold text-sm sm:text-base transition-all duration-200 shadow-xl shadow-cyan-950/40 flex items-center justify-center space-x-2 cursor-pointer font-heading focus:outline-none focus:ring-2 focus:ring-white"
+                  className="w-full py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 text-slate-950 font-bold text-sm sm:text-base transition-all duration-200 shadow-xl shadow-cyan-950/40 flex items-center justify-center space-x-2 cursor-pointer font-heading focus:outline-none focus:ring-2 focus:ring-white"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center space-x-2">
@@ -436,9 +439,9 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
               </div>
 
               {/* Direct Alternative Contacts Strip */}
-              <div className="pt-2 border-t border-[#1F2636] flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-                <span className="font-mono text-[11px]">Or reach us directly:</span>
-                <div className="flex items-center space-x-4">
+              <div className="pt-2 border-t border-[#1F2636] flex flex-wrap items-center justify-between gap-2.5 text-xs text-slate-400">
+                <span className="font-mono text-[10px]">Or contact directly:</span>
+                <div className="flex items-center space-x-3 text-xs">
                   <a
                     href="mailto:hello@ahdevlo.com"
                     className="inline-flex items-center space-x-1 text-cyan-400 hover:underline"
