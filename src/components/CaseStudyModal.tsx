@@ -29,19 +29,30 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 }) => {
   const [device, setDevice] = useState<DeviceMode>('desktop');
 
-  // Lock body scroll when modal is open
+  // Lock body scroll and listen for Escape key when modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   const prevProject = allProjects.find((p) => p.id === project.prevProjectId) || allProjects[0];
   const nextProject = allProjects.find((p) => p.id === project.nextProjectId) || allProjects[1];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0B0C10] text-[#F8FAFC] animate-in fade-in duration-200">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Case study: ${project.title}`}
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#0B0C10] text-[#F8FAFC] animate-in fade-in duration-200"
+    >
       {/* Top Floating Utility Bar */}
       <div className="sticky top-0 z-40 bg-[#0B0C10]/90 backdrop-blur-md border-b border-[#232938] px-5 sm:px-8 py-4 flex items-center justify-between">
         <button

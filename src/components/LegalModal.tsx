@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Shield, X } from 'lucide-react';
 
 interface LegalModalProps {
@@ -8,21 +8,39 @@ interface LegalModalProps {
 }
 
 export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen || !type) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="legal-modal-title"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+    >
       <div className="relative w-full max-w-2xl bg-[#0F121A] border border-[#262F44] rounded-2xl shadow-2xl overflow-hidden my-8">
         <div className="px-6 py-4 border-b border-[#232938] flex items-center justify-between bg-[#121622]">
           <div className="flex items-center space-x-2">
-            <Shield className="w-4 h-4 text-blue-400" />
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300">
+            <Shield className="w-4 h-4 text-cyan-400" />
+            <span
+              id="legal-modal-title"
+              className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300"
+            >
               {type === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            aria-label="Close modal dialog"
+            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>

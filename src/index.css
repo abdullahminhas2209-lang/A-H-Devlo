@@ -66,3 +66,21 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .subtle-border-b {
   border-bottom: 1px solid #232938;
 }
+
+/* Accessible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #22D3EE !important;
+  outline-offset: 3px !important;
+}
+
+/* Fallback only for users who explicitly requested reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
