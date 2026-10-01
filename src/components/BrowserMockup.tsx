@@ -19,6 +19,22 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
   className = '',
   accentColor = '#3B82F6',
 }) => {
+  // Generate modern WebP & AVIF sources when pointing to project assets
+  const getSources = (src: string) => {
+    const isProjectJpg = src.startsWith('/projects/') && src.endsWith('.jpg');
+    if (!isProjectJpg) {
+      return { avif: null, webp: null, fallback: src };
+    }
+    const base = src.replace(/\.jpg$/, '');
+    return {
+      avif: `${base}.avif`,
+      webp: `${base}.webp`,
+      fallback: src,
+    };
+  };
+
+  const sources = getSources(imageSrc);
+
   if (device === 'mobile') {
     return (
       <div className={`mx-auto max-w-[340px] rounded-[36px] p-3 bg-[#161A26] border border-[#2B3247] shadow-2xl relative ${className}`}>
@@ -30,12 +46,19 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
 
         {/* Screen container */}
         <div className="rounded-[28px] overflow-hidden bg-[#0B0C10] border border-[#232938] aspect-[9/18.5] relative group">
-          <img
-            src={imageSrc}
-            alt={`${title} Mobile Preview`}
-            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            loading="lazy"
-          />
+          <picture>
+            {sources.avif && <source srcSet={sources.avif} type="image/avif" />}
+            {sources.webp && <source srcSet={sources.webp} type="image/webp" />}
+            <img
+              src={sources.fallback}
+              alt={`${title} Mobile Preview`}
+              width={680}
+              height={1396}
+              decoding="async"
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </picture>
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-20"></div>
         </div>
       </div>
@@ -47,16 +70,23 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
       <div className={`mx-auto max-w-[620px] rounded-[28px] p-4 bg-[#141722] border border-[#2A3144] shadow-2xl relative ${className}`}>
         {/* Top camera bezel */}
         <div className="flex items-center justify-center pb-2">
-          <div className="w-2 h-2 rounded-full bg-[#2A3144]"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#2A3144]"></div>
         </div>
         {/* Screen */}
         <div className="rounded-[18px] overflow-hidden bg-[#0B0C10] border border-[#232938] aspect-[4/3] relative group">
-          <img
-            src={imageSrc}
-            alt={`${title} Tablet Preview`}
-            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            loading="lazy"
-          />
+          <picture>
+            {sources.avif && <source srcSet={sources.avif} type="image/avif" />}
+            {sources.webp && <source srcSet={sources.webp} type="image/webp" />}
+            <img
+              src={sources.fallback}
+              alt={`${title} Tablet Preview`}
+              width={800}
+              height={600}
+              decoding="async"
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </picture>
         </div>
       </div>
     );
@@ -94,12 +124,19 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
 
       {/* Screen View */}
       <div className="relative aspect-[16/10] overflow-hidden bg-[#0B0C10] group">
-        <img
-          src={imageSrc}
-          alt={`${title} Preview`}
-          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          loading="lazy"
-        />
+        <picture>
+          {sources.avif && <source srcSet={sources.avif} type="image/avif" />}
+          {sources.webp && <source srcSet={sources.webp} type="image/webp" />}
+          <img
+            src={sources.fallback}
+            alt={`${title} Preview`}
+            width={1200}
+            height={750}
+            decoding="async"
+            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0C10]/40 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
     </div>

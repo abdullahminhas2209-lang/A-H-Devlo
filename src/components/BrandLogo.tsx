@@ -25,6 +25,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           src="/brand/logo-transparent.png"
           onError={() => setImageError(true)}
           alt="A&H Devlo Logo"
+          width={180}
+          height={48}
+          decoding="async"
           className={`${heights[size]} w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-md`}
         />
       ) : (
