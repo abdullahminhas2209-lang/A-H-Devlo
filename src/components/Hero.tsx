@@ -16,13 +16,13 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="space-y-8 sm:space-y-10 max-w-4xl">
           {/* Eyebrow Label */}
-          <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
-            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-            <span>Independent Web Design &amp; Development Studio</span>
+          <div className="flex items-center space-x-2.5 text-[11px] sm:text-xs uppercase tracking-widest text-[#8E9298] font-body">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shrink-0" />
+            <span>Independent Web Design &amp; Development</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.035em] text-[#F4F2ED] leading-[1.06] font-heading">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.035em] text-[#F4F2ED] leading-[1.08] font-heading">
             We design and build fast, custom websites for small businesses and independent practices.
           </h1>
 

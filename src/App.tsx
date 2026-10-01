@@ -103,7 +103,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0D0E] text-[#F4F2ED] flex flex-col font-sans selection:bg-blue-600 selection:text-white relative">
+    <div className="min-h-screen bg-[#0C0D0E] text-[#F4F2ED] flex flex-col font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
       {/* Skip to Content Accessible Bypass Link */}
       <a
         href="#main-content"
