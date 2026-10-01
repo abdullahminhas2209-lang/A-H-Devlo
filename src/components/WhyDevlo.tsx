@@ -1,94 +1,71 @@
 import React from 'react';
-import { Check } from 'lucide-react';
-import { ScrollReveal } from './ScrollReveal';
 
 export const WhyDevlo: React.FC = () => {
-  const principles = [
+  const commitments = [
     {
-      number: '01',
-      title: 'Clean by design',
+      index: '01',
+      title: 'Direct Founder Communication',
       description:
-        'We focus on clarity, hierarchy and purposeful design instead of unnecessary visual clutter. Your visitors should never struggle to understand what you do or how to take the next step.',
-      takeaway: 'Clarity drives trust and action.',
+        'You work directly with the two people designing and building your website. No account managers, middle layers, or junior interns. Questions are answered directly, feedback is applied accurately, and decisions happen fast.',
     },
     {
-      number: '02',
-      title: 'Built around your business',
+      index: '02',
+      title: 'Custom Architecture, Zero Templates',
       description:
-        'Every website is designed around your brand, audience and goals. We do not force your business into generic pre-made templates that look like hundreds of other competitors.',
-      takeaway: 'Custom tailored, zero cookie-cutter templates.',
+        'We design every layout from scratch around your brand, customer journey, and specific services. Your business will never be squeezed into a generic WordPress or Webflow template shared with hundreds of competitors.',
     },
     {
-      number: '03',
-      title: 'Professional from the first click',
+      index: '03',
+      title: 'Fast Loading & Mobile-Tested',
       description:
-        'Your website should give potential customers confidence before they ever contact you. High-grade typography, thoughtful spacing, and responsive speed communicate quality instantly.',
-      takeaway: 'First impressions determine customer trust.',
+        'Over 60% of your customers visit on their phones. We build with lightweight semantic code, modern responsive typography, and optimized images so pages load in under a second on mobile networks.',
     },
     {
-      number: '04',
-      title: 'Responsive everywhere',
+      index: '04',
+      title: '100% Client Ownership, Zero Lock-In',
       description:
-        'Your website should look and work properly across desktop, tablet and mobile. More than 65% of your customers visit on mobile devices—we ensure their experience is flawless.',
-      takeaway: 'Pixel-perfect across all screen sizes.',
+        'When the project launches, full ownership of code, design files, domain connections, and hosting accounts is transferred to you. No proprietary builder lock-in, no monthly hostage fees.',
     },
   ];
 
   return (
-    <section id="why" className="py-24 md:py-36 bg-[#030B14] relative scroll-mt-24 sm:scroll-mt-28">
-      {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        {/* Section Top Header */}
-        <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
-              <span>03 / OUR PRINCIPLES</span>
+    <section id="why" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Studio Point of View (5 cols) */}
+          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+            <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+              <span>Studio Commitments</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
-              Why work with A&amp;H Devlo?
+
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-[-0.03em] text-[#F4F2ED] leading-tight font-heading">
+              Why small businesses work directly with us.
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed font-body">
-              We operate with a clear philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
+
+            <p className="text-base text-[#8E9298] font-body leading-relaxed">
+              Most agency experiences are bogged down by layers of meetings, slow communication, and marked-up invoices. We operate as a lean two-person studio where craft, speed, and honest execution come first.
             </p>
           </div>
-        </ScrollReveal>
 
-        {/* Editorial Numbered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {principles.map((principle, index) => (
-            <ScrollReveal key={principle.number} delayMs={index * 80}>
-              <div
-                className="relative p-8 sm:p-10 rounded-2xl bg-[#081726]/80 border border-[#14304D] hover:border-cyan-500/40 hover:bg-[#0C1F35]/90 transition-all duration-300 group flex flex-col justify-between h-full shadow-lg"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono tracking-tighter">
-                      {principle.number}
-                    </span>
-                    <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">
-                      Standard of Craft
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4 group-hover:text-cyan-300 transition-colors font-heading">
-                    {principle.title}
+          {/* Right Column: 4 Numbered Commitments with Hairline Dividers (7 cols) */}
+          <div className="lg:col-span-7 divide-y divide-[#22252A] border-t lg:border-t-0 border-b border-[#22252A]">
+            {commitments.map((item) => (
+              <div key={item.index} className="py-8 sm:py-10 space-y-3">
+                <div className="flex items-center space-x-4">
+                  <span className="text-xs font-mono text-[#8E9298]">
+                    {item.index}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#F4F2ED] tracking-tight font-heading">
+                    {item.title}
                   </h3>
-
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-body">
-                    {principle.description}
-                  </p>
                 </div>
-
-                <div className="mt-8 pt-4 border-t border-[#14304D]/60 flex items-center space-x-2 text-xs font-medium text-slate-400">
-                  <Check className="w-4 h-4 text-teal-400 shrink-0" />
-                  <span>{principle.takeaway}</span>
-                </div>
+                <p className="text-sm sm:text-base text-[#8E9298] font-body leading-relaxed pl-8 sm:pl-9">
+                  {item.description}
+                </p>
               </div>
-            </ScrollReveal>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,5 @@
 import React from 'react';
-import { ChevronRight, Layers, Rocket, Search, Sliders, Wand2 } from 'lucide-react';
-import { ScrollReveal } from './ScrollReveal';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ProcessProps {
   onOpenInquiry: () => void;
@@ -9,141 +8,91 @@ interface ProcessProps {
 export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
   const steps = [
     {
-      number: '01',
-      title: 'DISCOVER',
-      headline: 'We understand your business, audience and goals.',
+      step: '01',
+      title: 'Blueprint & Architecture',
+      duration: 'Days 1–3',
       description:
-        'We begin by analyzing your offerings, target customers, and business objectives. We map out content requirements and key conversion actions before drawing a single wireframe.',
-      icon: Search,
-      deliverable: 'Project scope, content blueprint & site architecture',
+        'We review your service offerings, customer questions, and business goals. We outline the page hierarchy, call-to-action flow, and content structure before writing a single line of code.',
     },
     {
-      number: '02',
-      title: 'DESIGN',
-      headline: 'We create the visual direction and website structure.',
+      step: '02',
+      title: 'Bespoke Design & Review',
+      duration: 'Days 4–8',
       description:
-        'We craft high-fidelity desktop and mobile layouts using bespoke typography, disciplined whitespace, and strong visual hierarchy tailored specifically to your brand identity.',
-      icon: Wand2,
-      deliverable: 'Interactive Figma design mockups & review walkthrough',
+        'We craft custom desktop and mobile layouts tailored to your business identity. You receive an interactive walkthrough with structured feedback rounds to review and approve.',
     },
     {
-      number: '03',
-      title: 'DEVELOP',
-      headline: 'We turn the approved design into a functional website.',
+      step: '03',
+      title: 'Clean Engineering & Testing',
+      duration: 'Days 9–14',
       description:
-        'We write clean, semantic code with ultra-fast page speeds, mobile responsiveness, and modern interactions. No bloated themes or fragile plugins.',
-      icon: Layers,
-      deliverable: 'Production codebase, CMS or inquiry integration',
+        'We develop the site using lightweight React and modern CSS. Every screen is tested across physical phones, tablets, and laptops to ensure sub-second load times and zero layout shifts.',
     },
     {
-      number: '04',
-      title: 'REFINE',
-      headline: 'We polish the details, responsiveness and interactions.',
+      step: '04',
+      title: 'Domain Launch & Handover',
+      duration: 'Days 15–18',
       description:
-        'We test every viewport (iPhone, iPad, laptop, ultra-wide), audit form submissions, verify touch targets, and calibrate animations for a smooth visitor experience.',
-      icon: Sliders,
-      deliverable: 'Cross-browser audit, speed test & client feedback pass',
-    },
-    {
-      number: '05',
-      title: 'LAUNCH',
-      headline: 'Your website goes live and is ready for your customers.',
-      description:
-        'We connect your custom domain, implement essential SEO metadata, configure SSL certificates, and ensure everything is running at peak performance.',
-      icon: Rocket,
-      deliverable: 'Live website deployment, DNS handover & post-launch support',
+        'We connect your custom domain, verify SEO metadata and sitemaps, audit contact forms, and transfer complete code and asset ownership directly to your business.',
     },
   ];
 
   return (
-    <section id="process" className="py-24 md:py-36 bg-[#030B14] relative scroll-mt-24 sm:scroll-mt-28">
-      {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+    <section id="process" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
-              <span>04 / HOW WE WORK</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
-              From idea to launch.
-            </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed font-body">
-              A transparent five-step process designed to keep your project on schedule, stress-free, and aligned with your business goals.
-            </p>
+        <div className="max-w-3xl mb-16 sm:mb-20 space-y-4">
+          <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
+            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+            <span>How We Work</span>
           </div>
-        </ScrollReveal>
-
-        {/* Sequential Timeline Layout */}
-        <div className="space-y-6">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-
-            return (
-              <ScrollReveal key={step.number} delayMs={index * 60}>
-                <div
-                  className="group relative rounded-2xl bg-[#081726]/80 border border-[#14304D] hover:border-cyan-500/40 hover:bg-[#0C1F35]/90 p-6 sm:p-8 lg:p-10 transition-all duration-300 shadow-md"
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                    {/* Step Indicator & Icon (3 cols) */}
-                    <div className="lg:col-span-3 flex items-center space-x-4">
-                      <span className="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono">
-                        {step.number}
-                      </span>
-                      <div className="w-9 h-9 rounded-lg bg-[#0C1F35] border border-[#14304D] flex items-center justify-center text-cyan-400 shrink-0">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-xs font-mono tracking-widest text-slate-400 uppercase block font-semibold">
-                          STAGE
-                        </span>
-                        <h3 className="text-xl font-bold text-white tracking-tight font-heading">
-                          {step.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Step Description & Headline (6 cols) */}
-                    <div className="lg:col-span-6 space-y-2">
-                      <h4 className="text-base sm:text-lg font-semibold text-slate-200 font-heading">
-                        {step.headline}
-                      </h4>
-                      <p className="text-sm text-slate-300 leading-relaxed font-body">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    {/* Key Deliverable Box (3 cols) */}
-                    <div className="lg:col-span-3 bg-[#030B14]/80 p-4 rounded-xl border border-[#14304D]/80">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 block mb-1 font-semibold">
-                        Outcome
-                      </span>
-                      <p className="text-xs text-slate-300 leading-snug font-body">
-                        {step.deliverable}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-[-0.03em] text-[#F4F2ED] leading-tight font-heading">
+            A clear 4-step process from kickoff to live launch.
+          </h2>
+          <p className="text-base sm:text-lg text-[#8E9298] font-body leading-relaxed">
+            No endless meetings or opaque agency handoffs. You always know exactly what phase your project is in, what is being delivered, and what comes next.
+          </p>
         </div>
 
-        {/* Timeline Bottom CTA */}
-        <ScrollReveal delayMs={200}>
-          <div className="mt-12 text-center">
-            <button
-              onClick={onOpenInquiry}
-              className="inline-flex items-center space-x-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group cursor-pointer"
-            >
-              <span>Have a project in mind? Let&apos;s map out your timeline</span>
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
-          </div>
-        </ScrollReveal>
+        {/* 4-Step Progressive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 border-t border-[#22252A] pt-10">
+          {steps.map((item) => (
+            <div key={item.step} className="space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-[#22252A] pb-3">
+                  <span className="text-xs font-mono text-[#8E9298]">
+                    {item.step} / STEP
+                  </span>
+                  <span className="text-xs font-body text-[#8E9298] px-2 py-0.5 rounded bg-[#141618] border border-[#22252A]">
+                    {item.duration}
+                  </span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-bold text-[#F4F2ED] tracking-tight font-heading">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-[#8E9298] font-body leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Direct inquiry prompt */}
+        <div className="mt-16 pt-8 border-t border-[#22252A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-sm text-[#8E9298] font-body">
+            Have a target launch date in mind? We can confirm project availability within 24 hours.
+          </p>
+          <button
+            onClick={onOpenInquiry}
+            className="inline-flex items-center space-x-1.5 text-xs sm:text-sm font-semibold text-[#F4F2ED] hover:text-white transition-colors cursor-pointer group"
+          >
+            <span>Discuss your timeline</span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </button>
+        </div>
       </div>
     </section>
   );

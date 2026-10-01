@@ -10,7 +10,6 @@ import { Process } from './components/Process';
 import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
 import { About } from './components/About';
-import { TrustStatement } from './components/TrustStatement';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { CaseStudyModal } from './components/CaseStudyModal';
@@ -154,10 +153,7 @@ export const App: React.FC = () => {
         {/* 8. FAQ Section (6 Essential Questions) */}
         <FAQ onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 9. Trust Statement */}
-        <TrustStatement onOpenInquiry={() => handleOpenInquiry()} />
-
-        {/* 10. Final CTA */}
+        {/* 9. Final CTA */}
         <FinalCTA
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}

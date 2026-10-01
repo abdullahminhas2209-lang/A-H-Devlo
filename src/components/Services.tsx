@@ -1,6 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Check, Clock, Compass, Layout, RefreshCw } from 'lucide-react';
-import { ScrollReveal } from './ScrollReveal';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesProps {
   onOpenInquiry: (serviceType?: string) => void;
@@ -11,154 +10,131 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
     {
       number: '01',
       title: 'Business Websites',
-      icon: Layout,
-      timeline: '2–3 weeks typical',
-      pricingModel: '[STARTING FROM $X,XXX / FIXED QUOTE]',
-      summary:
-        'Custom websites engineered to establish authority, communicate your unique value, and convert casual visitors into qualified clients.',
-      features: [
-        'Custom bespoke architecture (zero templates)',
-        'Responsive mobile, tablet & desktop development',
-        'Business-focused copywriting structure & flow',
+      timeline: '2–3 weeks',
+      price: 'From $1,200',
+      description:
+        'Bespoke multi-page websites built from scratch around your brand and business goals. Designed to communicate what you do clearly and turn casual visitors into paying clients.',
+      deliverables: [
+        'Custom visual design (zero pre-made templates)',
+        'Responsive layout for desktop, tablet, and mobile',
         'Lead capture form with spam protection',
-        'SEO foundations, sitemaps & Open Graph tags',
+        'Essential SEO metadata, Open Graph, and sitemap',
+        'Direct DNS configuration and domain launch',
       ],
-      idealFor: 'Small businesses, professional practices, local establishments, & consultancy firms.',
+      idealFor: 'Small businesses, professional practices, clinics, and independent consultants.',
     },
     {
       number: '02',
       title: 'Landing Pages',
-      icon: Compass,
       timeline: '5–7 business days',
-      pricingModel: '[STARTING FROM $X,XXX / FIXED QUOTE]',
-      summary:
-        'Focused, single-page digital experiences designed around a single conversion goal: generating calls, bookings, or inquiries.',
-      features: [
-        'High-converting editorial copy & message hierarchy',
-        'Strong visual storytelling directing attention',
-        'Optimized for mobile traffic and social campaigns',
-        'Clear, unmissable calls-to-action (forms/chat/calls)',
-        'Sub-second page speeds with zero script bloat',
+      price: 'From $650',
+      description:
+        'Single-page websites focused on a specific offer, campaign, or product. Structured for quick reading, fast loading, and direct inquiry or booking conversion.',
+      deliverables: [
+        'High-impact visual storytelling',
+        'Focused conversion hierarchy (forms, WhatsApp, or booking links)',
+        'Sub-second load times with zero script bloat',
+        'Optimized for mobile traffic and ad campaigns',
       ],
-      idealFor: 'Promotional campaigns, product launches, service offerings, & direct paid traffic.',
+      idealFor: 'Service launches, promotional campaigns, and targeted marketing pushes.',
     },
     {
       number: '03',
-      title: 'Website Redesigns',
-      icon: RefreshCw,
-      timeline: '2–3 weeks typical',
-      pricingModel: '[STARTING FROM $X,XXX / FIXED QUOTE]',
-      summary:
-        'Transform an outdated, slow, or template-heavy site into a fast, modern digital presence that instills immediate customer confidence.',
-      features: [
-        'Complete visual overhaul aligned with modern UI standards',
-        'Streamlined content hierarchy & intuitive navigation',
-        'Mobile responsiveness overhaul for modern phones',
-        'Performance optimization & clean semantic code',
-        'Full asset & domain handover with zero lock-in',
+      title: 'Website Rebuilds',
+      timeline: '2–3 weeks',
+      price: 'From $1,200',
+      description:
+        'Complete overhaul of slow, outdated, or template-bloated websites. We rewrite everything in modern semantic code to fix layout bugs and boost mobile performance.',
+      deliverables: [
+        'Modern visual redesign preserving existing brand equity',
+        'Performance upgrade targeting 95+ mobile scores',
+        'Mobile navigation and touch target overhaul',
+        'Full asset and codebase handover with zero lock-in',
       ],
-      idealFor: 'Established businesses whose current website looks outdated or broken on mobile.',
+      idealFor: 'Established businesses whose current site looks dated or performs poorly on mobile.',
     },
   ];
 
   return (
-    <section id="services" className="py-24 md:py-36 bg-[#030B14] relative scroll-mt-24 sm:scroll-mt-28">
-      {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+    <section id="services" className="py-24 sm:py-32 bg-[#0C0D0E] border-t border-[#22252A] scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold tracking-[0.2em] text-cyan-400 uppercase">
-              <span className="w-5 h-[1.5px] bg-cyan-400 inline-block"></span>
-              <span>02 / WHAT WE DO</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
-              Everything your business needs to look professional online.
-            </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed font-body">
-              We focus on clean, high-impact web design and development that helps small businesses establish credibility, communicate value, and win client trust.
-            </p>
+        <div className="max-w-3xl mb-16 sm:mb-20 space-y-4">
+          <div className="flex items-center space-x-3 text-xs uppercase tracking-widest text-[#8E9298] font-body">
+            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+            <span>Services &amp; Pricing</span>
           </div>
-        </ScrollReveal>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-[-0.03em] text-[#F4F2ED] leading-tight font-heading">
+            Fixed scopes, transparent timelines, zero surprise hourly bills.
+          </h2>
+          <p className="text-base sm:text-lg text-[#8E9298] font-body leading-relaxed">
+            Every tier includes bespoke design, responsive engineering, SEO setup, and post-launch support. You work directly with Abdullah and Hamza from kickoff to delivery.
+          </p>
+        </div>
 
-        {/* 3 Primary Service Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {serviceList.map((service, index) => {
-            const Icon = service.icon;
-
-            return (
-              <ScrollReveal key={service.number} delayMs={index * 120}>
-                <div
-                  className="group relative rounded-2xl bg-[#081726]/90 border border-[#14304D] hover:border-cyan-500/50 p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 shadow-xl hover:shadow-cyan-950/40 h-full"
-                >
-                  <div className="space-y-6">
-                    {/* Top Bar: Number & Icon */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-mono font-bold text-cyan-400">
-                        {service.number}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-[#0E243A] border border-[#163352] flex items-center justify-center text-slate-300 group-hover:text-cyan-400 group-hover:border-cyan-500/50 transition-colors shadow">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    {/* Title & Summary */}
-                    <div>
-                      <h3 className="text-2xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors font-heading">
-                        {service.title}
-                      </h3>
-                      <p className="mt-3 text-sm text-slate-300 leading-relaxed font-normal font-body">
-                        {service.summary}
-                      </p>
-                    </div>
-
-                    {/* Timeline & Pricing Badges */}
-                    <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono">
-                      <div className="px-2.5 py-1 rounded-md bg-[#040E1A] border border-[#163352] text-slate-300 flex items-center space-x-1.5">
-                        <Clock className="w-3 h-3 text-cyan-400" />
-                        <span>{service.timeline}</span>
-                      </div>
-                      <div className="px-2.5 py-1 rounded-md bg-cyan-950/50 border border-cyan-800/40 text-cyan-300 font-semibold flex items-center space-x-1">
-                        <span>{service.pricingModel}</span>
-                      </div>
-                    </div>
-
-                    {/* Feature Checklist */}
-                    <div className="pt-4 border-t border-[#14304D] space-y-2.5">
-                      <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-400 block">
-                        Key Deliverables
-                      </span>
-                      {service.features.map((feature, fIdx) => (
-                        <div key={fIdx} className="flex items-start space-x-2.5 text-xs text-slate-300">
-                          <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Ideal For Note */}
-                    <div className="pt-3 text-[11px] text-slate-300 bg-[#040E1A] p-3.5 rounded-xl border border-[#0E243A]">
-                      <span className="text-cyan-300 font-semibold">Best For: </span>
-                      {service.idealFor}
-                    </div>
-                  </div>
-
-                  {/* Bottom CTA Button */}
-                  <div className="pt-8">
-                    <button
-                      onClick={() => onOpenInquiry(service.title)}
-                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-full bg-[#0E243A] hover:bg-blue-600 text-white text-xs sm:text-sm font-semibold border border-[#163352] hover:border-blue-500 transition-all duration-200 cursor-pointer shadow group-hover:shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                    >
-                      <span>Let&apos;s build yours</span>
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-                  </div>
+        {/* Architectural Services Table / List (Not 3 identical cards) */}
+        <div className="border-t border-[#22252A] divide-y divide-[#22252A]">
+          {serviceList.map((service) => (
+            <div
+              key={service.number}
+              className="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start transition-colors hover:bg-[#141618]/30 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg"
+            >
+              {/* Column 1: Index & Title (4 cols) */}
+              <div className="lg:col-span-4 space-y-3">
+                <span className="text-xs font-mono text-[#8E9298]">
+                  {service.number} / SERVICE
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#F4F2ED] tracking-tight font-heading">
+                  {service.title}
+                </h3>
+                <div className="flex flex-wrap items-center gap-3 pt-1">
+                  <span className="text-xs font-body px-2.5 py-1 rounded bg-[#181A1D] border border-[#22252A] text-[#F4F2ED]">
+                    {service.timeline}
+                  </span>
+                  <span className="text-xs font-body font-semibold px-2.5 py-1 rounded bg-[#181A1D] border border-[#22252A] text-[#2563EB]">
+                    {service.price}
+                  </span>
                 </div>
-              </ScrollReveal>
-            );
-          })}
+              </div>
+
+              {/* Column 2: Description & Deliverables (5 cols) */}
+              <div className="lg:col-span-5 space-y-5">
+                <p className="text-sm sm:text-base text-[#8E9298] font-body leading-relaxed">
+                  {service.description}
+                </p>
+
+                <div className="space-y-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#F4F2ED] block font-semibold">
+                    What we deliver:
+                  </span>
+                  <ul className="space-y-1.5 text-xs text-[#8E9298] font-body">
+                    {service.deliverables.map((item, idx) => (
+                      <li key={idx} className="flex items-start space-x-2">
+                        <span className="text-[#2563EB] mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <p className="text-xs text-[#8E9298] pt-1 font-body">
+                  <strong className="text-[#F4F2ED]">Best for: </strong>
+                  {service.idealFor}
+                </p>
+              </div>
+
+              {/* Column 3: Action (3 cols) */}
+              <div className="lg:col-span-3 lg:flex lg:justify-end pt-2 lg:pt-0">
+                <button
+                  onClick={() => onOpenInquiry(service.title)}
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full border border-[#22252A] hover:border-[#F4F2ED] bg-[#141618] hover:bg-[#F4F2ED] text-[#F4F2ED] hover:text-[#0C0D0E] text-xs sm:text-sm font-semibold transition-all duration-150 cursor-pointer"
+                >
+                  <span>Inquire for {service.title}</span>
+                  <ArrowUpRight className="w-4 h-4 stroke-[2]" />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
