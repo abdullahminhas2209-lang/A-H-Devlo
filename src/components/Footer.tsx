@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             {/* Direct Contact Details */}
-            <div className="pt-2 space-y-1 text-xs font-mono text-[#8E9298]">
+            <div className="pt-2 space-y-1 text-xs font-body text-[#8E9298]">
               <div>
                 <span>Email: </span>
                 <a
