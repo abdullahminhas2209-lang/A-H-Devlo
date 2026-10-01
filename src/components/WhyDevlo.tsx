@@ -43,7 +43,7 @@ export const WhyDevlo: React.FC = () => {
         {/* Section Top Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>03 / OUR PRINCIPLES</span>
             </div>
@@ -65,10 +65,10 @@ export const WhyDevlo: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-mono tracking-tighter">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-sans tracking-tight">
                       {principle.number}
                     </span>
-                    <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest">
+                    <span className="text-xs font-sans font-medium text-[var(--text-muted)] uppercase tracking-wider">
                       Standard of Craft
                     </span>
                   </div>

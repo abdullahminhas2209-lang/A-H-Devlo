@@ -24,7 +24,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-24 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>01 / SELECTED WORK</span>
             </div>
@@ -65,17 +65,17 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
                     {/* Project Information Side (5 cols) */}
                     <div className={`lg:col-span-5 space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                      {/* Tags & Badge */}
+                      {/* Tags & Badge (Image 1) */}
                       <div className="flex flex-wrap items-center gap-2">
                         {project.isConcept && (
-                          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-mono uppercase tracking-widest font-semibold">
+                          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-sans uppercase tracking-widest font-semibold">
                             CONCEPT PROJECT
                           </span>
                         )}
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 rounded-full bg-[#0E243A]/70 border border-[var(--border-subtle)] text-cyan-200 text-[10px] font-mono uppercase tracking-wider"
+                            className="px-2.5 py-1 rounded-full bg-[#0E243A]/70 border border-[var(--border-subtle)] text-cyan-200 text-[10px] font-sans uppercase tracking-wider font-medium"
                           >
                             {tag}
                           </span>
@@ -84,7 +84,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
                       {/* Title */}
                       <div>
-                        <span className="text-xs text-[var(--text-muted)] font-mono block mb-1">
+                        <span className="text-xs text-[var(--text-muted)] font-sans font-medium block mb-1">
                           0{index + 1} — {project.category}
                         </span>
                         <h3
@@ -104,7 +104,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                       <div className="space-y-2 pt-2 border-t border-[var(--border-subtle)]">
                         {project.highlights.slice(0, 2).map((item, hIdx) => (
                           <div key={hIdx} className="text-xs text-[var(--text-body)] flex items-start space-x-2">
-                            <span className="text-[var(--accent-blue)] font-mono font-semibold">0{hIdx + 1}.</span>
+                            <span className="text-[var(--accent-blue)] font-sans font-semibold">0{hIdx + 1}.</span>
                             <span>
                               <strong className="text-[var(--color-heading)] font-medium">{item.title}:</strong> {item.description}
                             </span>

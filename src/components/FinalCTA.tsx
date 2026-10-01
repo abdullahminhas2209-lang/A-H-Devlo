@@ -20,7 +20,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
         <ScrollReveal>
           <div className="p-8 sm:p-14 lg:p-20 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-xl text-center space-y-8 relative shadow-2xl">
             {/* Eyebrow */}
-            <div className="inline-flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+            <div className="inline-flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>GET IN TOUCH</span>
             </div>

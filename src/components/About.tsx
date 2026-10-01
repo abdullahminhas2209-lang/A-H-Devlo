@@ -18,7 +18,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
           {/* Left Column: Heading & Monogram */}
           <div className="lg:col-span-5 space-y-6">
             <ScrollReveal>
-              <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-4">
+              <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-4">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
                 <span>05 / ABOUT THE STUDIO</span>
               </div>
@@ -30,11 +30,11 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
 
             <ScrollReveal delayMs={100}>
               <div className="p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md space-y-4 shadow-lg">
-                <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)] block font-semibold">
+                <span className="text-xs font-sans uppercase tracking-widest text-[var(--text-muted)] block font-semibold">
                   Official Studio Identity
                 </span>
                 <BrandLogo size="lg" />
-                <p className="text-xs text-[var(--text-muted)] font-mono pt-3 border-t border-[var(--border-subtle)]">
+                <p className="text-xs text-[var(--text-muted)] font-sans pt-3 border-t border-[var(--border-subtle)]">
                   Independent Web Design &amp; Development Practice
                 </p>
               </div>
@@ -61,7 +61,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                 <div className="p-5 rounded-xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md space-y-2">
                   <div className="flex items-center space-x-2 text-[var(--accent-blue)]">
                     <Terminal className="w-4 h-4" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                    <span className="text-xs font-sans font-bold uppercase tracking-wider">
                       Direct Craft
                     </span>
                   </div>
@@ -73,7 +73,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                 <div className="p-5 rounded-xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md space-y-2">
                   <div className="flex items-center space-x-2 text-[var(--accent-blue)]">
                     <ShieldCheck className="w-4 h-4" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                    <span className="text-xs font-sans font-bold uppercase tracking-wider">
                       Honest Scope
                     </span>
                   </div>

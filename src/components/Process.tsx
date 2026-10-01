@@ -64,7 +64,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>04 / HOW WE WORK</span>
             </div>
@@ -90,14 +90,14 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                     {/* Step Indicator & Icon (3 cols) */}
                     <div className="lg:col-span-3 flex items-center space-x-4">
-                      <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-mono">
+                      <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-sans">
                         {step.number}
                       </span>
                       <div className="w-9 h-9 rounded-lg bg-[#0C1F35]/70 border border-[var(--border-subtle)] flex items-center justify-center text-[var(--accent-blue)] shrink-0">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <span className="text-xs font-mono tracking-widest text-[var(--text-muted)] uppercase block font-semibold">
+                        <span className="text-xs font-sans tracking-widest text-[var(--text-muted)] uppercase block font-semibold">
                           STAGE
                         </span>
                         <h3 className="text-xl font-bold text-[var(--color-heading)] tracking-tight font-heading">
@@ -118,7 +118,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
 
                     {/* Key Deliverable Box (3 cols) */}
                     <div className="lg:col-span-3 bg-[var(--bg-deep)]/70 p-4 rounded-xl border border-[var(--border-subtle)]">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-blue)] block mb-1 font-semibold">
+                      <span className="text-[10px] font-sans uppercase tracking-widest text-[var(--accent-blue)] block mb-1 font-semibold">
                         Outcome
                       </span>
                       <p className="text-xs text-[var(--text-body)] leading-snug font-body">

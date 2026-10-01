@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({
           {/* LEFT COLUMN: Editorial Headline & Actions matching user reference */}
           <div className="lg:col-span-6 space-y-8 z-20">
             {/* Top Eyebrow */}
-            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>WEB DESIGN × DEVELOPMENT</span>
             </div>
@@ -66,8 +66,8 @@ export const Hero: React.FC<HeroProps> = ({
               </button>
             </div>
 
-            {/* Bottom Eyebrow matching reference */}
-            <div className="pt-6 flex items-center space-x-2 text-[11px] font-mono tracking-widest text-[var(--text-muted)] uppercase">
+            {/* Bottom Eyebrow matching reference (Image 3) */}
+            <div className="pt-6 flex items-center space-x-2 text-[11px] font-sans font-medium tracking-widest text-[var(--text-muted)] uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shrink-0"></span>
               <span>SMALL STUDIO. SERIOUS WEBSITES.</span>
             </div>

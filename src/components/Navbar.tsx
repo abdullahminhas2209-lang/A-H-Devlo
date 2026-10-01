@@ -39,12 +39,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           <BrandLogo size="md" />
         </button>
 
-        {/* Right Status Badge & Direct CTA */}
+        {/* Right Direct CTA */}
         <div className="flex items-center space-x-3 pointer-events-auto">
-          <div className="hidden sm:flex items-center space-x-2 text-[11px] font-mono text-[var(--color-heading)] font-medium px-3 py-1.5 rounded-full bg-[var(--surface-card)] border border-[var(--border-subtle)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] shadow-[0_0_8px_var(--accent-blue)] animate-pulse"></span>
-            <span>Available for Q2/Q3</span>
-          </div>
 
           <button
             onClick={() => onOpenInquiry()}

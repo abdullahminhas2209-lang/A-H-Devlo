@@ -17,7 +17,7 @@ export const TrustStatement: React.FC<TrustStatementProps> = ({ onOpenInquiry })
 
       <div className="max-w-5xl mx-auto px-5 sm:px-8 text-center space-y-10">
         <ScrollReveal>
-          <div className="inline-flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-4">
+          <div className="inline-flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-4">
             <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
             <span>THE STUDIO STANDARD</span>
           </div>

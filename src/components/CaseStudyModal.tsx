@@ -86,17 +86,17 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         {/* Header Block */}
         <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--accent-blue)]">
+            <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[var(--accent-blue)]">
               {project.category}
             </span>
             <span className="text-slate-600">•</span>
             {project.isConcept && (
-              <span className="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-mono uppercase tracking-widest font-semibold">
+              <span className="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-sans uppercase tracking-widest font-semibold">
                 CONCEPT PROJECT
               </span>
             )}
             <span className="text-slate-600 hidden sm:inline">•</span>
-            <span className="text-xs text-[var(--text-muted)] font-mono hidden sm:inline">Year: {project.year}</span>
+            <span className="text-xs text-[var(--text-muted)] font-sans hidden sm:inline">Year: {project.year}</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-heading)] tracking-tight leading-tight">
@@ -110,7 +110,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
         {/* Project Overview Metadata Grid */}
         <section className="rounded-xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md p-6 sm:p-8">
-          <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[var(--text-muted)] mb-6">
+          <h2 className="text-xs font-sans font-bold uppercase tracking-widest text-[var(--text-muted)] mb-6">
             Project Overview
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
@@ -158,7 +158,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         <section className="space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[var(--border-subtle)]">
             <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--accent-blue)] block mb-1">
+              <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[var(--accent-blue)] block mb-1">
                 Visual Artifacts
               </span>
               <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-heading)] tracking-tight">
@@ -224,7 +224,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         {/* Project Details & Architectural Features */}
         <section className="space-y-6">
           <div className="max-w-2xl">
-            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--accent-blue)] block mb-1">
+            <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[var(--accent-blue)] block mb-1">
               Engineering &amp; UX
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-heading)] tracking-tight">
@@ -238,7 +238,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                 key={index}
                 className="p-6 rounded-xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md space-y-3"
               >
-                <div className="text-xs font-mono text-[var(--accent-blue)] font-semibold">
+                <div className="text-xs font-sans text-[var(--accent-blue)] font-semibold">
                   DECISION 0{index + 1}
                 </div>
                 <h3 className="text-base font-bold text-[var(--color-heading)]">{highlight.title}</h3>
@@ -251,7 +251,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
           {/* Deliverables Checklist */}
           <div className="mt-8 p-6 sm:p-8 rounded-xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md">
-            <h3 className="text-sm font-mono font-bold uppercase tracking-widest text-[var(--text-muted)] mb-4">
+            <h3 className="text-sm font-sans font-bold uppercase tracking-widest text-[var(--text-muted)] mb-4">
               Delivered Assets &amp; Specifications
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

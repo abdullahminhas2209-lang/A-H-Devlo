@@ -64,7 +64,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-mono font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
+            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>02 / WHAT WE DO</span>
             </div>
@@ -90,7 +90,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
                   <div className="space-y-6">
                     {/* Top Bar: Number & Icon */}
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-mono font-bold text-[var(--accent-blue)]">
+                      <span className="text-sm font-sans font-bold text-[var(--accent-blue)]">
                         {service.number}
                       </span>
                       <div className="w-10 h-10 rounded-xl bg-[#0E243A]/80 border border-[var(--border-subtle)] flex items-center justify-center text-slate-300 group-hover:text-[var(--color-heading)] group-hover:border-[var(--accent-blue)]/50 transition-colors shadow">
@@ -110,7 +110,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
 
                     {/* Feature Checklist */}
                     <div className="pt-4 border-t border-[var(--border-subtle)] space-y-2.5">
-                      <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
+                      <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
                         Key Deliverables
                       </span>
                       {service.features.map((feature, fIdx) => (
