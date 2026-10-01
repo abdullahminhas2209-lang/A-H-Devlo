@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             {/* Direct Contact Text Details */}
-            <div className="pt-2 space-y-1 text-xs font-mono text-slate-400">
+            <div className="pt-2 space-y-1 text-sm font-body text-slate-400">
               <div>
                 <span className="text-slate-500">Email: </span>
                 <a
@@ -208,7 +208,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Bar: Copyright & Consolidated Legal Links (No duplication) */}
-        <div className="pt-8 border-t border-[#14304D]/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <div className="pt-8 border-t border-[#14304D]/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-body">
           <div>
             &copy; {CURRENT_YEAR} A&amp;H Devlo. All rights reserved.
           </div>
