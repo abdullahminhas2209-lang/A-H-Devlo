@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import type { ProjectData } from '../types';
 import { BrowserMockup } from './BrowserMockup';
 import { ScrollReveal } from './ScrollReveal';
@@ -16,45 +16,39 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
   onOpenInquiry,
 }) => {
   return (
-    <section id="work" className="py-24 md:py-36 bg-transparent relative">
+    <section id="work" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neutral-800 to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-24 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>01 / SELECTED WORK</span>
+          <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
+              <span>PORTFOLIO</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Work we&apos;re proud of.
+            <h2 className="section-title font-extrabold tracking-tight text-white leading-tight font-heading">
+              Built for performance &amp; conversion.
             </h2>
-            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
-              A selection of websites and digital experiences designed and developed by A&amp;H Devlo.
+            <p className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed max-w-2xl font-body">
+              A curated selection of production websites and conversion-engineered digital flagships built by A&amp;H Devlo Studio.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Large Format Project Showcases with Scroll Reveal */}
-        <div className="space-y-20 md:space-y-32">
+        {/* 2x2 Portfolio Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, index) => {
-            const isEven = index % 2 === 0;
-
             return (
               <ScrollReveal key={project.id} delayMs={index * 100}>
                 <div
-                  className="group relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] backdrop-blur-md transition-all duration-500 overflow-hidden p-6 sm:p-8 lg:p-12 shadow-xl hover:shadow-[0_12px_40px_rgba(0,10,25,0.7)]"
+                  onClick={() => onSelectProject(project.id)}
+                  className="group relative rounded-2xl overflow-hidden border border-neutral-800/80 bg-neutral-900/40 hover:border-neutral-700/90 hover:bg-neutral-900/70 hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 flex flex-col cursor-pointer h-full"
                 >
-                  <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center`}>
-                    {/* Visual Preview Side (7 cols) */}
-                    <div
-                      onClick={() => onSelectProject(project.id)}
-                      className={`lg:col-span-7 cursor-pointer transition-transform duration-500 ease-out group-hover:scale-[1.02] ${
-                        isEven ? 'lg:order-1' : 'lg:order-2'
-                      }`}
-                    >
+                  {/* Media Wrapper with 16:10 aspect ratio */}
+                  <div className="relative p-3 sm:p-4 bg-neutral-950/70 border-b border-neutral-800/70 overflow-hidden">
+                    <div className="transition-transform duration-500 ease-out group-hover:scale-[1.02]">
                       <BrowserMockup
                         imageSrc={project.image}
                         title={project.title}
@@ -62,66 +56,58 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                         accentColor={project.accentColor}
                       />
                     </div>
+                  </div>
 
-                    {/* Project Information Side (5 cols) */}
-                    <div className={`lg:col-span-5 space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                      {/* Tags & Badge (Image 1) */}
-                      <div className="flex flex-wrap items-center gap-2">
-                        {project.isConcept && (
-                          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-sans uppercase tracking-widest font-semibold">
-                            CONCEPT PROJECT
+                  {/* Card Content */}
+                  <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 space-y-4">
+                    <div className="space-y-3">
+                      {/* Top Meta: Category Tag & Live Preview Pill */}
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-[var(--accent-blue)] uppercase tracking-wider">
+                            {project.category}
                           </span>
-                        )}
+                          {project.isConcept && (
+                            <span className="px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-sans uppercase tracking-widest font-semibold">
+                              CONCEPT
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-1 text-xs text-neutral-400 group-hover:text-white transition-colors">
+                          <span>Case Study</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-indigo-300 transition-colors font-heading">
+                        {project.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-sm text-neutral-400 leading-relaxed font-body line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Bullet Tags & Quick View Action */}
+                    <div className="pt-3 border-t border-neutral-800/60 flex items-center justify-between gap-2">
+                      <div className="flex flex-wrap items-center gap-1.5">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 rounded-full bg-[#0E243A]/70 border border-[var(--border-subtle)] text-cyan-200 text-[10px] font-sans uppercase tracking-wider font-medium"
+                            className="px-2.5 py-1 rounded-md bg-neutral-800/60 border border-neutral-700/40 text-neutral-300 text-[10px] uppercase tracking-wider font-medium"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      {/* Title */}
-                      <div>
-                        <span className="text-xs text-[var(--text-muted)] font-sans font-medium block mb-1">
-                          0{index + 1} — {project.category}
-                        </span>
-                        <h3
-                          onClick={() => onSelectProject(project.id)}
-                          className="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--color-heading)] tracking-tight hover:text-white transition-colors cursor-pointer font-heading"
-                        >
-                          {project.title}
-                        </h3>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-[var(--text-body)] text-sm sm:text-base leading-relaxed font-body">
-                        {project.description}
-                      </p>
-
-                      {/* Highlights Preview */}
-                      <div className="space-y-2 pt-2 border-t border-[var(--border-subtle)]">
-                        {project.highlights.slice(0, 2).map((item, hIdx) => (
-                          <div key={hIdx} className="text-xs text-[var(--text-body)] flex items-start space-x-2">
-                            <span className="text-[var(--accent-blue)] font-sans font-semibold">0{hIdx + 1}.</span>
-                            <span>
-                              <strong className="text-[var(--color-heading)] font-medium">{item.title}:</strong> {item.description}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Interaction Button */}
-                      <div className="pt-2">
-                        <button
-                          onClick={() => onSelectProject(project.id)}
-                          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[#0E243A]/80 hover:bg-[var(--accent-blue)] text-white text-xs sm:text-sm font-semibold border border-[var(--border-subtle)] hover:border-[var(--accent-blue)] transition-all duration-200 group-hover:translate-x-1 cursor-pointer shadow"
-                        >
-                          <span>View Case Study</span>
-                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </button>
-                      </div>
+                      <span className="text-xs font-semibold text-white group-hover:translate-x-0.5 transition-transform shrink-0 flex items-center gap-1">
+                        <span>Explore</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-[var(--accent-blue)]" />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -132,18 +118,18 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
         {/* Portfolio Bottom Strip */}
         <ScrollReveal delayMs={200}>
-          <div className="mt-16 p-8 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="mt-10 sm:mt-12 p-6 sm:p-7 rounded-2xl bg-neutral-900/50 border border-neutral-800 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 shadow-xl">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-[var(--color-heading)] tracking-tight font-heading">
+              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight font-heading">
                 Looking for something tailored to your industry?
               </h4>
-              <p className="text-xs sm:text-sm text-[var(--text-body)] mt-1 font-body">
-                Every website we build is designed specifically around your customer journey and business goals.
+              <p className="text-xs sm:text-sm text-neutral-400 mt-1 font-body">
+                Every website we build is custom-designed around your unique customer journey and business goals.
               </p>
             </div>
             <button
               onClick={onOpenInquiry}
-              className="inline-flex items-center space-x-2 px-7 py-3 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-sm font-semibold transition-all duration-200 shadow-md shadow-blue-900/40 shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-indigo-950/40 shrink-0 cursor-pointer hover:scale-[1.02] active:scale-95"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -154,3 +140,5 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
     </section>
   );
 };
+
+export default SelectedWork;

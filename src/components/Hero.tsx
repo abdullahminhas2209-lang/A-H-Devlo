@@ -1,224 +1,83 @@
-import React, { useState } from 'react';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, ArrowUpRight, CheckCircle2, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   onOpenInquiry: () => void;
   onViewWork: () => void;
-  onSelectProject: (projectId: string) => void;
+  onSelectProject?: (projectId: string) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onOpenInquiry,
   onViewWork,
-  onSelectProject,
 }) => {
-  // 0: Restaurant (center), 1: Fashion (top-back), 2: Fitness (front-left)
-  const [activeCard, setActiveCard] = useState<number>(0);
-
   return (
-    <section id="hero" className="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden bg-transparent">
-      {/* Subtle Studio Ambient Lighting */}
-      <div className="absolute top-1/4 left-1/3 w-[700px] h-[350px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
-      <div className="absolute top-1/3 right-10 w-[600px] h-[350px] bg-cyan-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+    <section
+      id="hero"
+      className="min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center text-center relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8"
+    >
+      {/* Ambient Glow: Soft radial gradient in the background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-gradient-to-tr from-indigo-500/10 to-violet-500/10 blur-[120px] pointer-events-none rounded-full -z-10" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* LEFT COLUMN: Editorial Headline & Actions matching user reference */}
-          <div className="lg:col-span-6 space-y-8 z-20">
-            {/* Top Eyebrow */}
-            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>WEB DESIGN × DEVELOPMENT</span>
-            </div>
+      <div className="max-w-4xl mx-auto flex flex-col items-center">
+        {/* Top Status Badge with pulsing emerald dot */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 backdrop-blur-md text-xs font-medium text-neutral-300 mb-6 shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+          <span>Available for new projects</span>
+          <span className="text-neutral-600 dark:text-neutral-500">•</span>
+          <span className="text-neutral-400 flex items-center gap-1">
+            <Sparkles className="w-3 h-3 text-[var(--accent-blue)]" />
+            Q2 Booking Open
+          </span>
+        </div>
 
-            {/* Stacked Editorial Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.05] font-heading">
-              Websites<br />
-              that make<br />
-              small<br />
-              businesses<br />
-              look<br />
-              professional.
-            </h1>
+        {/* Hero Headline with clamp, zero awkward word breaks */}
+        <h1 className="hero-display font-extrabold tracking-tight text-white max-w-4xl leading-[1.12]">
+          Websites that make small businesses look professional.
+        </h1>
 
-            {/* Supporting Copy */}
-            <p className="text-sm sm:text-base text-[var(--text-body)] max-w-md font-body leading-relaxed font-normal">
-              We design and develop clean, modern websites and landing pages that help businesses build credibility and stand out online.
-            </p>
+        {/* Subtitle */}
+        <p className="lead-text mt-6 text-neutral-400 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+          We design and develop clean, high-performance websites and conversion landing pages that help businesses build credibility and stand out online.
+        </p>
 
-            {/* Pill Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onOpenInquiry}
-                className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-bold text-sm transition-all duration-200 shadow-xl shadow-blue-950/50 hover:shadow-[0_0_20px_rgba(47,123,255,0.45)] hover:-translate-y-0.5 cursor-pointer font-heading"
-              >
-                <span>Start a Project</span>
-                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-              </button>
+        {/* Action Group */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+          <button
+            onClick={onOpenInquiry}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm tracking-tight hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-indigo-950/50 hover:shadow-[0_0_24px_rgba(99,102,241,0.5)] cursor-pointer font-heading"
+          >
+            <span>Start a Project</span>
+            <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+          </button>
 
-              <button
-                onClick={onViewWork}
-                className="inline-flex items-center space-x-2 px-7 py-3.5 rounded-full bg-transparent hover:bg-white/5 text-[var(--color-heading)] font-medium text-sm border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] transition-all duration-200 cursor-pointer"
-              >
-                <span>View Our Work</span>
-                <ArrowDown className="w-4 h-4 text-[var(--text-muted)]" />
-              </button>
-            </div>
+          <button
+            onClick={onViewWork}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-neutral-900/60 hover:bg-neutral-800/80 text-white font-medium text-sm border border-neutral-800 hover:border-neutral-700 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+          >
+            <span>View Selected Work</span>
+            <ArrowDown className="w-4 h-4 text-neutral-400" />
+          </button>
+        </div>
 
-            {/* Bottom Eyebrow matching reference (Image 3) */}
-            <div className="pt-6 flex items-center space-x-2 text-[11px] font-sans font-medium tracking-widest text-[var(--text-muted)] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shrink-0"></span>
-              <span>SMALL STUDIO. SERIOUS WEBSITES.</span>
-            </div>
+        {/* Social Proof / Metrics Row (Directly below CTAs) */}
+        <div className="mt-12 pt-8 border-t border-neutral-800/70 w-full max-w-2xl flex flex-wrap items-center justify-center gap-y-3 gap-x-8 text-xs sm:text-sm text-neutral-400 font-medium">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
+            <span>100% Responsive Everywhere</span>
           </div>
-
-          {/* RIGHT COLUMN: Layered Angled Browser Mockup Deck matching user reference */}
-          <div className="lg:col-span-6 relative min-h-[460px] sm:min-h-[560px] lg:min-h-[620px] flex items-center justify-center">
-            
-            {/* CARD 1: Top-Back Layer (Fashion / Atelier) */}
-            <div
-              onMouseEnter={() => setActiveCard(1)}
-              onClick={() => onSelectProject('maison-forme')}
-              className={`absolute top-4 sm:top-8 left-4 sm:left-10 w-[82%] sm:w-[72%] max-w-[430px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl ${
-                activeCard === 1
-                  ? 'z-30 scale-105 rotate-0 border-cyan-400 shadow-cyan-950/60 translate-y-0'
-                  : 'z-10 -rotate-6 scale-95 border-[#2A344A] hover:border-cyan-400/50 shadow-black/80'
-              }`}
-              style={{
-                background: '#8FA0B5',
-              }}
-            >
-              {/* Browser Window Chrome */}
-              <div className="h-7 bg-[#7D90A6] px-3 flex items-center space-x-1.5 border-b border-[#6E8096]">
-                <div className="w-2 h-2 rounded-full bg-slate-200/70"></div>
-                <div className="w-2 h-2 rounded-full bg-slate-200/70"></div>
-                <div className="w-2 h-2 rounded-full bg-slate-200/70"></div>
-              </div>
-
-              {/* Card Body Content (Atelier lookbook) */}
-              <div className="p-5 text-slate-900 space-y-3 aspect-[16/11] flex flex-col justify-between">
-                <div>
-                  <div className="text-[10px] font-mono tracking-widest uppercase text-slate-700 font-bold">
-                    ATELIER / 04
-                  </div>
-                  <div className="text-xl font-extrabold tracking-tight text-slate-900 mt-1 font-heading">
-                    Maison Forme
-                  </div>
-                </div>
-
-                <div className="space-y-1.5 opacity-60">
-                  <div className="w-3/4 h-2 bg-slate-800 rounded"></div>
-                  <div className="w-1/2 h-2 bg-slate-800 rounded"></div>
-                </div>
-
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-slate-800 font-semibold border-t border-slate-700/20">
-                  <span>AUTUMN CAMPAIGN</span>
-                  <span className="text-blue-900">Explore Collection ↗</span>
-                </div>
-              </div>
-            </div>
-
-            {/* CARD 2: Large Dominant Center-Right Layer (Restaurant / Osteria Riva) */}
-            <div
-              onMouseEnter={() => setActiveCard(0)}
-              onClick={() => onSelectProject('osteria-riva')}
-              className={`absolute top-12 sm:top-16 right-0 sm:right-4 w-[90%] sm:w-[82%] max-w-[490px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl ${
-                activeCard === 0
-                  ? 'z-30 scale-100 rotate-0 border-amber-400/80 shadow-amber-950/40 translate-y-0'
-                  : 'z-20 rotate-3 scale-95 border-[#3E3832] hover:border-amber-400/60 shadow-black/90'
-              }`}
-              style={{
-                background: '#EAE4D9',
-              }}
-            >
-              {/* Browser Window Chrome */}
-              <div className="h-8 bg-[#DDD5C7] px-3 flex items-center space-x-1.5 border-b border-[#CFC5B4]">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#B8ADA0]"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-[#B8ADA0]"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-[#B8ADA0]"></div>
-                <span className="text-[10px] text-[#7A7062] font-mono pl-3">osteriariva.com</span>
-              </div>
-
-              {/* Card Body Content (Warm cream restaurant) */}
-              <div className="p-6 text-[#1A1815] space-y-4 aspect-[16/11] flex flex-col justify-between">
-                <div>
-                  <div className="text-[11px] font-mono tracking-widest uppercase text-[#8A7E6E] font-bold">
-                    OSTERIA RIVA
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#1A1815] mt-1 font-heading leading-tight">
-                    A TABLE WORTH MAKING TIME FOR.
-                  </h3>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <button className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold shadow">
-                    Book a table
-                  </button>
-                  <span className="text-xs text-[#7A7062] font-medium">Tasting Menu &amp; Cellar</span>
-                </div>
-
-                {/* Split preview columns */}
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <div className="p-2.5 rounded-lg bg-[#DCD4C4] space-y-1">
-                    <div className="text-[10px] font-mono font-bold text-[#554D40]">CENA / DINNER</div>
-                    <div className="text-[10px] text-[#7A7062]">Handmade Tagliatelle</div>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-[#DCD4C4] space-y-1">
-                    <div className="text-[10px] font-mono font-bold text-[#554D40]">CARTA DEI VINI</div>
-                    <div className="text-[10px] text-[#7A7062]">Barolo DOCG 2017</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CARD 3: Foreground Left Floating Layer (Fitness / Train With Intent) */}
-            <div
-              onMouseEnter={() => setActiveCard(2)}
-              onClick={() => onSelectProject('apex-athletic-lab')}
-              className={`absolute bottom-2 sm:bottom-6 left-2 sm:left-8 w-[72%] sm:w-[62%] max-w-[360px] rounded-2xl overflow-hidden border transition-all duration-700 ease-out cursor-pointer shadow-2xl ${
-                activeCard === 2
-                  ? 'z-30 scale-105 rotate-0 border-emerald-400 shadow-emerald-950/60 translate-y-0'
-                  : 'z-25 -rotate-2 scale-95 border-[#3E4D2B] hover:border-emerald-400/70 shadow-black/90'
-              }`}
-              style={{
-                background: '#DCE8A6',
-              }}
-            >
-              {/* Browser Window Chrome */}
-              <div className="h-7 bg-[#CCD894] px-3 flex items-center space-x-1.5 border-b border-[#B8C67C]">
-                <div className="w-2 h-2 rounded-full bg-[#8A9652]"></div>
-                <div className="w-2 h-2 rounded-full bg-[#8A9652]"></div>
-                <div className="w-2 h-2 rounded-full bg-[#8A9652]"></div>
-              </div>
-
-              {/* Card Body Content (Lime fitness studio) */}
-              <div className="p-5 text-[#192405] space-y-3 aspect-[16/12] flex flex-col justify-between">
-                <div>
-                  <div className="text-[10px] font-mono tracking-widest uppercase text-[#54681E] font-bold">
-                    APEX ATHLETIC LAB
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-[#192405] mt-1 font-heading">
-                    TRAIN WITH INTENT.
-                  </h3>
-                </div>
-
-                <div className="space-y-1 text-xs text-[#3E4F12]">
-                  <p>Strength • Conditioning • Recovery</p>
-                </div>
-
-                <div>
-                  <button className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-semibold shadow hover:bg-blue-500 transition-colors">
-                    Start here ↗
-                  </button>
-                </div>
-              </div>
-            </div>
-
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
+            <span>Sub-Second Load Times</span>
           </div>
-
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
+            <span>SEO &amp; Conversion Optimized</span>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default Hero;

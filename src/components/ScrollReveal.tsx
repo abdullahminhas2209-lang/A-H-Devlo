@@ -28,8 +28,8 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         });
       },
       {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.05,
+        rootMargin: '0px 0px -10px 0px',
       }
     );
 
@@ -45,16 +45,16 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     if (isVisible) return 'opacity-100 translate-x-0 translate-y-0 scale-100';
     switch (direction) {
       case 'up':
-        return 'opacity-0 translate-y-10 scale-[0.98]';
+        return 'opacity-0 translate-y-5 scale-[0.99]';
       case 'down':
-        return 'opacity-0 -translate-y-10 scale-[0.98]';
+        return 'opacity-0 -translate-y-5 scale-[0.99]';
       case 'left':
-        return 'opacity-0 translate-x-10 scale-[0.98]';
+        return 'opacity-0 translate-x-5 scale-[0.99]';
       case 'right':
-        return 'opacity-0 -translate-x-10 scale-[0.98]';
+        return 'opacity-0 -translate-x-5 scale-[0.99]';
       case 'fade':
       default:
-        return 'opacity-0 scale-[0.97]';
+        return 'opacity-0 scale-[0.98]';
     }
   };
 

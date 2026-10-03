@@ -1,90 +1,91 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 export const WhyDevlo: React.FC = () => {
-  const principles = [
+  const differentiators = [
     {
       number: '01',
-      title: 'Clean by design',
+      title: 'Direct Founder Collaboration',
       description:
-        'We focus on clarity, hierarchy and purposeful design instead of unnecessary visual clutter. Your visitors should never struggle to understand what you do or how to take the next step.',
-      takeaway: 'Clarity drives trust and action.',
+        'You work directly with the senior engineers and designers building your website. Zero junior handoffs, no middle-management bloat, and fast feedback loops.',
+      takeaway: 'Direct access to senior craft',
     },
     {
       number: '02',
-      title: 'Built around your business',
+      title: 'Engineered for Speed',
       description:
-        'Every website is designed around your brand, audience and goals. We do not force your business into generic pre-made templates that look like hundreds of other competitors.',
-      takeaway: 'Custom tailored, zero cookie-cutter templates.',
+        'Every line of code is optimized for Core Web Vitals, ultra-fast initial render, and smooth mobile response. Fast websites rank higher and convert better.',
+      takeaway: 'Sub-second page speeds',
     },
     {
       number: '03',
-      title: 'Professional from the first click',
+      title: 'Transparent Pricing',
       description:
-        'Your website should give potential customers confidence before they ever contact you. High-grade typography, thoughtful spacing, and responsive speed communicate quality instantly.',
-      takeaway: 'First impressions determine customer trust.',
+        'Clear upfront milestones, guaranteed scope delivery, and flat project rates. Zero surprise fees, no hidden maintenance lock-ins, and 100% IP ownership.',
+      takeaway: 'Predictable flat investment',
     },
     {
       number: '04',
-      title: 'Responsive everywhere',
+      title: 'Conversion-Focused Architecture',
       description:
-        'Your website should look and work properly across desktop, tablet and mobile. More than 65% of your customers visit on mobile devices—we ensure their experience is flawless.',
-      takeaway: 'Pixel-perfect across all screen sizes.',
+        'We do not just make sites look beautiful—we engineer the information hierarchy and customer journey to guide visitors toward booking, calling, or inquiring.',
+      takeaway: 'Built to turn visitors into clients',
     },
   ];
 
   return (
-    <section id="why" className="py-24 md:py-36 bg-transparent relative">
+    <section id="why" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neutral-800 to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Top Header */}
         <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>03 / OUR PRINCIPLES</span>
+          <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
+              <span>WHY WORK WITH US</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Why work with A&amp;H Devlo?
+            <h2 className="section-title font-extrabold tracking-tight text-white leading-tight font-heading">
+              Built on clarity, speed, and craft.
             </h2>
-            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
-              We operate with a clear philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
+            <p className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed max-w-2xl font-body">
+              We operate with a simple philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Editorial Numbered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {principles.map((principle, index) => (
-            <ScrollReveal key={principle.number} delayMs={index * 80}>
+        {/* 4-Item Balanced Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {differentiators.map((item, index) => (
+            <ScrollReveal key={item.number} delayMs={index * 80}>
               <div
-                className="relative p-8 sm:p-10 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] hover:bg-[var(--surface-card-hover)] backdrop-blur-md transition-all duration-300 group flex flex-col justify-between h-full shadow-lg"
+                className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:border-neutral-700 hover:bg-neutral-900/60 backdrop-blur-md transition-all duration-300 group flex flex-col justify-between h-full shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-[var(--accent-blue)] font-sans tracking-tight">
-                      {principle.number}
+                  {/* Top: Mono Number Counter */}
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-2xl font-bold text-[var(--accent-blue)] font-mono tracking-tight">
+                      {item.number}
                     </span>
-                    <span className="text-xs font-sans font-medium text-[var(--text-muted)] uppercase tracking-wider">
-                      Standard of Craft
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
+                      Standard
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-[var(--color-heading)] tracking-tight mb-4 group-hover:text-white transition-colors font-heading">
-                    {principle.title}
+                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight mb-2.5 group-hover:text-indigo-300 transition-colors font-heading leading-snug">
+                    {item.title}
                   </h3>
 
-                  <p className="text-[var(--text-body)] text-sm sm:text-base leading-relaxed font-body">
-                    {principle.description}
+                  <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed font-body">
+                    {item.description}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-[var(--border-subtle)] flex items-center space-x-2 text-xs font-medium text-[var(--text-muted)]">
-                  <Check className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
-                  <span>{principle.takeaway}</span>
+                <div className="mt-6 pt-3.5 border-t border-neutral-800/80 flex items-center gap-2 text-xs font-medium text-neutral-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span className="truncate">{item.takeaway}</span>
                 </div>
               </div>
             </ScrollReveal>
@@ -94,3 +95,5 @@ export const WhyDevlo: React.FC = () => {
     </section>
   );
 };
+
+export default WhyDevlo;

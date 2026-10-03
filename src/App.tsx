@@ -123,10 +123,11 @@ export const App: React.FC = () => {
       <Navbar
         onOpenInquiry={handleOpenInquiry}
         onNavigate={handleNavigate}
+        activeSection={activeSection}
       />
 
-      {/* Main Studio Landing Body with safe bottom padding for the Dock */}
-      <main id="main-content" className="flex-1 pb-24 sm:pb-28">
+      {/* Main Studio Landing Body */}
+      <main id="main-content" className="flex-1">
         {/* 1. Hero Section */}
         <Hero
           onOpenInquiry={() => handleOpenInquiry()}

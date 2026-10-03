@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, Layers, Rocket, Search, Sliders, Wand2 } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Code2, Compass, Layers, Rocket } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface ProcessProps {
@@ -10,137 +10,117 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
   const steps = [
     {
       number: '01',
-      title: 'DISCOVER',
-      headline: 'We understand your business, audience and goals.',
+      title: 'Discovery & Strategy',
       description:
-        'We begin by analyzing your offerings, target customers, and business objectives. We map out content requirements and key conversion actions before drawing a single wireframe.',
-      icon: Search,
-      deliverable: 'Project scope, content blueprint & site architecture',
+        'We align on your business model, customer journeys, target conversion actions, and sitemap requirements.',
+      icon: Compass,
+      outcome: 'Project roadmap & scope architecture',
     },
     {
       number: '02',
-      title: 'DESIGN',
-      headline: 'We create the visual direction and website structure.',
+      title: 'Design & Prototyping',
       description:
-        'We craft high-fidelity desktop and mobile layouts using bespoke typography, disciplined whitespace, and strong visual hierarchy tailored specifically to your brand identity.',
-      icon: Wand2,
-      deliverable: 'Interactive Figma design mockups & review walkthrough',
+        'We create bespoke high-fidelity layouts, typography hierarchies, and mobile previews tailored to your brand.',
+      icon: Layers,
+      outcome: 'Interactive Figma review & approval',
     },
     {
       number: '03',
-      title: 'DEVELOP',
-      headline: 'We turn the approved design into a functional website.',
+      title: 'Development & Testing',
       description:
-        'We write clean, semantic code with ultra-fast page speeds, mobile responsiveness, and modern interactions. No bloated themes or fragile plugins.',
-      icon: Layers,
-      deliverable: 'Production codebase, CMS or inquiry integration',
+        'We write clean, high-performance code with sub-second speeds, full responsiveness, and smooth micro-interactions.',
+      icon: Code2,
+      outcome: 'Production build & multi-device audit',
     },
     {
       number: '04',
-      title: 'REFINE',
-      headline: 'We polish the details, responsiveness and interactions.',
+      title: 'Launch & Handoff',
       description:
-        'We test every viewport (iPhone, iPad, laptop, ultra-wide), audit form submissions, verify touch targets, and calibrate animations for a smooth visitor experience.',
-      icon: Sliders,
-      deliverable: 'Cross-browser audit, speed test & client feedback pass',
-    },
-    {
-      number: '05',
-      title: 'LAUNCH',
-      headline: 'Your website goes live and is ready for your customers.',
-      description:
-        'We connect your custom domain, implement essential SEO metadata, configure SSL certificates, and ensure everything is running at peak performance.',
+        'We connect your custom domain, implement essential SEO metadata, configure SSL, and verify analytics tracking.',
       icon: Rocket,
-      deliverable: 'Live website deployment, DNS handover & post-launch support',
+      outcome: 'Live verified website deployment',
     },
   ];
 
   return (
-    <section id="process" className="py-24 md:py-36 bg-transparent relative">
+    <section id="process" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neutral-800 to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>04 / HOW WE WORK</span>
+          <div className="max-w-3xl mb-12 md:mb-16 space-y-3 sm:space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
+              <span>HOW WE WORK</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              From idea to launch.
+            <h2 className="section-title font-extrabold tracking-tight text-white leading-tight font-heading">
+              A transparent four-step journey to launch.
             </h2>
-            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
-              A transparent five-step process designed to keep your project on schedule, stress-free, and aligned with your business goals.
+            <p className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed max-w-2xl font-body">
+              Engineered to keep your website project on schedule, stress-free, and directly aligned with your commercial objectives.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Sequential Timeline Layout */}
-        <div className="space-y-6">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
+        {/* Connected Step Tracker (Horizontal on desktop / Vertical on mobile) */}
+        <div className="relative">
+          {/* Desktop Connecting Hairline Line */}
+          <div className="hidden lg:block absolute top-[2.25rem] left-[5%] right-[5%] h-px bg-neutral-800 -z-10" />
 
-            return (
-              <ScrollReveal key={step.number} delayMs={index * 60}>
-                <div
-                  className="group relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] hover:bg-[var(--surface-card-hover)] backdrop-blur-md p-6 sm:p-8 lg:p-10 transition-all duration-300 shadow-md"
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                    {/* Step Indicator & Icon (3 cols) */}
-                    <div className="lg:col-span-3 flex items-center space-x-4">
-                      <span className="text-2xl sm:text-3xl font-extrabold text-[var(--accent-blue)] font-sans">
-                        {step.number}
-                      </span>
-                      <div className="w-9 h-9 rounded-lg bg-[#0C1F35]/70 border border-[var(--border-subtle)] flex items-center justify-center text-[var(--accent-blue)] shrink-0">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-xs font-sans tracking-widest text-[var(--text-muted)] uppercase block font-semibold">
-                          STAGE
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+
+              return (
+                <ScrollReveal key={step.number} delayMs={index * 100}>
+                  <div
+                    className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:border-neutral-700 hover:bg-neutral-900/60 backdrop-blur-md transition-all duration-300 flex flex-col justify-between h-full group hover:shadow-xl hover:-translate-y-1"
+                  >
+                    <div>
+                      {/* Step Indicator Header with Icon & Counter */}
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="w-10 h-10 rounded-xl bg-neutral-800/90 border border-neutral-700/60 flex items-center justify-center text-[var(--accent-blue)] group-hover:scale-105 transition-transform shadow">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span className="text-xs font-mono font-bold text-neutral-500 group-hover:text-white transition-colors">
+                          STAGE {step.number}
                         </span>
-                        <h3 className="text-lg sm:text-xl font-bold text-[var(--color-heading)] tracking-tight font-heading">
-                          {step.title}
-                        </h3>
                       </div>
-                    </div>
 
-                    {/* Step Description & Headline (6 cols) */}
-                    <div className="lg:col-span-6 space-y-2">
-                      <h4 className="text-sm sm:text-base font-semibold text-[var(--color-heading)]/90 font-heading">
-                        {step.headline}
-                      </h4>
-                      <p className="text-sm text-[var(--text-body)] leading-relaxed font-body">
+                      {/* Title */}
+                      <h3 className="text-lg font-bold text-white tracking-tight mb-2 group-hover:text-indigo-300 transition-colors font-heading">
+                        {step.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-body">
                         {step.description}
                       </p>
                     </div>
 
-                    {/* Key Deliverable Box (3 cols) */}
-                    <div className="lg:col-span-3 bg-[var(--bg-deep)]/70 p-4 rounded-xl border border-[var(--border-subtle)]">
-                      <span className="text-[10px] font-sans uppercase tracking-widest text-[var(--accent-blue)] block mb-1 font-semibold">
-                        Outcome
-                      </span>
-                      <p className="text-xs text-[var(--text-body)] leading-snug font-body">
-                        {step.deliverable}
-                      </p>
+                    {/* Outcome Box */}
+                    <div className="mt-5 pt-3.5 border-t border-neutral-800/80 flex items-start gap-2 text-xs text-neutral-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span className="text-[11px] font-medium leading-snug">{step.outcome}</span>
                     </div>
                   </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
 
         {/* Timeline Bottom CTA */}
         <ScrollReveal delayMs={200}>
-          <div className="mt-12 text-center">
+          <div className="mt-10 sm:mt-12 text-center">
             <button
               onClick={onOpenInquiry}
-              className="inline-flex items-center space-x-2 text-sm font-semibold text-[var(--accent-blue)] hover:text-[var(--accent-blue-hover)] transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[var(--accent-blue)] hover:text-white transition-colors cursor-pointer group"
             >
-              <span>Have a project in mind? Let&apos;s map out your timeline</span>
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <span>Ready to begin? Let&apos;s map out your timeline</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
         </ScrollReveal>
@@ -148,3 +128,5 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
     </section>
   );
 };
+
+export default Process;

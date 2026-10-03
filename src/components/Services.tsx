@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Check, Compass, Layout, RefreshCw } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Clock, Code2, Compass, RefreshCw } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface ServicesProps {
@@ -10,131 +10,133 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
   const serviceList = [
     {
       number: '01',
-      title: 'Business Websites',
-      icon: Layout,
+      title: 'Custom Web Development',
+      icon: Code2,
       summary:
-        'Professional websites designed to establish credibility and clearly communicate what your business offers.',
+        'High performance, responsive, scalable code engineered from scratch to establish instant market authority.',
       features: [
-        'Custom bespoke design (no templates)',
+        'Bespoke visual architecture (zero cookie-cutter templates)',
         'Responsive mobile, tablet & desktop development',
-        'Business-focused architecture & copywriting structure',
-        'Contact & customer inquiry functionality',
-        'Modern interactions & fluid micro-animations',
+        'Built for Core Web Vitals and lightning load speeds',
+        'Integrated lead capture forms & booking systems',
+        'Clean, accessible, semantic code structure',
       ],
-      idealFor: 'Small businesses, practices, local establishments, & consultancy firms.',
+      turnaround: 'Delivered in 10–20 business days',
     },
     {
       number: '02',
-      title: 'Landing Pages',
+      title: 'Conversion Landing Pages',
       icon: Compass,
       summary:
-        'Focused pages designed around a specific product, service, campaign or business goal.',
+        'Focused, high-impact pages designed around a single campaign, product launch, or qualified lead generation goal.',
       features: [
-        'Conversion-focused layout & message pacing',
-        'Strong visual hierarchy guiding user attention',
-        'Fully responsive design optimized for paid traffic',
-        'Clear, unmissable calls-to-action (forms/calls/chat)',
-        'Fast-loading assets & zero script bloat',
+        'Conversion-optimized visual hierarchy & message pacing',
+        'Attention-grabbing hero sections with friction-free CTAs',
+        'Mobile-first responsive UX optimized for paid campaigns',
+        'Social proof, client testimonials & trust architectures',
+        'Sub-second initial load speeds with zero bloat',
       ],
-      idealFor: 'Promotional campaigns, product launches, service offers, & lead capture.',
+      turnaround: 'Delivered in 5–10 business days',
     },
     {
       number: '03',
-      title: 'Website Redesigns',
+      title: 'UI/UX Redesign & Optimization',
       icon: RefreshCw,
       summary:
-        'Transform an outdated website into a modern and professional digital presence.',
+        'Modernizing outdated websites into sleek, professional digital storefronts that win client trust.',
       features: [
-        'Complete visual redesign aligned with modern standards',
-        'Better content hierarchy & streamlined navigation',
-        'Responsive improvements for modern smartphones',
-        'Modern UI systems & typography overhaul',
-        'Performance-focused development & clean code structure',
+        'Complete visual & typographic overhaul',
+        'Streamlined user journeys and navigation pathways',
+        'Mobile optimization pass eliminating viewport bugs',
+        'Modern design tokens, micro-interactions & feedback states',
+        'SEO preservation & smooth DNS migration assistance',
       ],
-      idealFor: 'Businesses whose current website looks dated, slow, or broken on mobile.',
+      turnaround: 'Delivered in 7–14 business days',
     },
   ];
 
   return (
-    <section id="services" className="py-24 md:py-36 bg-transparent relative">
+    <section id="services" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/30 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neutral-800 to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollReveal>
-          <div className="max-w-3xl mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center space-x-2.5 text-xs font-sans font-semibold tracking-[0.2em] text-[var(--text-muted)] uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>02 / WHAT WE DO</span>
+          <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
+              <span>CORE OFFERINGS</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Everything your business needs to look professional online.
+            <h2 className="section-title font-extrabold tracking-tight text-white leading-tight font-heading">
+              Everything your business needs to win online.
             </h2>
-            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
-              We focus on clean, high-impact web design and development that helps small businesses establish credibility, communicate value, and win client trust.
+            <p className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed max-w-2xl font-body">
+              We specialize in clean, high-impact web design and engineering that helps ambitious businesses build credibility, communicate value, and close clients.
             </p>
           </div>
         </ScrollReveal>
 
         {/* 3 Primary Service Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {serviceList.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <ScrollReveal key={service.number} delayMs={index * 120}>
                 <div
-                  className="group relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] backdrop-blur-md p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 shadow-xl hover:shadow-[0_12px_40px_rgba(0,10,25,0.7)] h-full"
+                  className="group relative rounded-2xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-md hover:border-neutral-700/90 hover:bg-neutral-900/70 p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/60 h-full"
                 >
-                  <div className="space-y-6">
-                    {/* Top Bar: Number & Icon */}
+                  <div className="space-y-5">
+                    {/* Top: Custom Icon Badge & Number */}
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-sans font-bold text-[var(--accent-blue)]">
-                        {service.number}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-[#0E243A]/80 border border-[var(--border-subtle)] flex items-center justify-center text-slate-300 group-hover:text-[var(--color-heading)] group-hover:border-[var(--accent-blue)]/50 transition-colors shadow">
+                      <div className="w-11 h-11 rounded-xl bg-neutral-800 border border-neutral-700/60 flex items-center justify-center text-white group-hover:text-[var(--accent-blue)] group-hover:border-neutral-600 transition-colors shadow">
                         <Icon className="w-5 h-5" />
                       </div>
+                      <span className="text-xs font-mono font-bold text-neutral-500 group-hover:text-[var(--accent-blue)] transition-colors">
+                        {service.number}
+                      </span>
                     </div>
 
                     {/* Title & Summary */}
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-heading)] tracking-tight group-hover:text-white transition-colors font-heading">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-indigo-300 transition-colors font-heading">
                         {service.title}
                       </h3>
-                      <p className="mt-3 text-sm text-[var(--text-body)] leading-relaxed font-normal font-body">
+                      <p className="mt-2 text-sm text-neutral-400 leading-relaxed font-body">
                         {service.summary}
                       </p>
                     </div>
 
-                    {/* Feature Checklist */}
-                    <div className="pt-4 border-t border-[var(--border-subtle)] space-y-2.5">
-                      <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
-                        Key Deliverables
+                    {/* Feature Checklist with CheckCircle2 */}
+                    <div className="pt-4 border-t border-neutral-800/70 space-y-2.5">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 block">
+                        What&apos;s Included
                       </span>
                       {service.features.map((feature, fIdx) => (
-                        <div key={fIdx} className="flex items-start space-x-2.5 text-xs text-[var(--text-body)]">
-                          <Check className="w-4 h-4 text-[var(--accent-blue)] shrink-0 mt-0.5" />
+                        <div key={fIdx} className="flex items-start gap-2.5 text-xs text-neutral-300">
+                          <CheckCircle2 className="w-4 h-4 text-[var(--accent-blue)] shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </div>
                       ))}
                     </div>
 
-                    {/* Ideal For Note */}
-                    <div className="pt-3 text-[11px] text-[var(--text-body)] bg-[var(--bg-mid)]/60 p-3.5 rounded-xl border border-[var(--border-subtle)]">
-                      <span className="text-[var(--color-heading)] font-semibold">Best For: </span>
-                      {service.idealFor}
+                    {/* Turnaround Time Pill */}
+                    <div className="pt-2">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-950/80 border border-neutral-800 text-[11px] text-neutral-300 font-medium">
+                        <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <span>{service.turnaround}</span>
+                      </div>
                     </div>
                   </div>
 
                   {/* Bottom CTA Button */}
-                  <div className="pt-8">
+                  <div className="pt-6">
                     <button
                       onClick={() => onOpenInquiry(service.title)}
-                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-full bg-[#0E243A]/80 hover:bg-[var(--accent-blue)] text-white text-xs sm:text-sm font-semibold border border-[var(--border-subtle)] hover:border-[var(--accent-blue)] transition-all duration-200 cursor-pointer shadow group-hover:shadow-md"
+                      className="w-full inline-flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full bg-neutral-800/80 hover:bg-white hover:text-neutral-950 text-white text-xs sm:text-sm font-semibold border border-neutral-700 hover:border-white transition-all duration-200 cursor-pointer shadow group-hover:shadow-md active:scale-95 font-heading"
                     >
-                      <span>Let&apos;s build yours</span>
+                      <span>Inquire About This</span>
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </button>
                   </div>
@@ -147,3 +149,5 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
     </section>
   );
 };
+
+export default Services;
