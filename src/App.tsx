@@ -2,7 +2,6 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { projects } from './data/projects';
 import type { ProjectData } from './types';
 import { Navbar } from './components/Navbar';
-import { BottomDock } from './components/BottomDock';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
 import { Services } from './components/Services';
@@ -161,12 +160,6 @@ export const App: React.FC = () => {
         />
       </main>
 
-      {/* Floating Apple Dock Navbar pinned at the bottom */}
-      <BottomDock
-        activeSection={activeSection}
-        onNavigate={handleNavigate}
-        onOpenInquiry={() => handleOpenInquiry()}
-      />
 
       {/* Reusable Case Study View */}
       <Suspense fallback={null}>
