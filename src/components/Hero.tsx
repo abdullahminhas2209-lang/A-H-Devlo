@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 interface HeroProps {
   onOpenInquiry: () => void;
@@ -19,16 +19,6 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-[var(--bg-glow-top)]/40 blur-[130px] pointer-events-none rounded-full -z-10" />
 
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        {/* Top Status Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 backdrop-blur-md text-xs font-mono text-[var(--text-body)] mb-6 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-          <span>Available for New Projects</span>
-          <span className="text-[var(--text-muted)]">•</span>
-          <span className="text-[var(--color-heading)] flex items-center gap-1 font-semibold">
-            <Sparkles className="w-3 h-3 text-[var(--accent-blue)]" />
-            Direct Senior Craft
-          </span>
-        </div>
 
         {/* Hero Headline */}
         <h1 className="hero-display font-extrabold tracking-tight text-[var(--color-heading)] max-w-4xl leading-[1.12]">
