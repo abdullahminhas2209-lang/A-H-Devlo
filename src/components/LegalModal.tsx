@@ -24,15 +24,18 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
       role="dialog"
       aria-modal="true"
       aria-labelledby="legal-modal-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-6 animate-in fade-in duration-200"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
-      <div className="relative w-full max-w-2xl bg-[var(--bg-deep)]/95 border border-[var(--border-subtle)] rounded-2xl shadow-2xl overflow-hidden my-8 backdrop-blur-xl">
-        <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex items-center justify-between bg-[var(--surface-card)]">
+      <div className="relative w-full max-w-xl md:max-w-2xl bg-[var(--bg-deep)]/95 border border-[var(--border-subtle)] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] backdrop-blur-xl">
+        <div className="shrink-0 px-6 py-4 border-b border-[var(--border-subtle)] flex items-center justify-between bg-[var(--surface-card)]">
           <div className="flex items-center space-x-2">
             <Shield className="w-4 h-4 text-[var(--accent-blue)]" />
             <span
               id="legal-modal-title"
-              className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--color-heading)]"
+              className="text-xs font-sans font-semibold uppercase tracking-wider text-[var(--color-heading)]"
             >
               {type === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
             </span>
@@ -40,9 +43,9 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
           <button
             onClick={onClose}
             aria-label="Close modal dialog"
-            className="p-1 rounded-md text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] cursor-pointer"
+            className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-[var(--text-muted)] hover:text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
@@ -50,7 +53,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
           {type === 'privacy' ? (
             <>
               <h3 className="text-xl font-bold text-[var(--color-heading)]">Privacy Policy</h3>
-              <p className="text-xs text-[var(--text-muted)] font-mono">Effective: 2025 / 2026</p>
+              <p className="text-xs text-[var(--text-muted)] font-sans">Effective: 2025 / 2026</p>
               
               <div className="space-y-4">
                 <h4 className="text-base font-semibold text-[var(--color-heading)]">1. Information Collection</h4>
@@ -72,7 +75,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, type, onClose })
           ) : (
             <>
               <h3 className="text-xl font-bold text-[var(--color-heading)]">Terms of Service</h3>
-              <p className="text-xs text-[var(--text-muted)] font-mono">Effective: 2025 / 2026</p>
+              <p className="text-xs text-[var(--text-muted)] font-sans">Effective: 2025 / 2026</p>
 
               <div className="space-y-4">
                 <h4 className="text-base font-semibold text-[var(--color-heading)]">1. Scope of Services</h4>
