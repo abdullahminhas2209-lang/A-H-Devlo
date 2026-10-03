@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Social Proof / Metrics Row (Directly below CTAs) */}
-        <div className="mt-12 pt-8 border-t border-[var(--border-subtle)] w-full max-w-2xl flex flex-wrap items-center justify-center gap-y-3 gap-x-8 text-xs sm:text-sm text-[var(--text-muted)] font-medium">
+        <div className="mt-10 sm:mt-12 pt-7 sm:pt-8 border-t border-[var(--border-subtle)] w-full max-w-2xl flex flex-wrap items-center justify-center gap-y-2.5 sm:gap-y-3 gap-x-5 sm:gap-x-8 text-xs sm:text-sm text-[var(--text-muted)] font-medium">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
             <span>100% Responsive Everywhere</span>
