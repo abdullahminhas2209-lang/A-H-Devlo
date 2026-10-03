@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, CheckCircle2, Code2, Compass, Layers, Rocket } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Globe, PenTool, Route, Terminal } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 interface ProcessProps {
@@ -13,7 +13,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
       title: 'Discovery & Strategy',
       description:
         'We align on your business model, customer journeys, target conversion actions, and sitemap requirements.',
-      icon: Compass,
+      icon: Route,
       outcome: 'Project roadmap & scope architecture',
     },
     {
@@ -21,7 +21,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
       title: 'Design & Prototyping',
       description:
         'We create bespoke high-fidelity layouts, typography hierarchies, and mobile previews tailored to your brand.',
-      icon: Layers,
+      icon: PenTool,
       outcome: 'Interactive Figma review & approval',
     },
     {
@@ -29,7 +29,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
       title: 'Development & Testing',
       description:
         'We write clean, high-performance code with sub-second speeds, full responsiveness, and smooth micro-interactions.',
-      icon: Code2,
+      icon: Terminal,
       outcome: 'Production build & multi-device audit',
     },
     {
@@ -37,7 +37,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
       title: 'Launch & Handoff',
       description:
         'We connect your custom domain, implement essential SEO metadata, configure SSL, and verify analytics tracking.',
-      icon: Rocket,
+      icon: Globe,
       outcome: 'Live verified website deployment',
     },
   ];
@@ -80,7 +80,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
                         <div className="w-10 h-10 rounded-xl bg-[#0B3B61]/40 border border-[var(--border-subtle)] flex items-center justify-center text-[var(--accent-blue)] group-hover:scale-105 transition-transform shadow">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <span className="text-xs font-mono font-bold text-[var(--text-muted)] group-hover:text-[var(--color-heading)] transition-colors">
+                        <span className="text-xs font-heading font-bold uppercase tracking-wider text-[var(--text-muted)] group-hover:text-[var(--color-heading)] transition-colors">
                           STAGE {step.number}
                         </span>
                       </div>
