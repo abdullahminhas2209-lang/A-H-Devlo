@@ -43,15 +43,11 @@ export const WhyDevlo: React.FC = () => {
         {/* Section Top Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>WHY WORK WITH US</span>
-            </div>
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Built on clarity, speed, and craft.
+              The Studio Standard: Senior Craft, Zero Bloat
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
-              We operate with a simple philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
+              Direct founder-engineer collaboration, transparent flat investment, and sub-second Core Web Vitals. Built for long-term commercial advantage.
             </p>
           </div>
         </ScrollReveal>
@@ -69,7 +65,7 @@ export const WhyDevlo: React.FC = () => {
                     <span className="text-2xl font-bold text-[var(--accent-blue)] font-mono tracking-tight">
                       {item.number}
                     </span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)]">
                       Standard
                     </span>
                   </div>

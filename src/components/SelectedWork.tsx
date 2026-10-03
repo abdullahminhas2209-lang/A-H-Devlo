@@ -24,15 +24,11 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>PORTFOLIO</span>
-            </div>
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Built for performance &amp; conversion.
+              Selected Work &amp; Case Studies
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
-              A curated selection of production websites and conversion-engineered digital flagships built by A&amp;H Devlo Studio.
+              A curated selection of studio concept architectures and conversion-engineered digital flagships by A&amp;H Devlo Studio.
             </p>
           </div>
         </ScrollReveal>
@@ -68,7 +64,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                             {project.category}
                           </span>
                           {project.isConcept && (
-                            <span className="px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] font-sans uppercase tracking-widest font-semibold">
+                            <span className="px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-mono uppercase tracking-wider font-semibold">
                               CONCEPT
                             </span>
                           )}
@@ -97,7 +93,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 rounded-md bg-[#0B3B61]/30 border border-[var(--border-subtle)] text-[var(--text-body)] text-[10px] uppercase tracking-wider font-medium"
+                            className="px-2.5 py-1 rounded-md bg-[#0B3B61]/30 border border-[var(--border-subtle)] text-[var(--text-body)] text-xs font-mono uppercase tracking-wider font-medium"
                           >
                             {tag}
                           </span>

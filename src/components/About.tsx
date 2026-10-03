@@ -22,10 +22,10 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
             <ScrollReveal>
               <div className="p-6 sm:p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-md space-y-5 shadow-2xl relative overflow-hidden group">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-blue)] font-semibold">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent-blue)] font-semibold">
                     Studio Practice
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
 
                 <div className="py-2">
@@ -37,7 +37,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                     A&amp;H Devlo Studio
                   </div>
                   <p className="text-xs text-[var(--text-body)] font-body leading-relaxed">
-                    Independent web engineering and digital design practice serving ambitious small businesses and private founders.
+                    Independent web engineering and digital design practice crafting bespoke digital flagships for ambitious private founders.
                   </p>
                 </div>
 
@@ -52,38 +52,33 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
           {/* Right Column (8 cols): Studio Mission Statement & Tech Stack Badges */}
           <div className="md:col-span-7 lg:col-span-8 space-y-6">
             <ScrollReveal delayMs={100}>
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
-                  <span>ABOUT THE STUDIO</span>
-                </div>
-
+              <div className="space-y-4 max-w-xl">
                 <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-                  Small studio. Serious websites.
+                  Bespoke digital architecture for enduring brands.
                 </h2>
 
-                <p className="text-base sm:text-lg text-[var(--color-heading)] font-normal leading-relaxed font-body">
-                  At A&amp;H Devlo Studio, we believe small businesses deserve agency-tier digital presence without bloated timelines or unnecessary complexity. We build modern, high-precision web experiences that establish instant credibility.
+                <p className="text-base sm:text-lg text-[var(--color-heading)] font-normal leading-relaxed font-body max-w-prose">
+                  A&amp;H Devlo Studio was founded on a singular standard: ambitious businesses should never have to choose between bloated agency retainers and fragile generic website templates.
                 </p>
 
-                <p className="text-sm text-[var(--text-body)] font-normal leading-relaxed font-body">
-                  We combine thoughtful typography, modern component architecture, and a commercial understanding of what turns casual website visitors into loyal clients.
+                <p className="text-sm text-[var(--text-body)] font-normal leading-relaxed font-body max-w-prose">
+                  We engineer digital platforms as high-yield software assets—combining editorial typography, clean component architecture, and the conversion rigor required to turn casual visitors into committed clients.
                 </p>
               </div>
             </ScrollReveal>
 
             {/* Core Values / Studio Pillars */}
             <ScrollReveal delayMs={150}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-xl">
                 <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[#021F33]/50 space-y-1.5">
                   <div className="flex items-center gap-2 text-[var(--accent-blue)]">
                     <Terminal className="w-4 h-4" />
                     <span className="text-xs font-mono font-semibold uppercase tracking-wider">
-                      Direct Senior Craft
+                      Architectural Integrity
                     </span>
                   </div>
                   <p className="text-xs text-[var(--text-body)] leading-relaxed font-body">
-                    You work directly with the designers and engineers coding your website. Zero account managers or communication silos.
+                    We write production-grade code designed to scale cleanly, load in milliseconds, and remain entirely free of unnecessary third-party dependencies.
                   </p>
                 </div>
 
@@ -91,11 +86,11 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                   <div className="flex items-center gap-2 text-[var(--accent-blue)]">
                     <ShieldCheck className="w-4 h-4" />
                     <span className="text-xs font-mono font-semibold uppercase tracking-wider">
-                      Guaranteed Ownership
+                      Complete IP Sovereignty
                     </span>
                   </div>
                   <p className="text-xs text-[var(--text-body)] leading-relaxed font-body">
-                    You own 100% of your production codebase, assets, and design files upon completion. Zero proprietary platform lock-in.
+                    You own 100% of your source code, design systems, and production assets upon delivery. Zero proprietary platform lock-in.
                   </p>
                 </div>
               </div>
@@ -103,10 +98,10 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
 
             {/* Tech Stack Badges & CTA */}
             <ScrollReveal delayMs={200}>
-              <div className="pt-2 space-y-4">
+              <div className="pt-2 space-y-4 max-w-xl">
                 <div>
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-muted)] block mb-2 font-medium">
-                    Engineered With Modern Standards
+                  <span className="text-xs font-mono text-[var(--text-muted)] block mb-2 font-medium">
+                    Engineered with Modern Standards
                   </span>
                   <div className="flex flex-wrap items-center gap-2">
                     {techBadges.map((badge) => (

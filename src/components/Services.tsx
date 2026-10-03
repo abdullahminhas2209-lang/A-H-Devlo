@@ -64,15 +64,11 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>CORE OFFERINGS</span>
-            </div>
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Everything your business needs to win online.
+              Capabilities &amp; Studio Offerings
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
-              We specialize in clean, high-impact web design and engineering that helps ambitious businesses build credibility, communicate value, and close clients.
+              We architect custom digital platforms and high-converting landing pages tailored to elevate commercial positioning, build trust, and drive client acquisition.
             </p>
           </div>
         </ScrollReveal>
@@ -110,11 +106,11 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
 
                     {/* Feature Checklist with CheckCircle2 */}
                     <div className="pt-4 border-t border-[var(--border-subtle)] space-y-2.5">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
+                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
                         What&apos;s Included
                       </span>
                       {service.features.map((feature, fIdx) => (
-                        <div key={fIdx} className="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                        <div key={fIdx} className="flex items-start gap-2.5 text-sm text-[var(--text-body)] font-body">
                           <CheckCircle2 className="w-4 h-4 text-[var(--accent-blue)] shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </div>
@@ -123,7 +119,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
 
                     {/* Turnaround Time Pill */}
                     <div className="pt-2">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#00141F]/80 border border-[var(--border-subtle)] text-[11px] text-[var(--text-body)] font-medium">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#00141F]/80 border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-body)] font-medium">
                         <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                         <span>{service.turnaround}</span>
                       </div>

@@ -63,9 +63,9 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 items-start">
           {/* Column 1: Navigation */}
           <div className="space-y-3.5">
-            <h4 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Navigation
-            </h4>
+            </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
                 <button
@@ -112,9 +112,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 2: Offerings */}
           <div className="space-y-3.5">
-            <h4 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Capabilities
-            </h4>
+            </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
                 <button
@@ -161,9 +161,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 3: Direct Contact */}
           <div className="space-y-3.5">
-            <h4 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Direct Inquiries
-            </h4>
+            </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
                 <a
@@ -202,9 +202,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 4: Social Channels */}
           <div className="space-y-3.5">
-            <h4 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Connect
-            </h4>
+            </h3>
             <p className="text-xs text-[var(--text-body)] leading-relaxed">
               Follow our latest releases, design studies, and engineering updates.
             </p>

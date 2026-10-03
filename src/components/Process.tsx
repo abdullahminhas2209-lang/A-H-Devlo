@@ -51,15 +51,11 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
         {/* Section Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-12 md:mb-16 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
-              <span>HOW WE WORK</span>
-            </div>
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              A transparent four-step journey to launch.
+              A Disciplined Four-Stage Journey to Launch
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
-              Engineered to keep your website project on schedule, stress-free, and directly aligned with your commercial objectives.
+              Transparent milestones, regular staging previews, and zero guesswork from initial architectural discovery to final verified deployment.
             </p>
           </div>
         </ScrollReveal>
@@ -103,7 +99,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
                     {/* Outcome Box */}
                     <div className="mt-5 pt-3.5 border-t border-[var(--border-subtle)] flex items-start gap-2 text-xs text-[var(--text-body)]">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="text-[11px] font-medium leading-snug">{step.outcome}</span>
+                      <span className="text-xs font-mono font-medium leading-snug">{step.outcome}</span>
                     </div>
                   </div>
                 </ScrollReveal>

@@ -117,13 +117,13 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
   // Desktop default
   return (
     <div
-      className={`rounded-xl overflow-hidden bg-[#11141E] border border-[#232938] shadow-2xl transition-all duration-300 ${className}`}
+      className={`rounded-xl overflow-hidden bg-[#021F33]/90 border border-[var(--border-subtle)] shadow-2xl transition-all duration-300 ${className}`}
       style={{
         boxShadow: `0 20px 40px -15px rgba(0,0,0,0.7), 0 0 20px -5px ${accentColor}15`,
       }}
     >
       {/* Browser Chrome Header */}
-      <div className="h-10 bg-[#161A26] px-4 flex items-center justify-between border-b border-[#232938]">
+      <div className="h-10 bg-[#00141F]/90 px-4 flex items-center justify-between border-b border-[var(--border-subtle)]">
         {/* Window controls */}
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 rounded-full bg-[#FF5F56]/80 hover:opacity-100 transition-opacity"></div>
@@ -132,14 +132,14 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
         </div>
 
         {/* Address bar */}
-        <div className="flex items-center space-x-2 px-3 py-1 rounded-md bg-[#0B0C10] border border-[#232938] text-xs text-slate-400 font-mono max-w-xs md:max-w-md w-full justify-center">
+        <div className="flex items-center space-x-2 px-3 py-1 rounded-md bg-[#00141F] border border-[var(--border-subtle)] text-xs text-[var(--text-muted)] font-mono max-w-xs md:max-w-md w-full justify-center">
           <Lock className="w-3 h-3 text-emerald-400" />
           <span className="truncate">https://{urlPreview}</span>
         </div>
 
         {/* Status badges */}
-        <div className="flex items-center space-x-2 text-[10px] text-slate-400 uppercase tracking-widest hidden sm:flex">
-          <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+        <div className="flex items-center space-x-2 text-xs text-[var(--text-muted)] font-mono uppercase tracking-wider hidden sm:flex">
+          <ShieldCheck className="w-3.5 h-3.5 text-[var(--accent-blue)]" />
           <span>Verified UI</span>
         </div>
       </div>

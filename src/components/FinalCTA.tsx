@@ -1,13 +1,13 @@
-import React from 'react';
-import { ArrowDown, ArrowUpRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, MessageCircle, Sparkles } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { getWhatsAppUrl } from '../config/contact';
 
 interface FinalCTAProps {
   onOpenInquiry: () => void;
   onViewWork: () => void;
 }
 
-export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork }) => {
+export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
   return (
     <section className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
@@ -25,39 +25,41 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
 
             <div className="space-y-6 sm:space-y-8 relative z-10 max-w-3xl mx-auto">
               {/* Eyebrow badge */}
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#00141F]/80 border border-[var(--border-subtle)] text-[11px] font-mono tracking-wider text-[var(--color-heading)] uppercase shadow-sm">
-                <Sparkles className="w-3 h-3 text-[var(--accent-blue)]" />
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#00141F]/80 border border-[var(--border-subtle)] text-xs font-mono tracking-wider text-[var(--color-heading)] shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[var(--accent-blue)]" />
                 <span>Next Project Intake</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               </div>
 
               {/* Main Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.15] font-heading">
-                Ready to elevate your business online?
+                Ready to build a digital flagship that commands respect?
               </h2>
 
               {/* Supporting Text */}
-              <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed max-w-2xl mx-auto font-sans">
-                Let&apos;s build a website that drives real results and sets you apart. Transparent fixed quotes, clean engineering, and zero fluff.
+              <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed max-w-2xl mx-auto font-body">
+                Direct senior collaboration. Transparent milestone pricing. Zero agency bloat. Let&apos;s engineer your next digital platform together.
               </p>
 
               {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
                 <button
                   onClick={onOpenInquiry}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-semibold text-sm transition-all duration-200 shadow-xl shadow-blue-950/60 hover:shadow-[0_0_24px_rgba(47,123,255,0.5)] hover:-translate-y-0.5 cursor-pointer font-sans"
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-semibold text-sm transition-all duration-200 shadow-xl shadow-blue-950/60 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
                 >
                   <span>Start a Project</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </button>
 
-                <button
-                  onClick={onViewWork}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-full bg-[#021F33]/50 hover:bg-[#0B3B61]/40 text-[var(--color-heading)] font-medium text-sm border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] transition-all duration-200 cursor-pointer font-sans"
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-full bg-[#021F33]/50 hover:bg-[#0B3B61]/40 text-[var(--color-heading)] font-medium text-sm border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] transition-all duration-200 cursor-pointer font-heading"
                 >
-                  <span>View Our Work</span>
-                  <ArrowDown className="w-4 h-4 text-[var(--text-muted)]" />
-                </button>
+                  <MessageCircle className="w-4 h-4 text-emerald-400" />
+                  <span>Chat on WhatsApp</span>
+                </a>
               </div>
 
               {/* Reassurance points */}
