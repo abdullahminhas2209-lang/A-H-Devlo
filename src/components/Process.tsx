@@ -99,7 +99,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
                     {/* Outcome Box */}
                     <div className="mt-5 pt-3.5 border-t border-[var(--border-subtle)] flex items-start gap-2 text-xs text-[var(--text-body)]">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="text-xs font-mono font-medium leading-snug">{step.outcome}</span>
+                      <span className="text-xs font-sans font-medium leading-snug">{step.outcome}</span>
                     </div>
                   </div>
                 </ScrollReveal>
