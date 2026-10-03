@@ -25,12 +25,13 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenLegal,
 }) => {
   return (
-    <footer className="bg-[var(--bg-deep)]/95 border-t border-[var(--border-subtle)] pt-16 pb-28 sm:pb-32 text-[var(--text-body)] text-sm relative">
+    <footer className="bg-[var(--bg-deep)]/95 border-t border-[var(--border-subtle)] pt-14 pb-14 sm:pb-16 text-[var(--text-body)] text-sm relative">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-12">
         
-        {/* Tier 1 (Top): Brand Identity & Quick Action */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-12 border-b border-[var(--border-subtle)]">
-          <div className="space-y-2 max-w-xl">
+        {/* Multi-Column Navigation with Integrated Brand Logo */}
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Brand & Social Column */}
+          <div className="sm:col-span-12 lg:col-span-5 space-y-4">
             <button
               onClick={() => onNavigate('hero')}
               aria-label="Return to top of page"
@@ -38,35 +39,69 @@ export const Footer: React.FC<FooterProps> = ({
             >
               <BrandLogo size="md" />
             </button>
-            <p className="text-sm text-[var(--text-body)] leading-relaxed font-sans pt-1">
+
+            <p className="text-sm text-[var(--text-body)] leading-relaxed max-w-sm font-sans">
               A modern digital studio crafting high-converting websites and bespoke web applications with precision engineering and thoughtful design.
             </p>
-          </div>
 
-          {/* Quick Intake CTA */}
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="hidden sm:flex items-center space-x-2 text-xs font-mono text-[var(--color-heading)] bg-[#021F33]/80 border border-[var(--border-subtle)] px-3 py-1.5 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]"></span>
-              <span>Available for projects</span>
+            {/* Social Icons row */}
+            <div className="flex items-center space-x-2.5 pt-2">
+              <a
+                href={CONTACT_CONFIG.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow A&H Devlo on Instagram (@${CONTACT_CONFIG.instagramHandle})`}
+                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-white hover:border-[var(--accent-blue)]/50 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
+              >
+                <InstagramIcon className="w-4 h-4" />
+              </a>
+
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Chat with A&H Devlo on WhatsApp (${CONTACT_CONFIG.formattedWhatsapp})`}
+                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+              </a>
+
+              <a
+                href={CONTACT_CONFIG.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit A&H Devlo on LinkedIn"
+                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-blue-400 hover:border-blue-500/40 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
+              >
+                <LinkedInIcon className="w-4 h-4" />
+              </a>
+
+              <a
+                href={getGmailComposeUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Send Email to A&H Devlo (${CONTACT_CONFIG.email})`}
+                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-[var(--accent-blue)] hover:border-[var(--accent-blue)]/40 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
+              >
+                <GmailIcon className="w-4 h-4" />
+              </a>
             </div>
-            <button
-              onClick={onOpenInquiry}
-              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-medium text-xs sm:text-sm transition-all duration-200 shadow-md shadow-blue-950/50 hover:shadow-[0_0_16px_rgba(47,123,255,0.4)] cursor-pointer"
-            >
-              <span>Start a Project</span>
-              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
           </div>
-        </div>
 
-        {/* Tier 2 (Middle): Multi-Column Navigation & Direct Channels */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 items-start">
           {/* Column 1: Navigation */}
-          <div className="space-y-3.5">
+          <div className="sm:col-span-4 lg:col-span-2 space-y-3.5">
             <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Navigation
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
+              <li>
+                <button
+                  onClick={() => onNavigate('hero')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Home
+                </button>
+              </li>
               <li>
                 <button
                   onClick={() => onNavigate('work')}
@@ -111,7 +146,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           {/* Column 2: Offerings */}
-          <div className="space-y-3.5">
+          <div className="sm:col-span-4 lg:col-span-3 space-y-3.5">
             <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Capabilities
             </h3>
@@ -160,7 +195,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           {/* Column 3: Direct Contact */}
-          <div className="space-y-3.5">
+          <div className="sm:col-span-4 lg:col-span-2 space-y-3.5">
             <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Direct Inquiries
             </h3>
@@ -199,61 +234,9 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
             </ul>
           </div>
-
-          {/* Column 4: Social Channels */}
-          <div className="space-y-3.5">
-            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
-              Connect
-            </h3>
-            <p className="text-xs text-[var(--text-body)] leading-relaxed">
-              Follow our latest releases, design studies, and engineering updates.
-            </p>
-            {/* Social Icons row */}
-            <div className="flex items-center space-x-2.5 pt-1">
-              <a
-                href={CONTACT_CONFIG.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Follow A&H Devlo on Instagram (@${CONTACT_CONFIG.instagramHandle})`}
-                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-white hover:border-[var(--accent-blue)]/50 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Chat with A&H Devlo on WhatsApp (${CONTACT_CONFIG.formattedWhatsapp})`}
-                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-              </a>
-
-              <a
-                href={CONTACT_CONFIG.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit A&H Devlo on LinkedIn"
-                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-blue-400 hover:border-blue-500/40 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                <LinkedInIcon className="w-4 h-4" />
-              </a>
-
-              <a
-                href={getGmailComposeUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Send Email to A&H Devlo (${CONTACT_CONFIG.email})`}
-                className="w-9 h-9 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-[var(--accent-blue)] hover:border-[var(--accent-blue)]/40 hover:bg-[#0B3B61]/50 flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                <GmailIcon className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
         </div>
 
-        {/* Tier 3 (Bottom): Copyright & Legal Disclosures */}
+        {/* Bottom Strip: Copyright & Legal Disclosures */}
         <div className="pt-8 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)] font-mono">
           <div>
             &copy; 2026 A&amp;H Devlo Studio. All rights reserved.
@@ -285,3 +268,4 @@ export const Footer: React.FC<FooterProps> = ({
   );
 };
 
+export default Footer;
