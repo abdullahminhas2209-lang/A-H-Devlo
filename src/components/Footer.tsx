@@ -90,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 1: Navigation */}
           <div className="sm:col-span-4 lg:col-span-2 space-y-3.5">
-            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-heading font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Navigation
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 2: Offerings */}
           <div className="sm:col-span-4 lg:col-span-3 space-y-3.5">
-            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-heading font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Capabilities
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
@@ -196,7 +196,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 3: Direct Contact */}
           <div className="sm:col-span-4 lg:col-span-2 space-y-3.5">
-            <h3 className="text-xs font-mono font-semibold text-[var(--color-heading)] uppercase tracking-wider">
+            <h3 className="text-xs font-heading font-semibold text-[var(--color-heading)] uppercase tracking-wider">
               Direct Inquiries
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
@@ -237,7 +237,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Strip: Copyright & Legal Disclosures */}
-        <div className="pt-8 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)] font-mono">
+        <div className="pt-8 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)] font-sans">
           <div>
             &copy; 2026 A&amp;H Devlo Studio. All rights reserved.
           </div>
