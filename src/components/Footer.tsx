@@ -1,10 +1,9 @@
 import React from 'react';
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import {
   CONTACT_CONFIG,
   getGmailComposeUrl,
-  getMailtoUrl,
   getWhatsAppUrl,
 } from '../config/contact';
 import {
@@ -26,160 +25,223 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenLegal,
 }) => {
   return (
-    <footer className="bg-[var(--bg-deep)]/75 backdrop-blur-md border-t border-[var(--border-subtle)] pt-16 md:pt-24 pb-28 sm:pb-36 text-[var(--text-muted)] text-sm relative">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start">
-          {/* Brand & Mission (4 cols) */}
-          <div className="md:col-span-4 space-y-4">
+    <footer className="bg-[var(--bg-deep)]/80 backdrop-blur-md border-t border-[var(--border-subtle)] pt-16 md:pt-20 pb-28 sm:pb-36 text-[var(--text-muted)] text-sm relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-12 sm:space-y-16">
+        
+        {/* Main Grid: Left Column (Brand + Contact Info) + 3 Essential Heading Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          
+          {/* Left Block: Brand Logo, Contact With Us, and Social Icons */}
+          <div className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-5 space-y-4">
+            {/* Studio Logo */}
             <button
               onClick={() => onNavigate('hero')}
               aria-label="Return to top of page"
-              className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] rounded cursor-pointer"
+              className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] rounded cursor-pointer block -ml-1 transition-transform hover:scale-105"
             >
               <BrandLogo size="md" />
             </button>
 
-            <p className="text-sm text-[var(--text-body)] max-w-sm leading-relaxed font-body">
-              Web design &amp; development studio crafting high-performance digital experiences for ambitious businesses.
+            {/* Heading matching Image 1 */}
+            <h3 className="text-xl sm:text-2xl font-bold font-heading text-[var(--color-heading)] tracking-tight">
+              Contact With Us:
+            </h3>
+
+            {/* Explanatory text */}
+            <p className="text-sm text-[var(--text-body)] max-w-sm leading-relaxed font-sans">
+              Stay connected with A&amp;H Devlo on social media! Reach out to us on WhatsApp, Instagram, LinkedIn, and Email.
             </p>
 
-            <div className="pt-2 text-xs font-mono text-[var(--text-muted)]">
-              Clean by design • Performance-focused • Studio craftsmanship
-            </div>
-          </div>
-
-          {/* Quick Links (2 cols) */}
-          <div className="md:col-span-2 space-y-3">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
-              Navigation
-            </span>
-            <div className="flex flex-col space-y-2 text-sm font-body">
-              <button
-                onClick={() => onNavigate('hero')}
-                className="text-left text-[var(--text-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => onNavigate('work')}
-                className="text-left text-[var(--text-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-              >
-                Selected Work
-              </button>
-              <button
-                onClick={() => onNavigate('services')}
-                className="text-left text-[var(--text-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => onNavigate('why')}
-                className="text-left text-[var(--text-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-              >
-                Our Principles
-              </button>
-              <button
-                onClick={() => onNavigate('process')}
-                className="text-left text-[var(--text-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-              >
-                How We Work
-              </button>
-              <button
-                onClick={() => onNavigate('about')}
-                className="text-left text-[var(--text-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-              >
-                About Studio
-              </button>
-            </div>
-          </div>
-
-          {/* Direct Channels / Contact Us (3 cols) */}
-          <div className="md:col-span-3 space-y-3">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)] block">
-              Contact Channels
-            </span>
-            <div className="flex flex-col space-y-2.5 font-body">
-              {/* Gmail Compose */}
-              <div className="flex flex-col space-y-1">
-                <a
-                  href={getGmailComposeUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Send email to A&H Devlo via Gmail web compose (opens in new tab)"
-                  className="flex items-center space-x-2.5 px-3 py-2.5 min-h-[44px] rounded-xl bg-[var(--surface-card)] hover:bg-[#0E243A] border border-[var(--border-subtle)] hover:border-[var(--accent-blue)]/60 text-[var(--text-body)] hover:text-[var(--color-heading)] text-xs font-medium transition-all duration-200 shadow-sm hover:shadow-[0_0_12px_rgba(47,123,255,0.25)] group"
-                >
-                  <GmailIcon className="w-4 h-4 text-[var(--accent-blue)] group-hover:scale-110 transition-transform shrink-0" />
-                  <span className="truncate">Email ({CONTACT_CONFIG.email})</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-[var(--text-muted)] group-hover:text-[var(--color-heading)] shrink-0" />
-                </a>
-                <a
-                  href={getMailtoUrl()}
-                  aria-label="Open default mail client"
-                  className="text-[11px] font-mono text-[var(--text-muted)] hover:text-[var(--accent-blue)] transition-colors pl-1 inline-flex items-center space-x-1"
-                >
-                  <Mail className="w-3 h-3" />
-                  <span>or open native mail client</span>
-                </a>
-              </div>
-
-              {/* WhatsApp Direct */}
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Chat with A&H Devlo on WhatsApp at ${CONTACT_CONFIG.formattedWhatsapp} (opens in new tab)`}
-                className="flex items-center space-x-2.5 px-3 py-2.5 min-h-[44px] rounded-xl bg-[var(--surface-card)] hover:bg-[#0E243A] border border-[var(--border-subtle)] hover:border-[var(--accent-blue)]/60 text-[var(--text-body)] hover:text-[var(--color-heading)] text-xs font-medium transition-all duration-200 shadow-sm hover:shadow-[0_0_12px_rgba(47,123,255,0.25)] group"
-              >
-                <WhatsAppIcon className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform shrink-0" />
-                <span>WhatsApp ({CONTACT_CONFIG.formattedWhatsapp})</span>
-                <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-[var(--text-muted)] group-hover:text-[var(--color-heading)] shrink-0" />
-              </a>
-
-              {/* LinkedIn Page */}
-              <a
-                href={CONTACT_CONFIG.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit A&H Devlo official LinkedIn company page (opens in new tab)"
-                className="flex items-center space-x-2.5 px-3 py-2.5 min-h-[44px] rounded-xl bg-[var(--surface-card)] hover:bg-[#0E243A] border border-[var(--border-subtle)] hover:border-[var(--accent-blue)]/60 text-[var(--text-body)] hover:text-[var(--color-heading)] text-xs font-medium transition-all duration-200 shadow-sm hover:shadow-[0_0_12px_rgba(47,123,255,0.25)] group"
-              >
-                <LinkedInIcon className="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform shrink-0" />
-                <span>LinkedIn Company</span>
-                <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-[var(--text-muted)] group-hover:text-[var(--color-heading)] shrink-0" />
-              </a>
-
-              {/* Instagram Profile */}
+            {/* Circular Social Buttons Row matching Image 1 */}
+            <div className="pt-2 flex items-center space-x-3">
+              {/* Instagram */}
               <a
                 href={CONTACT_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit A&H Devlo official Instagram profile @ah_devlo (opens in new tab)"
-                className="flex items-center space-x-2.5 px-3 py-2.5 min-h-[44px] rounded-xl bg-[var(--surface-card)] hover:bg-[#0E243A] border border-[var(--border-subtle)] hover:border-[var(--accent-blue)]/60 text-[var(--text-body)] hover:text-[var(--color-heading)] text-xs font-medium transition-all duration-200 shadow-sm hover:shadow-[0_0_12px_rgba(47,123,255,0.25)] group"
+                aria-label={`Follow A&H Devlo on Instagram (@${CONTACT_CONFIG.instagramHandle})`}
+                className="w-10 h-10 rounded-full bg-white text-[#00141F] hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-500 hover:to-purple-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 cursor-pointer"
               >
-                <InstagramIcon className="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform shrink-0" />
-                <span>Instagram (@{CONTACT_CONFIG.instagramHandle})</span>
-                <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-[var(--text-muted)] group-hover:text-[var(--color-heading)] shrink-0" />
+                <InstagramIcon className="w-5 h-5" />
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Chat with A&H Devlo on WhatsApp (${CONTACT_CONFIG.formattedWhatsapp})`}
+                className="w-10 h-10 rounded-full bg-white text-[#00141F] hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href={CONTACT_CONFIG.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit A&H Devlo on LinkedIn"
+                className="w-10 h-10 rounded-full bg-white text-[#00141F] hover:bg-[#0077B5] hover:text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 cursor-pointer"
+              >
+                <LinkedInIcon className="w-5 h-5" />
+              </a>
+
+              {/* Gmail / Email */}
+              <a
+                href={getGmailComposeUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Send Email to A&H Devlo (${CONTACT_CONFIG.email})`}
+                className="w-10 h-10 rounded-full bg-white text-[#00141F] hover:bg-[var(--accent-blue)] hover:text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 cursor-pointer"
+              >
+                <GmailIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Direct Inquiry CTA (3 cols) */}
-          <div className="md:col-span-3 p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] space-y-3.5">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent-blue)] block">
-              New Project Inquiries
-            </span>
-            <p className="text-xs text-[var(--text-body)] leading-relaxed font-body">
-              Have an upcoming website project or redesign? Tell us about your goals and we will respond with scope details.
-            </p>
-            <button
-              onClick={onOpenInquiry}
-              aria-label="Open project inquiry modal"
-              className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs font-bold tracking-tight transition-colors shadow cursor-pointer font-heading min-h-[44px]"
-            >
-              <span>Start a Project</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
+          {/* Essential Column 1: About */}
+          <div className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 space-y-3.5">
+            <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--color-heading)] tracking-tight">
+              About
+            </h4>
+            <ul className="flex flex-col space-y-2.5 text-sm font-sans">
+              <li>
+                <button
+                  onClick={() => onNavigate('about')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  History
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('work')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Selected Work
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('why')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Our Team
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('process')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  How We Work
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal('terms')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Terms &amp; Condition
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal('privacy')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+            </ul>
           </div>
+
+          {/* Essential Column 2: Services */}
+          <div className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 space-y-3.5">
+            <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--color-heading)] tracking-tight">
+              Services
+            </h4>
+            <ul className="flex flex-col space-y-2.5 text-sm font-sans">
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Custom Websites
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Landing Pages
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Website Redesigns
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('services')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  UI/UX Design Systems
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('process')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  How to Order
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Essential Column 3: Other */}
+          <div className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 space-y-3.5">
+            <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--color-heading)] tracking-tight">
+              Other
+            </h4>
+            <ul className="flex flex-col space-y-2.5 text-sm font-sans">
+              <li>
+                <button
+                  onClick={onOpenInquiry}
+                  className="text-left text-[var(--accent-blue)] hover:text-[var(--accent-blue-hover)] font-semibold transition-colors cursor-pointer inline-flex items-center space-x-1"
+                >
+                  <span>Contact Us</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                </button>
+              </li>
+              <li>
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-left text-[var(--text-body)] hover:text-emerald-400 transition-colors cursor-pointer block"
+                >
+                  Help
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal('privacy')}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Privacy
+                </button>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
         {/* Bottom Strip: Copyright & Disclosures */}
@@ -204,6 +266,7 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
           </div>
         </div>
+
       </div>
     </footer>
   );
