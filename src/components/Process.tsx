@@ -68,10 +68,10 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>04 / HOW WE WORK</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               From idea to launch.
             </h2>
-            <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed font-body">
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
               A transparent five-step process designed to keep your project on schedule, stress-free, and aligned with your business goals.
             </p>
           </div>
@@ -90,7 +90,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                     {/* Step Indicator & Icon (3 cols) */}
                     <div className="lg:col-span-3 flex items-center space-x-4">
-                      <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-sans">
+                      <span className="text-2xl sm:text-3xl font-extrabold text-[var(--accent-blue)] font-sans">
                         {step.number}
                       </span>
                       <div className="w-9 h-9 rounded-lg bg-[#0C1F35]/70 border border-[var(--border-subtle)] flex items-center justify-center text-[var(--accent-blue)] shrink-0">
@@ -100,7 +100,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
                         <span className="text-xs font-sans tracking-widest text-[var(--text-muted)] uppercase block font-semibold">
                           STAGE
                         </span>
-                        <h3 className="text-xl font-bold text-[var(--color-heading)] tracking-tight font-heading">
+                        <h3 className="text-lg sm:text-xl font-bold text-[var(--color-heading)] tracking-tight font-heading">
                           {step.title}
                         </h3>
                       </div>
@@ -108,7 +108,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
 
                     {/* Step Description & Headline (6 cols) */}
                     <div className="lg:col-span-6 space-y-2">
-                      <h4 className="text-base sm:text-lg font-semibold text-[var(--color-heading)]/90 font-heading">
+                      <h4 className="text-sm sm:text-base font-semibold text-[var(--color-heading)]/90 font-heading">
                         {step.headline}
                       </h4>
                       <p className="text-sm text-[var(--text-body)] leading-relaxed font-body">

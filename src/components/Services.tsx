@@ -68,10 +68,10 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>02 / WHAT WE DO</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Everything your business needs to look professional online.
             </h2>
-            <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed font-body">
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
               We focus on clean, high-impact web design and development that helps small businesses establish credibility, communicate value, and win client trust.
             </p>
           </div>
@@ -100,7 +100,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
 
                     {/* Title & Summary */}
                     <div>
-                      <h3 className="text-2xl font-bold text-[var(--color-heading)] tracking-tight group-hover:text-white transition-colors font-heading">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-heading)] tracking-tight group-hover:text-white transition-colors font-heading">
                         {service.title}
                       </h3>
                       <p className="mt-3 text-sm text-[var(--text-body)] leading-relaxed font-normal font-body">

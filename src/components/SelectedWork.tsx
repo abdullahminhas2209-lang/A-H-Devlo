@@ -28,10 +28,10 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>01 / SELECTED WORK</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Work we&apos;re proud of.
             </h2>
-            <p className="text-base sm:text-xl text-[var(--text-body)] font-normal leading-relaxed font-body">
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
               A selection of websites and digital experiences designed and developed by A&amp;H Devlo.
             </p>
           </div>
@@ -89,7 +89,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                         </span>
                         <h3
                           onClick={() => onSelectProject(project.id)}
-                          className="text-2xl sm:text-4xl font-bold text-[var(--color-heading)] tracking-tight hover:text-white transition-colors cursor-pointer font-heading"
+                          className="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--color-heading)] tracking-tight hover:text-white transition-colors cursor-pointer font-heading"
                         >
                           {project.title}
                         </h3>
@@ -134,10 +134,10 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
         <ScrollReveal delayMs={200}>
           <div className="mt-16 p-8 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
             <div>
-              <h4 className="text-lg font-bold text-[var(--color-heading)] tracking-tight font-heading">
+              <h4 className="text-base sm:text-lg font-bold text-[var(--color-heading)] tracking-tight font-heading">
                 Looking for something tailored to your industry?
               </h4>
-              <p className="text-sm text-[var(--text-body)] mt-1 font-body">
+              <p className="text-xs sm:text-sm text-[var(--text-body)] mt-1 font-body">
                 Every website we build is designed specifically around your customer journey and business goals.
               </p>
             </div>

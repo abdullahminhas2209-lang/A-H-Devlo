@@ -47,10 +47,10 @@ export const WhyDevlo: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] inline-block shrink-0 shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>03 / OUR PRINCIPLES</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Why work with A&amp;H Devlo?
             </h2>
-            <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed font-body">
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
               We operate with a clear philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
             </p>
           </div>
@@ -65,7 +65,7 @@ export const WhyDevlo: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-[var(--accent-blue)] font-sans tracking-tight">
+                    <span className="text-2xl sm:text-3xl font-extrabold text-[var(--accent-blue)] font-sans tracking-tight">
                       {principle.number}
                     </span>
                     <span className="text-xs font-sans font-medium text-[var(--text-muted)] uppercase tracking-wider">
@@ -73,7 +73,7 @@ export const WhyDevlo: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-[var(--color-heading)] tracking-tight mb-4 group-hover:text-white transition-colors font-heading">
+                  <h3 className="text-lg sm:text-xl font-bold text-[var(--color-heading)] tracking-tight mb-4 group-hover:text-white transition-colors font-heading">
                     {principle.title}
                   </h3>
 

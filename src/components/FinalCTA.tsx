@@ -26,12 +26,12 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight max-w-3xl mx-auto font-heading">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight max-w-3xl mx-auto font-heading">
               Ready to build your online presence?
             </h2>
 
             {/* Supporting Text */}
-            <p className="text-base sm:text-xl text-[var(--text-body)] font-normal leading-relaxed max-w-2xl mx-auto font-body">
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl mx-auto font-body">
               Tell us about your business and what you want your website to achieve.
             </p>
 
@@ -39,7 +39,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={onOpenInquiry}
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-bold text-base transition-all duration-200 shadow-xl shadow-blue-950/50 hover:shadow-[0_0_20px_rgba(47,123,255,0.45)] hover:-translate-y-0.5 cursor-pointer font-heading"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-bold text-sm transition-all duration-200 shadow-xl shadow-blue-950/50 hover:shadow-[0_0_20px_rgba(47,123,255,0.45)] hover:-translate-y-0.5 cursor-pointer font-heading"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -47,7 +47,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry, onViewWork })
 
               <button
                 onClick={onViewWork}
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-4 rounded-full bg-transparent hover:bg-white/5 text-[var(--color-heading)] font-medium text-base border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] transition-all duration-200 cursor-pointer font-body"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-full bg-transparent hover:bg-white/5 text-[var(--color-heading)] font-medium text-sm border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] transition-all duration-200 cursor-pointer font-body"
               >
                 <span>View Our Work</span>
                 <ArrowDown className="w-4 h-4 text-[var(--text-muted)]" />

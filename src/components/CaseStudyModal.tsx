@@ -99,11 +99,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             <span className="text-xs text-[var(--text-muted)] font-sans hidden sm:inline">Year: {project.year}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-heading)] tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--color-heading)] tracking-tight leading-tight">
             {project.title}
           </h1>
 
-          <p className="text-lg sm:text-2xl text-[var(--text-body)] font-normal max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--text-body)] font-normal max-w-3xl leading-relaxed">
             {project.overview}
           </p>
         </div>
@@ -161,7 +161,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[var(--accent-blue)] block mb-1">
                 Visual Artifacts
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-heading)] tracking-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--color-heading)] tracking-tight">
                 Final Design Showcase
               </h2>
             </div>
@@ -227,7 +227,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[var(--accent-blue)] block mb-1">
               Engineering &amp; UX
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-heading)] tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-heading)] tracking-tight">
               Project Details &amp; Design Decisions
             </h2>
           </div>
@@ -269,16 +269,16 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         <section className="pt-12 border-t border-[var(--border-subtle)] space-y-12">
           {/* CTA Box */}
           <div className="p-8 sm:p-12 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] backdrop-blur-xl text-center space-y-6">
-            <h3 className="text-2xl sm:text-4xl font-extrabold text-[var(--color-heading)] tracking-tight">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--color-heading)] tracking-tight">
               Ready to create something similar for your business?
             </h3>
-            <p className="text-base text-[var(--text-body)] max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-[var(--text-body)] max-w-xl mx-auto">
               We design and develop clean, custom websites that solve business problems and make you look professional from day one.
             </p>
             <div className="pt-2">
               <button
                 onClick={() => onOpenInquiry(project.category)}
-                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-lg bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-semibold text-base transition-all shadow-xl shadow-blue-900/40 cursor-pointer"
+                className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-lg bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-semibold text-sm transition-all shadow-xl shadow-blue-900/40 cursor-pointer"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="w-5 h-5" />

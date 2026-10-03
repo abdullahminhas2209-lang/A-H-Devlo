@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Stacked Editorial Headline */}
-            <h1 className="text-5xl sm:text-7xl lg:text-[5.4rem] font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.02] font-heading">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.05] font-heading">
               Websites<br />
               that make<br />
               small<br />
@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-base sm:text-lg text-[var(--text-body)] max-w-md font-body leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-[var(--text-body)] max-w-md font-body leading-relaxed font-normal">
               We design and develop clean, modern websites and landing pages that help businesses build credibility and stand out online.
             </p>
 

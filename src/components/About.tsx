@@ -23,7 +23,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                 <span>05 / ABOUT THE STUDIO</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
                 Small studio. Serious websites.
               </h2>
             </ScrollReveal>
@@ -44,12 +44,12 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
           {/* Right Column: Editorial Copy & Studio Standards */}
           <div className="lg:col-span-7 space-y-8">
             <ScrollReveal delayMs={150}>
-              <div className="space-y-6 text-base sm:text-xl text-[var(--text-body)] font-normal leading-relaxed font-body">
+              <div className="space-y-6 text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
                 <p>
                   A&amp;H Devlo is a web design and development studio focused on helping small businesses establish a professional presence online.
                 </p>
 
-                <p className="text-[var(--text-muted)] text-sm sm:text-lg">
+                <p className="text-[var(--text-muted)] text-xs sm:text-sm">
                   We combine thoughtful design, modern development and a practical understanding of what businesses actually need from their website.
                 </p>
               </div>

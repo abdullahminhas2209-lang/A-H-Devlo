@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
 
             {/* Heading matching Image 1 */}
-            <h3 className="text-xl sm:text-2xl font-bold font-heading text-[var(--color-heading)] tracking-tight">
+            <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--color-heading)] tracking-tight">
               Contact With Us:
             </h3>
 
@@ -102,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Essential Column 1: About */}
           <div className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 space-y-3.5">
-            <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--color-heading)] tracking-tight">
+            <h4 className="text-sm sm:text-base font-bold font-heading text-[var(--color-heading)] tracking-tight">
               About
             </h4>
             <ul className="flex flex-col space-y-2.5 text-sm font-sans">
@@ -159,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Essential Column 2: Services */}
           <div className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 space-y-3.5">
-            <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--color-heading)] tracking-tight">
+            <h4 className="text-sm sm:text-base font-bold font-heading text-[var(--color-heading)] tracking-tight">
               Services
             </h4>
             <ul className="flex flex-col space-y-2.5 text-sm font-sans">
@@ -208,7 +208,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Essential Column 3: Other */}
           <div className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 space-y-3.5">
-            <h4 className="text-base sm:text-lg font-bold font-heading text-[var(--color-heading)] tracking-tight">
+            <h4 className="text-sm sm:text-base font-bold font-heading text-[var(--color-heading)] tracking-tight">
               Other
             </h4>
             <ul className="flex flex-col space-y-2.5 text-sm font-sans">
