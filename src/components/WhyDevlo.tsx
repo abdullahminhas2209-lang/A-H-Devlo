@@ -37,20 +37,20 @@ export const WhyDevlo: React.FC = () => {
   return (
     <section id="why" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neutral-800 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Top Header */}
         <ScrollReveal>
           <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/70 text-xs font-semibold tracking-widest text-[var(--accent-blue)] uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] inline-block shadow-[0_0_8px_var(--accent-blue)]"></span>
               <span>WHY WORK WITH US</span>
             </div>
-            <h2 className="section-title font-extrabold tracking-tight text-white leading-tight font-heading">
+            <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
               Built on clarity, speed, and craft.
             </h2>
-            <p className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed max-w-2xl font-body">
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
               We operate with a simple philosophy: no generic agency bloat, no confusing jargon, and no shortcuts. Just thoughtful design and reliable execution.
             </p>
           </div>
@@ -61,7 +61,7 @@ export const WhyDevlo: React.FC = () => {
           {differentiators.map((item, index) => (
             <ScrollReveal key={item.number} delayMs={index * 80}>
               <div
-                className="relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:border-neutral-700 hover:bg-neutral-900/60 backdrop-blur-md transition-all duration-300 group flex flex-col justify-between h-full shadow-lg hover:shadow-xl hover:-translate-y-1"
+                className="relative p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-card)] hover:border-[var(--border-subtle-hover)] hover:bg-[var(--surface-card-hover)] backdrop-blur-md transition-all duration-300 group flex flex-col justify-between h-full shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 <div>
                   {/* Top: Mono Number Counter */}
@@ -69,21 +69,21 @@ export const WhyDevlo: React.FC = () => {
                     <span className="text-2xl font-bold text-[var(--accent-blue)] font-mono tracking-tight">
                       {item.number}
                     </span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
                       Standard
                     </span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight mb-2.5 group-hover:text-indigo-300 transition-colors font-heading leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-[var(--color-heading)] tracking-tight mb-2.5 group-hover:text-cyan-200 transition-colors font-heading leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed font-body">
+                  <p className="text-[var(--text-body)] text-xs sm:text-sm leading-relaxed font-body">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-3.5 border-t border-neutral-800/80 flex items-center gap-2 text-xs font-medium text-neutral-300">
+                <div className="mt-6 pt-3.5 border-t border-[var(--border-subtle)] flex items-center gap-2 text-xs font-medium text-[var(--text-body)]">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span className="truncate">{item.takeaway}</span>
                 </div>
