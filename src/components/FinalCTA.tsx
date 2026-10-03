@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, MessageCircle } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import { getWhatsAppUrl } from '../config/contact';
 
@@ -24,12 +24,6 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-blue)]/40 to-transparent"></div>
 
             <div className="space-y-6 sm:space-y-8 relative z-10 max-w-3xl mx-auto">
-              {/* Eyebrow badge */}
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#00141F]/80 border border-[var(--border-subtle)] text-xs font-mono tracking-wider text-[var(--color-heading)] shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[var(--accent-blue)]" />
-                <span>Next Project Intake</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              </div>
 
               {/* Main Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.15] font-heading">
