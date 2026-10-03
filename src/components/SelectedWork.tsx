@@ -7,13 +7,12 @@ import { ScrollReveal } from './ScrollReveal';
 interface SelectedWorkProps {
   projects: ProjectData[];
   onSelectProject: (projectId: string) => void;
-  onOpenInquiry: () => void;
+  onOpenInquiry?: () => void;
 }
 
 export const SelectedWork: React.FC<SelectedWorkProps> = ({
   projects,
   onSelectProject,
-  onOpenInquiry,
 }) => {
   return (
     <section id="work" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
@@ -112,26 +111,6 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
           })}
         </div>
 
-        {/* Portfolio Bottom Strip */}
-        <ScrollReveal delayMs={200}>
-          <div className="mt-10 sm:mt-12 p-6 sm:p-7 rounded-2xl bg-[#021F33]/70 border border-[var(--border-subtle)] backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 shadow-xl">
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-[var(--color-heading)] tracking-tight font-heading">
-                Looking for something tailored to your industry?
-              </h4>
-              <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1 font-body">
-                Every website we build is custom-designed around your unique customer journey and business goals.
-              </p>
-            </div>
-            <button
-              onClick={onOpenInquiry}
-              className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-blue-950/50 shrink-0 cursor-pointer hover:scale-[1.02] active:scale-95"
-            >
-              <span>Start a Project</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );
