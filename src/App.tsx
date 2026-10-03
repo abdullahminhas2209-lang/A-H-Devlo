@@ -9,7 +9,6 @@ import { Services } from './components/Services';
 import { WhyDevlo } from './components/WhyDevlo';
 import { Process } from './components/Process';
 import { About } from './components/About';
-import { TrustStatement } from './components/TrustStatement';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 
@@ -154,10 +153,7 @@ export const App: React.FC = () => {
         {/* 6. About Section */}
         <About onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 7. Trust Statement */}
-        <TrustStatement onOpenInquiry={() => handleOpenInquiry()} />
-
-        {/* 8. Final CTA */}
+        {/* 7. Final CTA */}
         <FinalCTA
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}
