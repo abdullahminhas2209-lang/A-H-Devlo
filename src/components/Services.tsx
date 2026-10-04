@@ -56,7 +56,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <section id="services" className="py-12 md:py-16 lg:py-14 bg-transparent relative scroll-mt-20">
+    <section id="services" className="py-10 sm:py-12 md:py-14 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent"></div>
 

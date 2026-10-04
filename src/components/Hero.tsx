@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = () => {
   return (
     <section
       id="hero"
-      className="min-h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8"
+      className="min-h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden py-8 sm:py-10 lg:py-14 px-4 sm:px-6 lg:px-8"
     >
       {/* Ambient Canvas Glow: Soft radial gradient seamlessly blending into site background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[500px] sm:h-[700px] bg-[radial-gradient(ellipse_at_center,rgba(11,59,97,0.3)_0%,rgba(2,31,51,0.1)_50%,transparent_75%)] blur-[140px] pointer-events-none -z-10" />

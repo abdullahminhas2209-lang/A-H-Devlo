@@ -15,7 +15,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
   onSelectProject,
 }) => {
   return (
-    <section id="work" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
+    <section id="work" className="py-10 sm:py-12 md:py-14 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent"></div>
 

@@ -43,7 +43,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <section id="process" className="py-16 md:py-24 bg-transparent relative scroll-mt-20">
+    <section id="process" className="py-10 sm:py-12 md:py-14 bg-transparent relative scroll-mt-20">
       {/* Section Transition Top Divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent"></div>
 
@@ -110,7 +110,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
 
         {/* Timeline Bottom CTA */}
         <ScrollReveal delayMs={200}>
-          <div className="mt-10 sm:mt-12 text-center">
+          <div className="mt-6 sm:mt-8 text-center">
             <button
               onClick={onOpenInquiry}
               className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[var(--accent-blue)] hover:text-white transition-colors cursor-pointer group"
