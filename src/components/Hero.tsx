@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Menu, X, Sun } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 interface HeroProps {
@@ -221,18 +221,16 @@ export const Hero: React.FC<HeroProps> = ({
             </button>
           </div>
 
-          {/* Top Right: Sun Card Control & Mobile Menu Toggle */}
+          {/* Top Right: Start Project Button & Mobile Menu Toggle */}
           <div className="flex items-center gap-2.5 sm:gap-3">
             <motion.button
-              whileHover={{ scale: 1.05, filter: 'brightness(1.06)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03, filter: 'brightness(1.05)' }}
+              whileTap={{ scale: 0.96 }}
               transition={{ duration: 0.15 }}
               onClick={() => onOpenInquiry()}
-              title="Startup Project"
-              aria-label="Startup Project"
-              className="w-13 h-10 sm:w-15 sm:h-11 rounded-2xl bg-gradient-to-br from-[#4EE2EC] via-[#38E8DA] to-[#2AA8F2] flex items-center justify-center cursor-pointer shadow-[0_4px_22px_rgba(56,232,218,0.38)] hover:shadow-[0_4px_28px_rgba(42,168,242,0.55)] transition-all select-none"
+              className="bg-[#D0FE1D] text-[#00141F] font-bold font-heading px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl text-xs sm:text-sm tracking-tight cursor-pointer shadow-md shadow-lime-950/25 hover:shadow-[0_0_24px_rgba(208,254,29,0.35)] transition-all select-none"
             >
-              <Sun className="w-5 h-5 text-[#011B2B] stroke-[2.2]" />
+              Start Project
             </motion.button>
 
             {/* Mobile Navigation Drawer Toggle */}
@@ -278,6 +276,17 @@ export const Hero: React.FC<HeroProps> = ({
               >
                 Contact
               </button>
+              <div className="pt-2">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenInquiry();
+                  }}
+                  className="w-full text-center py-2.5 rounded-xl bg-[#D0FE1D] text-[#00141F] text-sm font-bold shadow transition-all hover:brightness-105 cursor-pointer font-heading"
+                >
+                  Start Project
+                </button>
+              </div>
             </nav>
           </div>
         )}
