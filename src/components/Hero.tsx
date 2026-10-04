@@ -128,7 +128,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 transition={{ delay: 0.32, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="block text-white mt-1 sm:mt-2"
               >
-                small business
+                small businesses
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 16, color: '#FFFFFF' }}
