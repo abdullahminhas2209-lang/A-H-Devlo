@@ -21,9 +21,9 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
           <div className="md:col-span-5 lg:col-span-5 space-y-4">
             {/* Meet the Founders Subsection Header */}
             <ScrollReveal>
-              <div className="space-y-1.5 pb-1">
-                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[var(--color-heading)] font-heading">
-                  Meet the Founders
+              <div className="space-y-2 pb-1">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-heading)] font-heading">
+                  Meet the <span className="text-[#D0FE1D]">Founders</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-[var(--text-body)] font-body leading-relaxed">
                   Two complementary skill sets, one shared ambition: building better digital experiences.
