@@ -97,7 +97,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
             <ScrollReveal delayMs={100}>
               <div className="space-y-4 max-w-xl">
                 <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-                  Bespoke digital architecture for enduring brands.
+                  Bespoke digital architecture for <span className="text-[#D0FE1D]">enduring brands</span>.
                 </h2>
 
                 <div className="space-y-2">

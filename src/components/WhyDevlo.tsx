@@ -44,7 +44,7 @@ export const WhyDevlo: React.FC = () => {
         <ScrollReveal>
           <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              The Studio Standard: Senior Craft, Zero Bloat
+              The Studio Standard: <span className="text-[#D0FE1D]">Senior Craft</span>, Zero Bloat
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
               Direct founder-engineer collaboration, transparent flat investment, and sub-second Core Web Vitals. Built for long-term commercial advantage.

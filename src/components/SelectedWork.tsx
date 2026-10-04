@@ -24,7 +24,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
         <ScrollReveal>
           <div className="max-w-3xl mb-10 sm:mb-12 space-y-3 sm:space-y-4">
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Selected Work &amp; Case Studies
+              Selected <span className="text-[#D0FE1D]">Work</span> &amp; Case Studies
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
               A curated selection of studio concept architectures and conversion-engineered digital flagships by A&amp;H Devlo Studio.

@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      setScrolled(window.scrollY > 120);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -40,10 +40,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 backdrop-blur-xl border-b transition-all duration-300 ${
         scrolled
-          ? 'bg-[var(--bg-deep)]/90 border-[var(--border-subtle)] shadow-lg shadow-black/50 py-3 sm:py-3.5'
-          : 'bg-[var(--bg-deep)]/60 border-[var(--border-subtle)]/50 py-3.5 sm:py-4'
+          ? 'translate-y-0 opacity-100 bg-[var(--bg-deep)]/90 border-[var(--border-subtle)] shadow-lg shadow-black/50 py-3 sm:py-3.5'
+          : '-translate-y-full opacity-0 pointer-events-none py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -85,9 +85,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-2.5 sm:gap-3">
           <button
             onClick={() => onOpenInquiry()}
-            className="inline-flex items-center gap-1.5 bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold tracking-tight shadow-md shadow-blue-900/40 hover:shadow-[0_0_20px_rgba(47,123,255,0.4)] hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
+            className="inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-xl sm:rounded-2xl px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
           >
-            <span>Start a Project</span>
+            <span>Startup Project</span>
             <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
           </button>
 
@@ -128,9 +128,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   onOpenInquiry();
                 }}
-                className="w-full text-center py-2.5 rounded-xl bg-[var(--accent-blue)] text-white text-sm font-semibold shadow transition-opacity hover:opacity-90 cursor-pointer"
+                className="w-full text-center py-2.5 rounded-xl bg-[#D0FE1D] text-[#00141F] text-sm font-bold shadow transition-all hover:brightness-105 cursor-pointer font-heading"
               >
-                Book a Consultation
+                Startup Project
               </button>
             </div>
           </nav>

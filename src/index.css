@@ -12,6 +12,8 @@
 
   --text-body: rgba(230, 251, 255, 0.80);    /* crisp, high-contrast readable body text */
   --text-muted: rgba(230, 251, 255, 0.60);   /* clear secondary and metadata text */
+  --accent-lime: #D0FE1D;                    /* signature lime yellow primary accent */
+  --accent-lime-hover: #bcf00e;
   --accent-blue: #2F7BFF;                    /* electric blue brand accent */
   --accent-blue-hover: #488BFF;
   --border-subtle: rgba(230, 251, 255, 0.12);
@@ -26,6 +28,7 @@
   --font-heading: 'Outfit', sans-serif;
   --color-heading: var(--color-heading);
   --color-accent-blue: var(--accent-blue);
+  --color-accent-lime: var(--accent-lime);
 }
 
 html {

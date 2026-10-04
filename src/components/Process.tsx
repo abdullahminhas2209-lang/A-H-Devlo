@@ -52,7 +52,7 @@ export const Process: React.FC<ProcessProps> = ({ onOpenInquiry }) => {
         <ScrollReveal>
           <div className="max-w-3xl mb-12 md:mb-16 space-y-3 sm:space-y-4">
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              A Disciplined Four-Stage Journey to Launch
+              A Disciplined Four-Stage Journey to <span className="text-[#D0FE1D]">Launch</span>
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
               Transparent milestones, regular staging previews, and zero guesswork from initial architectural discovery to final verified deployment.

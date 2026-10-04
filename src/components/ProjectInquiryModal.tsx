@@ -418,11 +418,11 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 sm:py-3.5 rounded-lg bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] disabled:opacity-50 text-white font-semibold text-sm sm:text-base transition-all duration-200 shadow-lg shadow-blue-900/30 hover:shadow-[0_0_20px_rgba(47,123,255,0.4)] flex items-center justify-center space-x-2 cursor-pointer font-sans"
+                  className="w-full py-3 sm:py-3.5 rounded-xl bg-[#D0FE1D] hover:brightness-105 disabled:opacity-50 text-[#00141F] font-bold text-sm sm:text-base transition-all duration-200 shadow-lg shadow-lime-950/20 hover:shadow-[0_0_20px_rgba(208,254,29,0.3)] flex items-center justify-center space-x-2 cursor-pointer font-heading"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center space-x-2">
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                      <span className="w-4 h-4 border-2 border-[#00141F]/40 border-t-[#00141F] rounded-full animate-spin"></span>
                       <span>Submitting Inquiry...</span>
                     </span>
                   ) : (

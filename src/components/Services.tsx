@@ -65,7 +65,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
         <ScrollReveal>
           <div className="max-w-3xl mb-7 sm:mb-8 space-y-2">
             <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-              Capabilities &amp; Studio Offerings
+              <span className="text-[#D0FE1D]">Capabilities</span> &amp; Studio Offerings
             </h2>
             <p className="text-xs sm:text-sm text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
               We architect custom digital platforms and high-converting landing pages tailored to elevate commercial positioning, build trust, and drive client acquisition.

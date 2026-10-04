@@ -27,7 +27,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
 
               {/* Main Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-heading)] leading-[1.15] font-heading">
-                Ready to build a digital flagship that commands respect?
+                Ready to build a <span className="text-[#D0FE1D]">digital flagship</span> that commands respect?
               </h2>
 
               {/* Supporting Text */}
@@ -39,9 +39,9 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
                 <button
                   onClick={onOpenInquiry}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white font-semibold text-sm transition-all duration-200 shadow-xl shadow-blue-950/60 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl sm:rounded-2xl bg-[#D0FE1D] hover:brightness-105 text-[#00141F] font-bold text-sm transition-all duration-200 shadow-xl shadow-lime-950/20 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
                 >
-                  <span>Start a Project</span>
+                  <span>Startup Project</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </button>
 
