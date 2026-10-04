@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 120);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -40,10 +40,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 backdrop-blur-xl border-b transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300 ${
         scrolled
-          ? 'translate-y-0 opacity-100 bg-[var(--bg-deep)]/90 border-[var(--border-subtle)] shadow-lg shadow-black/50 py-3 sm:py-3.5'
-          : '-translate-y-full opacity-0 pointer-events-none py-3'
+          ? 'bg-[var(--bg-deep)]/95 border-[var(--border-subtle)] shadow-lg shadow-black/50 py-3 sm:py-3.5'
+          : 'bg-[var(--bg-deep)]/80 border-[var(--border-subtle)]/60 py-3.5 sm:py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
