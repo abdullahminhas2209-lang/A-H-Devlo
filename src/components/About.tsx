@@ -19,8 +19,20 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column (5 cols): Founding Partners Profile Cards */}
           <div className="md:col-span-5 lg:col-span-5 space-y-4">
-            {/* Founder 1: Abdullah Minhas */}
+            {/* Meet the Founders Subsection Header */}
             <ScrollReveal>
+              <div className="space-y-1.5 pb-1">
+                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[var(--color-heading)] font-heading">
+                  Meet the Founders
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--text-body)] font-body leading-relaxed">
+                  Two complementary skill sets, one shared ambition: building better digital experiences.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Founder 1: Abdullah Minhas */}
+            <ScrollReveal delayMs={50}>
               <div className="p-5 sm:p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-md shadow-2xl relative overflow-hidden hover:border-[var(--border-subtle-hover)] transition-all group">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B3B61] to-[#021F33] border border-[#2F7BFF]/30 flex items-center justify-center text-white font-heading font-bold text-base shrink-0 shadow-md">
@@ -31,13 +43,13 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                       Abdullah Minhas
                     </h3>
                     <div className="text-xs font-semibold text-[var(--accent-blue)] font-heading mt-0.5">
-                      Co-Founder in A&amp;H Devlo
+                      Co-Founder · Design &amp; Frontend
                     </div>
                   </div>
                 </div>
 
                 <p className="mt-3.5 text-xs text-[var(--text-body)] font-body leading-relaxed">
-                  Crafting responsive design systems, intuitive UI components, and modern web architecture for high-growth digital flagships.
+                  Focused on product vision, UI/UX, frontend engineering, and creating digital experiences that feel as good as they perform.
                 </p>
 
                 <div className="mt-4 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between">
@@ -67,13 +79,13 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
                       M. Hassan Ali
                     </h3>
                     <div className="text-xs font-semibold text-[var(--accent-blue)] font-heading mt-0.5">
-                      Co-Founder of A&amp;H Devlo
+                      Co-Founder · Engineering
                     </div>
                   </div>
                 </div>
 
                 <p className="mt-3.5 text-xs text-[var(--text-body)] font-body leading-relaxed">
-                  Ensuring cross-platform engineering integrity, performance benchmarks, and scalable full-stack digital execution.
+                  Focused on scalable architecture, full-stack development, performance, and turning ambitious ideas into reliable software.
                 </p>
 
                 <div className="mt-4 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between">
