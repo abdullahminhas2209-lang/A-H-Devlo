@@ -11,15 +11,134 @@ interface HeroProps {
   activeSection?: string;
 }
 
-const DarkTile: React.FC = () => (
-  <div
-    className="aspect-square w-12 h-12 xs:w-14 xs:h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24 rounded-full border border-[rgba(230,251,255,0.05)] transition-transform duration-300 hover:scale-[1.02]"
-    style={{
-      background: 'radial-gradient(circle at 35% 35%, #0B3B61 0%, #031D33 55%, #011322 100%)',
-      boxShadow: '0 4px 18px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(230, 251, 255, 0.08)',
-    }}
-  />
-);
+const AbstractArtwork: React.FC = () => {
+  // Center coordinates for the 4x3 rhythmic grid
+  // Col 0: cx = 64, Col 1: cx = 190, Col 2: cx = 316, Col 3: cx = 442
+  // Row 0: cy = 64, Row 1: cy = 190, Row 2: cy = 316
+  // Radius r = 54
+  const radius = 54;
+  const cols = [64, 190, 316, 442];
+  const rows = [64, 190, 316];
+
+  // 10 Background discs (excluding Col 1 Row 1 for Teardrop and Col 2 Row 2 for Arch)
+  const darkDiscCoords: [number, number][] = [
+    // Row 0 (top)
+    [cols[0], rows[0]],
+    [cols[1], rows[0]],
+    [cols[2], rows[0]],
+    [cols[3], rows[0]],
+    // Row 1 (middle)
+    [cols[0], rows[1]],
+    // [cols[1], rows[1]] -> Lime Teardrop
+    [cols[2], rows[1]],
+    [cols[3], rows[1]],
+    // Row 2 (bottom)
+    [cols[0], rows[2]],
+    [cols[1], rows[2]],
+    // [cols[2], rows[2]] -> Sunset Arch
+    [cols[3], rows[2]],
+  ];
+
+  // Teardrop path at cx = 190, cy = 190, r = 54:
+  // Starts at top-right corner (244, 136), drops down right tangent (244, 190),
+  // sweeps 270 deg circle around bottom, left, top to (190, 136), closes to (244, 136)
+  const teardropPath = 'M 244 136 L 244 190 A 54 54 0 1 1 190 136 L 244 136 Z';
+
+  // Arch path at cx = 316, cy = 316, r = 54:
+  // Flat base at y = 370, vertical sides, and semicircular dome over top
+  const archPath = 'M 262 370 L 262 316 A 54 54 0 0 1 370 316 L 370 370 Z';
+
+  return (
+    <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[490px] xl:max-w-[530px] aspect-[510/385] select-none">
+      {/* Subtle ambient lighting behind composition */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_50%,rgba(11,59,97,0.3)_0%,transparent_70%)] pointer-events-none -z-10" />
+
+      <svg
+        viewBox="0 0 510 385"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-full overflow-visible drop-shadow-2xl"
+      >
+        <defs>
+          {/* Subtle directional gradient for dark discs (matte architectural finish) */}
+          <linearGradient id="discGrad" x1="20%" y1="15%" x2="80%" y2="85%">
+            <stop offset="0%" stopColor="#082842" />
+            <stop offset="50%" stopColor="#031a2d" />
+            <stop offset="100%" stopColor="#011220" />
+          </linearGradient>
+
+          {/* Smooth material gradient for Lime Teardrop */}
+          <linearGradient id="limeGrad" x1="20%" y1="15%" x2="85%" y2="85%">
+            <stop offset="0%" stopColor="#D8FE28" />
+            <stop offset="55%" stopColor="#C6EB14" />
+            <stop offset="100%" stopColor="#9EC209" />
+          </linearGradient>
+
+          {/* Sunset gradient for Arch matching original reference */}
+          <linearGradient id="archGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stopColor="#FBBF24" />
+            <stop offset="35%" stopColor="#F59E0B" />
+            <stop offset="70%" stopColor="#F97316" />
+            <stop offset="100%" stopColor="#EA580C" />
+          </linearGradient>
+
+          {/* Realistic physical shadow for background discs */}
+          <filter id="discShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000000" floodOpacity="0.45" />
+          </filter>
+
+          {/* Rich multi-layer physical drop shadow for prominent foreground shapes */}
+          <filter id="shapeShadow" x="-30%" y="-25%" width="160%" height="165%">
+            <feDropShadow dx="0" dy="18" stdDeviation="18" floodColor="#000000" floodOpacity="0.65" />
+            <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#000000" floodOpacity="0.4" />
+          </filter>
+        </defs>
+
+        {/* 1. Base Layer: Dark Architectural Discs */}
+        <g id="dark-discs">
+          {darkDiscCoords.map(([cx, cy], i) => (
+            <circle
+              key={i}
+              cx={cx}
+              cy={cy}
+              r={radius}
+              fill="url(#discGrad)"
+              stroke="rgba(230, 251, 255, 0.05)"
+              strokeWidth="1"
+              filter="url(#discShadow)"
+            />
+          ))}
+        </g>
+
+        {/* 2. Highlight Layer: The Sunset Arch */}
+        <motion.path
+          initial={{ y: 18, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.48, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          d={archPath}
+          fill="url(#archGrad)"
+          stroke="rgba(255, 255, 255, 0.12)"
+          strokeWidth="1"
+          filter="url(#shapeShadow)"
+          className="transition-transform duration-300 hover:scale-[1.02] origin-center cursor-pointer"
+        />
+
+        {/* 3. Focal Layer: The Lime Teardrop Shape */}
+        <motion.path
+          initial={{ scale: 0.88, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.58, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          d={teardropPath}
+          fill="url(#limeGrad)"
+          stroke="rgba(255, 255, 255, 0.2)"
+          strokeWidth="1"
+          filter="url(#shapeShadow)"
+          className="transition-transform duration-300 hover:scale-[1.02] origin-center cursor-pointer"
+        />
+      </svg>
+    </div>
+  );
+};
 
 export const Hero: React.FC<HeroProps> = ({
   onOpenInquiry,
@@ -202,57 +321,7 @@ export const Hero: React.FC<HeroProps> = ({
             transition={{ delay: 0.35, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end items-center relative select-none"
           >
-            {/* Subtle radial atmosphere behind pattern */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_50%,rgba(11,59,97,0.3)_0%,transparent_70%)] pointer-events-none" />
-
-            {/* 4x3 Modular Tile Grid */}
-            <div className="grid grid-cols-4 gap-2.5 sm:gap-3.5 md:gap-4 relative z-10">
-              {/* ROW 1: 4 Dark Tiles */}
-              <DarkTile />
-              <DarkTile />
-              <DarkTile />
-              <DarkTile />
-
-              {/* ROW 2: Tile, LIME TEARDROP, Tile, Tile */}
-              <DarkTile />
-
-              {/* The Lime Teardrop Shape */}
-              <motion.div
-                initial={{ scale: 0.82, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.65, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="aspect-square w-12 h-12 xs:w-14 xs:h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24 transition-transform duration-300 hover:scale-105"
-                style={{
-                  background: '#D0FE1D',
-                  borderRadius: '50% 0 50% 50%',
-                  boxShadow: '0 14px 34px rgba(208, 254, 29, 0.28), 0 4px 14px rgba(0, 0, 0, 0.35)',
-                }}
-                aria-label="A&H Devlo Geometric Accent"
-              />
-
-              <DarkTile />
-              <DarkTile />
-
-              {/* ROW 3: Tile, Tile, ARCH, Tile */}
-              <DarkTile />
-              <DarkTile />
-
-              {/* The Arch Shape (A&H Devlo Cyan/Blue Brand Gradient) */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.52, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="aspect-square w-12 h-12 xs:w-14 xs:h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24 transition-transform duration-300 hover:scale-105"
-                style={{
-                  background: 'linear-gradient(180deg, #2F7BFF 0%, #0B3B61 100%)',
-                  borderRadius: '50% 50% 0 0',
-                  boxShadow: '0 14px 34px rgba(47, 123, 255, 0.28), 0 4px 14px rgba(0, 0, 0, 0.35)',
-                }}
-                aria-label="A&H Devlo Arch Accent"
-              />
-
-              <DarkTile />
-            </div>
+            <AbstractArtwork />
           </motion.div>
         </div>
       </motion.div>
