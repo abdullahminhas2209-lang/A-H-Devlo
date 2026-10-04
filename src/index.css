@@ -83,13 +83,17 @@ body::after {
 
 /* Studio Typography Hierarchy */
 h1, h2, h3, h4, h5, h6,
-.font-heading,
 .section-title,
 .hero-title,
 .section-heading {
   font-family: 'Outfit', sans-serif;
   letter-spacing: -0.02em;
   color: var(--color-heading);
+}
+
+.font-heading {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .hero-display {

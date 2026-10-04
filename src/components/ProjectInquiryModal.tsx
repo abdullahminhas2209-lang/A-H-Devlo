@@ -427,8 +427,8 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                     </span>
                   ) : (
                     <>
-                      <span>Send Project Inquiry</span>
-                      <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                      <span className="text-[#00141F]">Send Project Inquiry</span>
+                      <ArrowUpRight className="w-4 h-4 stroke-[2.5] text-[#00141F]" />
                     </>
                   )}
                 </button>

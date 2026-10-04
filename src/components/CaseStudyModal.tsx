@@ -68,8 +68,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             onClick={() => onOpenInquiry(project.category)}
             className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-[#D0FE1D] hover:brightness-105 text-[#00141F] text-xs font-bold tracking-tight transition-all shadow cursor-pointer font-heading"
           >
-            <span>Start Project</span>
-            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            <span className="text-[#00141F]">Start Project</span>
+            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5] text-[#00141F]" />
           </button>
 
           <button
@@ -280,8 +280,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                 onClick={() => onOpenInquiry(project.category)}
                 className="inline-flex items-center space-x-2 px-8 py-3.5 rounded-xl sm:rounded-2xl bg-[#D0FE1D] hover:brightness-105 text-[#00141F] font-bold text-sm transition-all shadow-xl shadow-lime-950/20 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
               >
-                <span>Start Project</span>
-                <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
+                <span className="text-[#00141F]">Start Project</span>
+                <ArrowUpRight className="w-5 h-5 stroke-[2.5] text-[#00141F]" />
               </button>
             </div>
           </div>

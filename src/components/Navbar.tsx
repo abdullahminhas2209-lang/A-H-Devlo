@@ -90,8 +90,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => onOpenInquiry()}
             className="inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-2xl px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
           >
-            <span>Start Project</span>
-            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+            <span className="text-[#00141F]">Start Project</span>
+            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] text-[#00141F]" />
           </button>
 
           {/* Mobile Menu Hamburger Toggle */}
@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className="w-full text-center py-2.5 rounded-xl bg-[#D0FE1D] text-[#00141F] text-sm font-bold shadow transition-all hover:brightness-105 cursor-pointer font-heading"
               >
-                Start Project
+                <span className="text-[#00141F]">Start Project</span>
               </button>
             </div>
           </nav>
