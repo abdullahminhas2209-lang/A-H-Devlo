@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 interface HeroProps {
@@ -68,26 +68,26 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
 
           {/* Top Center/Right: Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-7 lg:gap-10 text-xs sm:text-sm font-medium">
+          <div className="hidden md:flex items-center gap-7 lg:gap-10 text-sm font-medium">
             <button
               onClick={() => handleNavClick('hero')}
-              className="relative py-1 text-white hover:text-white transition-colors cursor-pointer group"
+              className="relative py-1 text-[#38E1D8] font-semibold transition-colors cursor-pointer group"
             >
               <span>Home</span>
               {/* Active Underline Indicator matching reference */}
-              <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#2F7BFF] to-[#D0FE1D] rounded-full" />
+              <span className="absolute -bottom-1.5 left-0 right-0 h-[2.5px] bg-[#38E1D8] rounded-full" />
             </button>
 
             <button
               onClick={() => handleNavClick('about')}
-              className="text-[var(--text-body)] hover:text-white transition-colors cursor-pointer py-1"
+              className="text-white/90 hover:text-white transition-colors cursor-pointer py-1 font-medium"
             >
               About
             </button>
 
             <button
               onClick={() => handleNavClick('work')}
-              className="text-[var(--text-body)] hover:text-white transition-colors cursor-pointer py-1"
+              className="text-white/90 hover:text-white transition-colors cursor-pointer py-1 font-medium"
             >
               Projects
             </button>
@@ -96,22 +96,24 @@ export const Hero: React.FC<HeroProps> = ({
               onClick={() => {
                 onOpenInquiry();
               }}
-              className="text-[var(--text-body)] hover:text-white transition-colors cursor-pointer py-1"
+              className="text-white/90 hover:text-white transition-colors cursor-pointer py-1 font-medium"
             >
               Contact
             </button>
           </div>
 
-          {/* Top Right: CTA Button & Mobile Menu Toggle */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Top Right: Sun Card Control & Mobile Menu Toggle */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <motion.button
-              whileHover={{ scale: 1.025, filter: 'brightness(1.05)' }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.05, filter: 'brightness(1.06)' }}
+              whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.15 }}
               onClick={() => onOpenInquiry()}
-              className="bg-[#D0FE1D] text-[#00141F] font-bold font-heading px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-xs sm:text-sm tracking-tight cursor-pointer shadow-md shadow-lime-950/20 hover:shadow-[0_0_24px_rgba(208,254,29,0.35)] transition-all select-none"
+              title="Startup Project"
+              aria-label="Startup Project"
+              className="w-13 h-10 sm:w-15 sm:h-11 rounded-2xl bg-gradient-to-br from-[#4EE2EC] via-[#38E8DA] to-[#2AA8F2] flex items-center justify-center cursor-pointer shadow-[0_4px_22px_rgba(56,232,218,0.38)] hover:shadow-[0_4px_28px_rgba(42,168,242,0.55)] transition-all select-none"
             >
-              Startup Project
+              <Sun className="w-5 h-5 text-[#011B2B] stroke-[2.2]" />
             </motion.button>
 
             {/* Mobile Navigation Drawer Toggle */}
@@ -131,19 +133,20 @@ export const Hero: React.FC<HeroProps> = ({
             <nav className="flex flex-col space-y-2">
               <button
                 onClick={() => handleNavClick('hero')}
-                className="text-left text-sm font-semibold text-white px-3 py-2 rounded-lg bg-white/5"
+                className="text-left text-sm font-semibold text-[#38E1D8] px-3 py-2 rounded-lg bg-white/5 flex items-center justify-between"
               >
-                Home
+                <span>Home</span>
+                <span className="w-2 h-2 rounded-full bg-[#38E1D8]" />
               </button>
               <button
                 onClick={() => handleNavClick('about')}
-                className="text-left text-sm text-[var(--text-body)] hover:text-white px-3 py-2 rounded-lg"
+                className="text-left text-sm text-white/90 hover:text-white px-3 py-2 rounded-lg"
               >
                 About
               </button>
               <button
                 onClick={() => handleNavClick('work')}
-                className="text-left text-sm text-[var(--text-body)] hover:text-white px-3 py-2 rounded-lg"
+                className="text-left text-sm text-white/90 hover:text-white px-3 py-2 rounded-lg"
               >
                 Projects
               </button>
@@ -152,7 +155,7 @@ export const Hero: React.FC<HeroProps> = ({
                   setMobileMenuOpen(false);
                   onOpenInquiry();
                 }}
-                className="text-left text-sm text-[var(--text-body)] hover:text-white px-3 py-2 rounded-lg"
+                className="text-left text-sm text-white/90 hover:text-white px-3 py-2 rounded-lg"
               >
                 Contact
               </button>

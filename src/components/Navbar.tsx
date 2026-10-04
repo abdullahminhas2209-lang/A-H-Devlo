@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Sun } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 interface NavbarProps {
@@ -69,26 +69,38 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`relative text-xs px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-white/10 text-[var(--color-heading)] shadow-sm font-semibold'
-                    : 'text-[var(--text-muted)] hover:text-[var(--color-heading)] hover:bg-white/5'
+                    ? 'text-[#38E1D8] font-bold shadow-sm'
+                    : 'text-[var(--text-muted)] hover:text-white hover:bg-white/5 font-medium'
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {isActive && (
+                  <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#38E1D8] rounded-full" />
+                )}
               </button>
             );
           })}
         </nav>
 
-        {/* Right: Primary CTA & Mobile Toggle */}
+        {/* Right: Primary CTA, Sun Control & Mobile Toggle */}
         <div className="flex items-center gap-2.5 sm:gap-3">
           <button
             onClick={() => onOpenInquiry()}
-            className="inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-xl sm:rounded-2xl px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
+            className="hidden sm:inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-xl px-4 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
           >
             <span>Startup Project</span>
             <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+          </button>
+
+          <button
+            onClick={() => onOpenInquiry()}
+            title="Startup Project"
+            aria-label="Startup Project"
+            className="w-11 h-9 sm:w-13 sm:h-10 rounded-2xl bg-gradient-to-br from-[#4EE2EC] via-[#38E8DA] to-[#2AA8F2] flex items-center justify-center cursor-pointer shadow-[0_4px_18px_rgba(56,232,218,0.38)] hover:shadow-[0_4px_24px_rgba(42,168,242,0.5)] hover:scale-105 active:scale-95 transition-all select-none"
+          >
+            <Sun className="w-4.5 h-4.5 text-[#011B2B] stroke-[2.2]" />
           </button>
 
           {/* Mobile Menu Hamburger Toggle */}
