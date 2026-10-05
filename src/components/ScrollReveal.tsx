@@ -1,4 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+
+// Single shared observer across the entire application to eliminate CPU overhead
+let sharedObserver: IntersectionObserver | null = null;
+
+function getSharedObserver() {
+  if (typeof window === 'undefined') return null;
+  if (!sharedObserver) {
+    sharedObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            sharedObserver?.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -10px 0px',
+      }
+    );
+  }
+  return sharedObserver;
+}
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -13,48 +37,45 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   delayMs = 0,
   direction = 'up',
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            // Once revealed, keep it visible
-            if (domRef.current) observer.unobserve(domRef.current);
-          }
-        });
-      },
-      {
-        threshold: 0.05,
-        rootMargin: '0px 0px -10px 0px',
-      }
-    );
+    const el = domRef.current;
+    if (!el) return;
 
-    const current = domRef.current;
-    if (current) observer.observe(current);
+    // If already revealed or user prefers reduced motion
+    if (el.classList.contains('revealed') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.classList.add('revealed');
+      return;
+    }
+
+    const observer = getSharedObserver();
+    if (observer) {
+      observer.observe(el);
+    } else {
+      el.classList.add('revealed');
+    }
 
     return () => {
-      if (current) observer.unobserve(current);
+      if (el && sharedObserver) {
+        sharedObserver.unobserve(el);
+      }
     };
   }, []);
 
-  const getTransform = () => {
-    if (isVisible) return 'opacity-100 translate-x-0 translate-y-0 scale-100';
+  const getDirectionClass = () => {
     switch (direction) {
-      case 'up':
-        return 'opacity-0 translate-y-5 scale-[0.99]';
       case 'down':
-        return 'opacity-0 -translate-y-5 scale-[0.99]';
+        return 'scroll-reveal-down';
       case 'left':
-        return 'opacity-0 translate-x-5 scale-[0.99]';
+        return 'scroll-reveal-left';
       case 'right':
-        return 'opacity-0 -translate-x-5 scale-[0.99]';
+        return 'scroll-reveal-right';
       case 'fade':
+        return 'scroll-reveal-fade';
+      case 'up':
       default:
-        return 'opacity-0 scale-[0.98]';
+        return 'scroll-reveal-up';
     }
   };
 
@@ -62,7 +83,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <div
       ref={domRef}
       style={{ transitionDelay: `${delayMs}ms` }}
-      className={`transition-all duration-700 ease-out transform ${getTransform()} ${className}`}
+      className={`scroll-reveal ${getDirectionClass()} ${className}`}
     >
       {children}
     </div>

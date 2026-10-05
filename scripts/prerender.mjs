@@ -36,13 +36,32 @@ async function prerender() {
     if (cssFiles.length > 0) {
       const primaryCssFile = cssFiles[0];
       const cssContent = fs.readFileSync(path.join(assetsDir, primaryCssFile), 'utf-8');
-      
+
       // Replace the external stylesheet link with an inlined <style> tag
       const linkCssRegex = new RegExp(`<link rel="stylesheet"[^>]*${primaryCssFile}[^>]*>`);
       if (linkCssRegex.test(html)) {
         html = html.replace(linkCssRegex, `<style>${cssContent}</style>`);
         console.log(`[prerender] Inlined ${cssContent.length} bytes of CSS into <head>!`);
       }
+    }
+
+    // Add instant lightweight native IntersectionObserver script so scroll reveals work before React loads
+    const revealScript = `<script>
+if ('IntersectionObserver' in window) {
+  var ro = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('revealed');
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.scroll-reveal').forEach(function(el) { ro.observe(el); });
+}
+</script>`;
+
+    if (!html.includes('var ro = new IntersectionObserver')) {
+      html = html.replace('</body>', `${revealScript}</body>`);
     }
 
     fs.writeFileSync(distHtmlPath, html, 'utf-8');

@@ -256,6 +256,42 @@ h1, h2, h3, h4, h5, h6,
   animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
+/* Lightweight zero-state ScrollReveal styling */
+.scroll-reveal {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+.scroll-reveal-up {
+  opacity: 0;
+  transform: translateY(16px) scale(0.99);
+}
+
+.scroll-reveal-down {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.99);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(16px) scale(0.99);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(-16px) scale(0.99);
+}
+
+.scroll-reveal-fade {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
 /* Fallback only for users who explicitly requested reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -265,5 +301,9 @@ h1, h2, h3, h4, h5, h6,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
