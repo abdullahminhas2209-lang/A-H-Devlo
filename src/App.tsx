@@ -32,14 +32,22 @@ export const App: React.FC = () => {
   // Scroll spy to update activeSection in the dock as user scrolls
   useEffect(() => {
     const sectionIds = ['hero', 'work', 'services', 'why', 'process', 'about'];
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollPos = window.scrollY + window.innerHeight * 0.35;
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sectionIds[i]);
-          break;
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPos = window.scrollY + window.innerHeight * 0.35;
+          for (let i = sectionIds.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sectionIds[i]);
+            if (el && el.offsetTop <= scrollPos) {
+              setActiveSection((prev) => (prev !== sectionIds[i] ? sectionIds[i] : prev));
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

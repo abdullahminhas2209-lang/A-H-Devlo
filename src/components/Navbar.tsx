@@ -17,8 +17,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 15);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -53,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] rounded-lg cursor-pointer flex items-center gap-3 transition-opacity hover:opacity-90"
           aria-label="A&H Devlo Studio Home"
         >
-          <BrandLogo size="sm" />
+          <BrandLogo size="sm" priority={true} />
           <div className="text-left hidden xs:block">
             <span className="font-bold tracking-tight text-[var(--color-heading)] flex items-center gap-1.5 text-base sm:text-lg font-heading leading-none">
               A&amp;H Devlo <span className="text-[var(--text-muted)] font-normal text-xs uppercase tracking-widest ml-1 hidden sm:inline">Studio</span>

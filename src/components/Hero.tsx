@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 
 interface HeroProps {
   onOpenInquiry?: (serviceType?: string) => void;
@@ -66,10 +65,8 @@ const AbstractArtwork: React.FC = () => {
         {/* ROW 1 */}
         <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
         {/* The Focal Lime Teardrop */}
-        <motion.div
-          whileHover={{ scale: 1.04, y: -2 }}
-          transition={{ duration: 0.25 }}
-          className={`${tileClasses} cursor-pointer`}
+        <div
+          className={`${tileClasses} cursor-pointer transition-transform duration-200 ease-out hover:scale-105 hover:-translate-y-0.5 active:scale-95`}
           style={limeTeardropStyle}
           aria-label="Focal Lime Accent Geometry"
         />
@@ -80,10 +77,8 @@ const AbstractArtwork: React.FC = () => {
         <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
         <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
         {/* The Warm Sunset Arch */}
-        <motion.div
-          whileHover={{ scale: 1.04, y: -2 }}
-          transition={{ duration: 0.25 }}
-          className={`${tileClasses} cursor-pointer`}
+        <div
+          className={`${tileClasses} cursor-pointer transition-transform duration-200 ease-out hover:scale-105 hover:-translate-y-0.5 active:scale-95`}
           style={sunsetArchStyle}
           aria-label="Sunset Arch Accent Geometry"
         />
@@ -103,55 +98,30 @@ export const Hero: React.FC<HeroProps> = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[500px] sm:h-[700px] bg-[radial-gradient(ellipse_at_center,rgba(11,59,97,0.3)_0%,rgba(2,31,51,0.1)_50%,transparent_75%)] blur-[140px] pointer-events-none -z-10" />
 
       {/* Hero Content Container - Fits seamlessly into website background without boxed container */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-7xl mx-auto relative flex items-center"
-      >
+      <div className="w-full max-w-7xl mx-auto relative flex items-center">
         {/* 2-Column Composition: Left Headline & Right Abstract Geometric Artwork */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center w-full min-h-[360px] sm:min-h-[420px] lg:min-h-[480px]">
           {/* Left Column: Headline with dominant "professional" in solid #D0FE1D */}
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
             <h1 className="font-extrabold sm:font-bold text-white tracking-tight leading-[1.08] sm:leading-[1.04] font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[5rem] 2xl:text-[5.5rem] select-none">
-              <motion.span
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-white"
-              >
+              <span className="block text-white animate-hero-1">
                 Website that make
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.32, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-white mt-1 sm:mt-2"
-              >
+              </span>
+              <span className="block text-white mt-1 sm:mt-2 animate-hero-2">
                 small businesses
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 16, color: '#FFFFFF' }}
-                animate={{ opacity: 1, y: 0, color: '#D0FE1D' }}
-                transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-extrabold text-[#D0FE1D] mt-1 sm:mt-2"
-              >
+              </span>
+              <span className="block font-extrabold text-[#D0FE1D] mt-1 sm:mt-2 animate-hero-3">
                 professional
-              </motion.span>
+              </span>
             </h1>
           </div>
 
           {/* Right Column: Abstract Geometric Composition */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.35, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex justify-center lg:justify-end items-center relative select-none"
-          >
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center relative select-none animate-hero-art">
             <AbstractArtwork />
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

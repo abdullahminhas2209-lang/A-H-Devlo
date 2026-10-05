@@ -2,15 +2,16 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A&amp;H Devlo — High-Precision Web Engineering &amp; Digital Flagships</title>
     <meta name="description" content="A&amp;H Devlo Studio crafts high-performance websites, bespoke digital storefronts, and conversion-engineered web applications with direct founder collaboration." />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://a-h-devlo.vercel.app/" />
+
+    <!-- Critical Resource Preloading to break request chains -->
+    <link rel="preload" href="/fonts/outfit-latin-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/inter-latin-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/brand/logo-transparent.webp" as="image" type="image/webp" />
 
     <!-- Favicons & Manifest -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
