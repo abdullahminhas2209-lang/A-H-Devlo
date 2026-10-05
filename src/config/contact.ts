@@ -14,11 +14,16 @@ export interface ContactConfig {
   gmailSubject: string;
   gmailBody: string;
   whatsappMessage: string;
+  formspreeEndpoint: string;
 }
 
 export const CONTACT_CONFIG: ContactConfig = {
   // Official Business Email
   email: import.meta.env?.VITE_CONTACT_EMAIL || 'devlobyah@gmail.com',
+
+  // Official Formspree Endpoint for client inquiries
+  formspreeEndpoint:
+    import.meta.env?.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xjygvzbl',
 
   // Official WhatsApp Business Number (international digits only: 923333875790)
   whatsappNumber: import.meta.env?.VITE_CONTACT_WHATSAPP || '923333875790',

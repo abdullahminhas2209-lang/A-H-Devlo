@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, CheckCircle2, X, MessageSquare } from 'lucide-react';
 import type { InquiryFormData } from '../types';
-import { getWhatsAppUrl } from '../config/contact';
+import { getWhatsAppUrl, CONTACT_CONFIG } from '../config/contact';
 
 interface ProjectInquiryModalProps {
   isOpen: boolean;
@@ -36,6 +36,7 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
   const [errors, setErrors] = useState<Partial<Record<keyof InquiryFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Lock body scroll and listen for Escape key
   useEffect(() => {
@@ -84,11 +85,13 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
       return;
     }
 
+    setSubmitError(null);
     setIsSubmitting(true);
 
-    const formEndpoint = import.meta.env?.VITE_FORMSPREE_ENDPOINT;
+    const formEndpoint =
+      import.meta.env?.VITE_FORMSPREE_ENDPOINT || CONTACT_CONFIG.formspreeEndpoint;
 
-    if (formEndpoint) {
+    if (formEndpoint && formEndpoint !== 'https://formspree.io/f/your_form_id') {
       try {
         const response = await fetch(formEndpoint, {
           method: 'POST',
@@ -97,28 +100,55 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
             Accept: 'application/json',
           },
           body: JSON.stringify({
-            ...formData,
+            name: formData.fullName,
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            businessName: formData.businessName,
+            serviceType: formData.serviceType,
+            industry: formData.industry || 'Not specified',
+            existingWebsite: formData.existingWebsite || 'None provided',
+            projectDescription: formData.projectDescription,
+            message: formData.projectDescription,
+            _subject: `New Project Inquiry: ${formData.businessName || formData.fullName} (${formData.serviceType})`,
+            _replyto: formData.email,
             submittedAt: new Date().toISOString(),
           }),
         });
 
         if (!response.ok) {
-          throw new Error('Failed to transmit inquiry to server.');
+          const errorData = await response.json().catch(() => null);
+          const errorMsg =
+            errorData?.error ||
+            (errorData?.errors && Array.isArray(errorData.errors)
+              ? errorData.errors.map((item: { message?: string }) => item.message || '').filter(Boolean).join(', ')
+              : null) ||
+            'Failed to transmit inquiry to server. Please try again.';
+          throw new Error(errorMsg);
         }
+
+        setIsSubmitted(true);
       } catch (err: unknown) {
-        console.warn('Form submission encountered network error, falling back to client review state:', err);
+        console.error('Form submission error:', err);
+        setSubmitError(
+          err instanceof Error
+            ? err.message
+            : 'Network error submitting inquiry. Please try again or reach out directly on WhatsApp.'
+        );
+      } finally {
+        setIsSubmitting(false);
       }
     } else {
       // Simulate swift transmission when custom backend key is not configured in local development
       await new Promise((r) => setTimeout(r, 500));
+      setIsSubmitting(false);
+      setIsSubmitted(true);
     }
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
   };
 
   const handleReset = () => {
     setIsSubmitted(false);
+    setSubmitError(null);
     setFormData({
       serviceType: 'Business Website',
       businessName: '',
@@ -412,6 +442,21 @@ export const ProjectInquiryModal: React.FC<ProjectInquiryModalProps> = ({
                   </div>
                 </div>
               </div>
+
+              {/* Error Alert */}
+              {submitError && (
+                <div className="p-3.5 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
+                  <span className="leading-snug">{submitError}</span>
+                  <a
+                    href={getWhatsAppUrl(`Hi A&H Devlo, I experienced an issue submitting the project form for ${formData.businessName || 'my business'}.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-white font-semibold hover:text-emerald-400 shrink-0"
+                  >
+                    Send via WhatsApp
+                  </a>
+                </div>
+              )}
 
               {/* Submit CTA */}
               <div className="pt-1">
