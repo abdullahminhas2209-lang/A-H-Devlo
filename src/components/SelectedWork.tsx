@@ -38,6 +38,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
             return (
               <ScrollReveal key={project.id} delayMs={index * 100}>
                 <div
+                  data-project-id={project.id}
                   onClick={() => onSelectProject(project.id)}
                   className="group relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--surface-card)] hover:border-[var(--border-subtle-hover)] hover:bg-[var(--surface-card-hover)] hover:shadow-2xl hover:shadow-black/70 transition-all duration-300 flex flex-col cursor-pointer h-full backdrop-blur-md"
                 >

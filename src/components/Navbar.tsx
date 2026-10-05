@@ -14,7 +14,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeSection = 'hero',
 }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(() => {
+    if (typeof window !== 'undefined' && (window as unknown as { __PENDING_MENU__?: boolean }).__PENDING_MENU__) {
+      delete (window as unknown as { __PENDING_MENU__?: boolean }).__PENDING_MENU__;
+      return true;
+    }
+    return false;
+  });
 
   useEffect(() => {
     let ticking = false;
@@ -73,9 +79,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
-              <button
+              <a
                 key={link.id}
-                onClick={() => handleNavClick(link.id)}
+                href={`#${link.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.id);
+                }}
                 className={`relative text-xs px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                   isActive
                     ? 'text-[#38E1D8] font-bold shadow-sm'
@@ -86,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {isActive && (
                   <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#38E1D8] rounded-full" />
                 )}
-              </button>
+              </a>
             );
           })}
         </nav>
@@ -94,6 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Right: Primary CTA & Mobile Toggle */}
         <div className="flex items-center gap-2.5 sm:gap-3">
           <button
+            data-inquiry=""
             onClick={() => onOpenInquiry()}
             className="inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-2xl px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
           >
@@ -103,6 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Menu Hamburger Toggle */}
           <button
+            data-mobile-menu-toggle=""
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden w-10 h-10 rounded-xl bg-[#021F33]/80 border border-[var(--border-subtle)] text-[var(--text-body)] hover:text-[var(--color-heading)] flex items-center justify-center transition-colors cursor-pointer"
             aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
@@ -134,6 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
             <div className="pt-2">
               <button
+                data-inquiry=""
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenInquiry();

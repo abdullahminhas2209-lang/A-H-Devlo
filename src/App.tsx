@@ -22,12 +22,47 @@ const LegalModal = lazy(() =>
   import('./components/LegalModal').then((m) => ({ default: m.LegalModal }))
 );
 
+declare global {
+  interface Window {
+    __REACT_HYDRATED__?: boolean;
+    __PENDING_ACTION__?:
+      | { type: 'inquiry'; service?: string }
+      | { type: 'project'; id: string }
+      | { type: 'legal'; legalType: 'privacy' | 'terms' }
+      | null;
+  }
+}
+
 export const App: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
-  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
-  const [inquiryService, setInquiryService] = useState<string | undefined>(undefined);
-  const [legalType, setLegalType] = useState<'privacy' | 'terms' | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(() => {
+    if (typeof window !== 'undefined' && window.__PENDING_ACTION__?.type === 'project') {
+      const pid = window.__PENDING_ACTION__.id;
+      return projects.find((p) => p.id === pid) || null;
+    }
+    return null;
+  });
+  const [isInquiryOpen, setIsInquiryOpen] = useState(() => {
+    return typeof window !== 'undefined' && window.__PENDING_ACTION__?.type === 'inquiry';
+  });
+  const [inquiryService, setInquiryService] = useState<string | undefined>(() => {
+    if (typeof window !== 'undefined' && window.__PENDING_ACTION__?.type === 'inquiry') {
+      return window.__PENDING_ACTION__.service;
+    }
+    return undefined;
+  });
+  const [legalType, setLegalType] = useState<'privacy' | 'terms' | null>(() => {
+    if (typeof window !== 'undefined' && window.__PENDING_ACTION__?.type === 'legal') {
+      return window.__PENDING_ACTION__.legalType;
+    }
+    return null;
+  });
   const [activeSection, setActiveSection] = useState('hero');
+
+  // Mark React hydrated and clear pending action
+  useEffect(() => {
+    window.__REACT_HYDRATED__ = true;
+    window.__PENDING_ACTION__ = null;
+  }, []);
 
   // Scroll spy to update activeSection in the dock as user scrolls
   useEffect(() => {

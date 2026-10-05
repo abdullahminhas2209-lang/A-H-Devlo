@@ -32,13 +32,17 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Brand & Social Column */}
           <div className="sm:col-span-12 lg:col-span-5 space-y-4">
-            <button
-              onClick={() => onNavigate('hero')}
+            <a
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('hero');
+              }}
               aria-label="Return to top of page"
               className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] rounded cursor-pointer block -ml-1 transition-opacity hover:opacity-90"
             >
               <BrandLogo size="md" />
-            </button>
+            </a>
 
             <p className="text-sm text-[var(--text-body)] leading-relaxed max-w-sm font-sans">
               A modern digital studio crafting high-converting websites and bespoke web applications with precision engineering and thoughtful design.
@@ -95,52 +99,76 @@ export const Footer: React.FC<FooterProps> = ({
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
-                <button
-                  onClick={() => onNavigate('hero')}
+                <a
+                  href="#hero"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('hero');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Home
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('work')}
+                <a
+                  href="#work"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('work');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Selected Work
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Services
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('why')}
+                <a
+                  href="#why"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('why');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Why Devlo
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('process')}
+                <a
+                  href="#process"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('process');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   How We Work
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('about')}
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('about');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   About Studio
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -152,44 +180,64 @@ export const Footer: React.FC<FooterProps> = ({
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Custom Websites
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   High-Converting Landing Pages
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Website Redesigns
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   UI/UX Design Systems
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('services')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Performance Optimization
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -225,6 +273,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li className="pt-1">
                 <button
+                  data-inquiry=""
                   onClick={onOpenInquiry}
                   className="text-[var(--accent-blue)] hover:text-[var(--accent-blue-hover)] font-medium inline-flex items-center space-x-1 cursor-pointer"
                 >
@@ -248,6 +297,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           <div className="flex items-center space-x-5">
             <button
+              data-legal="privacy"
               onClick={() => onOpenLegal('privacy')}
               className="hover:text-[var(--color-heading)] transition-colors cursor-pointer"
             >
@@ -255,6 +305,7 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
             <span>•</span>
             <button
+              data-legal="terms"
               onClick={() => onOpenLegal('terms')}
               className="hover:text-[var(--color-heading)] transition-colors cursor-pointer"
             >

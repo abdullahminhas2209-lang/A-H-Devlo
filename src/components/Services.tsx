@@ -129,6 +129,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenInquiry }) => {
                   {/* Bottom CTA Button */}
                   <div className="pt-5">
                     <button
+                      data-inquiry={service.title}
                       onClick={() => onOpenInquiry(service.title)}
                       className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full bg-[#0B3B61]/40 hover:bg-[var(--accent-blue)] text-[var(--color-heading)] hover:text-white text-xs sm:text-sm font-semibold border border-[var(--border-subtle)] hover:border-[var(--accent-blue)] transition-all duration-200 cursor-pointer shadow group-hover:shadow-md active:scale-95 font-heading"
                     >

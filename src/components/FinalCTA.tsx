@@ -38,6 +38,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenInquiry }) => {
               {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
                 <button
+                  data-inquiry=""
                   onClick={onOpenInquiry}
                   className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl sm:rounded-2xl bg-[#D0FE1D] hover:brightness-105 text-[#00141F] font-bold text-sm transition-all duration-200 shadow-xl shadow-lime-950/20 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
                 >

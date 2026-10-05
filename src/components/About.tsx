@@ -177,6 +177,7 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
 
                 <div className="pt-2">
                   <button
+                    data-inquiry=""
                     onClick={onOpenInquiry}
                     className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs sm:text-sm font-bold tracking-tight transition-all shadow-md shadow-blue-950/50 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
                   >
