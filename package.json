@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node node_modules/vite/bin/vite.js",
-    "build": "node node_modules/typescript/bin/tsc -b && node node_modules/vite/bin/vite.js build",
+    "build": "node node_modules/typescript/bin/tsc -b && node node_modules/vite/bin/vite.js build && node scripts/prerender.mjs",
     "lint": "node node_modules/oxlint/dist/cli.js src/",
     "preview": "node node_modules/vite/bin/vite.js preview"
   },
