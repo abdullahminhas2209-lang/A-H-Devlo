@@ -167,13 +167,13 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             </div>
 
             {/* Device Switcher (Desktop / Tablet / Mobile) */}
-            <div className="flex items-center space-x-1 bg-[#00141F] p-1.5 rounded-xl border border-[var(--border-subtle)] self-start sm:self-auto">
+            <div className="flex items-center space-x-1 bg-[#141824] p-1.5 rounded-lg border border-[#232938] self-start sm:self-auto">
               <button
                 onClick={() => setDevice('desktop')}
-                className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-heading font-semibold transition-all cursor-pointer ${
+                className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-medium transition-all ${
                   device === 'desktop'
-                    ? 'bg-[var(--accent-blue)] text-white shadow'
-                    : 'text-[var(--text-muted)] hover:text-white'
+                    ? 'bg-blue-600 text-white shadow'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <Monitor className="w-4 h-4" />
@@ -182,10 +182,10 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
               <button
                 onClick={() => setDevice('tablet')}
-                className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-heading font-semibold transition-all cursor-pointer ${
+                className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-medium transition-all ${
                   device === 'tablet'
-                    ? 'bg-[var(--accent-blue)] text-white shadow'
-                    : 'text-[var(--text-muted)] hover:text-white'
+                    ? 'bg-blue-600 text-white shadow'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <Tablet className="w-4 h-4" />
@@ -194,10 +194,10 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
               <button
                 onClick={() => setDevice('mobile')}
-                className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-heading font-semibold transition-all cursor-pointer ${
+                className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-medium transition-all ${
                   device === 'mobile'
-                    ? 'bg-[var(--accent-blue)] text-white shadow'
-                    : 'text-[var(--text-muted)] hover:text-white'
+                    ? 'bg-blue-600 text-white shadow'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <Smartphone className="w-4 h-4" />
@@ -207,7 +207,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           </div>
 
           {/* Interactive Screen Preview */}
-          <div className="py-6 px-4 sm:px-8 rounded-3xl bg-[#00141F]/90 border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center min-h-[480px]">
+          <div className="py-6 px-4 sm:px-8 rounded-2xl bg-[#0F1117] border border-[#232938] overflow-hidden flex items-center justify-center min-h-[480px]">
             <BrowserMockup
               imageSrc={project.image}
               title={project.title}
@@ -216,7 +216,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               accentColor={project.accentColor}
             />
           </div>
-          <p className="text-center text-xs text-[var(--text-muted)] font-mono">
+          <p className="text-center text-xs text-slate-500 font-mono">
             Showing interactive {device} viewport layout for {project.title}. Responsive layout adapts cleanly without content truncation.
           </p>
         </section>

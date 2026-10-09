@@ -15,7 +15,7 @@ import {
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
-  onOpenInquiry: (serviceType?: string) => void;
+  onOpenInquiry: () => void;
   onOpenLegal: (type: 'privacy' | 'terms') => void;
 }
 
@@ -26,12 +26,11 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   return (
     <footer className="bg-[var(--bg-deep)]/95 border-t border-[var(--border-subtle)] pt-14 pb-14 sm:pb-16 text-[var(--text-body)] text-sm relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-12">
         
         {/* Multi-Column Navigation with Integrated Brand Logo */}
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
-          {/* Brand & Social Column (5 cols) */}
+          {/* Brand & Social Column */}
           <div className="sm:col-span-12 lg:col-span-5 space-y-4">
             <a
               href="#hero"
@@ -46,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({
             </a>
 
             <p className="text-sm text-[var(--text-body)] leading-relaxed max-w-sm font-sans">
-              An independent creative studio crafting bespoke websites, memorable brand identities, and marketing graphics for small businesses and founders.
+              A modern digital studio crafting high-converting websites and bespoke web applications with precision engineering and thoughtful design.
             </p>
 
             {/* Social Icons row */}
@@ -120,43 +119,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
-                  Websites
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#logos"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('logos');
-                  }}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Logos &amp; Marks
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#visiting-cards"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('visiting-cards');
-                  }}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Visiting Cards
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#social-media"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('social-media');
-                  }}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Social Media
+                  Selected Work
                 </a>
               </li>
               <li>
@@ -169,6 +132,18 @@ export const Footer: React.FC<FooterProps> = ({
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#why"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('why');
+                  }}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Why Devlo
                 </a>
               </li>
               <li>
@@ -192,65 +167,77 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
-                  Founders
+                  About Studio
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 2: Offerings (Both Web & Graphics) */}
+          {/* Column 2: Offerings */}
           <div className="sm:col-span-4 lg:col-span-3 space-y-3.5">
             <h3 className="text-xs font-heading font-semibold text-[var(--color-heading)] uppercase tracking-wider">
-              Offerings
+              Capabilities
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
-                <button
-                  onClick={() => onOpenInquiry('Website Design & Development')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
-                  Custom Business Websites
-                </button>
+                  Custom Websites
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onOpenInquiry('Conversion Landing Pages')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
-                  High-Impact Landing Pages
-                </button>
+                  High-Converting Landing Pages
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onOpenInquiry('Branding & Graphic Design')}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Logo Design &amp; Monograms
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenInquiry('Branding & Graphic Design')}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Visual Brand Systems
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenInquiry('Social Media & Content Graphics')}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Social Media &amp; Promo Graphics
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenInquiry('Website Redesign')}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Website Redesigns
-                </button>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  UI/UX Design Systems
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Performance Optimization
+                </a>
               </li>
             </ul>
           </div>
@@ -258,7 +245,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Column 3: Direct Contact */}
           <div className="sm:col-span-4 lg:col-span-2 space-y-3.5">
             <h3 className="text-xs font-heading font-semibold text-[var(--color-heading)] uppercase tracking-wider">
-              Direct Contact
+              Direct Inquiries
             </h3>
             <ul className="flex flex-col space-y-2 text-sm font-sans">
               <li>
@@ -282,15 +269,15 @@ export const Footer: React.FC<FooterProps> = ({
                 </a>
               </li>
               <li>
-                <span className="text-[var(--text-muted)] text-xs">Direct reply within 24 hours</span>
+                <span className="text-[var(--text-muted)] text-xs">Response time: within 24 hours</span>
               </li>
               <li className="pt-1">
                 <button
                   data-inquiry=""
-                  onClick={() => onOpenInquiry()}
-                  className="text-[var(--accent-lime)] hover:underline font-semibold inline-flex items-center space-x-1 cursor-pointer"
+                  onClick={onOpenInquiry}
+                  className="text-[var(--accent-blue)] hover:text-[var(--accent-blue-hover)] font-medium inline-flex items-center space-x-1 cursor-pointer"
                 >
-                  <span>Start a project inquiry</span>
+                  <span>Project intake form</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </li>
@@ -305,7 +292,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="text-[var(--text-muted)] hidden md:block">
-            Design &amp; Web Studio for Independent Businesses.
+            Built with precision &amp; clean code.
           </div>
 
           <div className="flex items-center space-x-5">

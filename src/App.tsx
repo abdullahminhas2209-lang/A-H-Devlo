@@ -4,14 +4,8 @@ import type { ProjectData } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
-import { LogosSection } from './components/LogosSection';
-import { VisitingCardsSection } from './components/VisitingCardsSection';
-import { SocialMediaSection } from './components/SocialMediaSection';
-import { PortfolioLightbox } from './components/PortfolioLightbox';
-import { graphicDesignItems } from './data/portfolio';
-import type { GraphicDesignItem } from './types';
 import { Services } from './components/Services';
-import { VisualDesignShowcase } from './components/VisualDesignShowcase';
+import { WhyDevlo } from './components/WhyDevlo';
 import { Process } from './components/Process';
 import { About } from './components/About';
 import { FinalCTA } from './components/FinalCTA';
@@ -62,7 +56,6 @@ export const App: React.FC = () => {
     }
     return null;
   });
-  const [selectedGraphicItem, setSelectedGraphicItem] = useState<GraphicDesignItem | null>(null);
   const [activeSection, setActiveSection] = useState('hero');
 
   // Mark React hydrated and clear pending action
@@ -71,20 +64,9 @@ export const App: React.FC = () => {
     window.__PENDING_ACTION__ = null;
   }, []);
 
-  // Scroll spy to update activeSection in navigation
+  // Scroll spy to update activeSection in the dock as user scrolls
   useEffect(() => {
-    const sectionIds = [
-      'hero',
-      'work',
-      'logos',
-      'visiting-cards',
-      'social-media',
-      'services',
-      'design',
-      'process',
-      'about',
-      'contact',
-    ];
+    const sectionIds = ['hero', 'work', 'services', 'why', 'process', 'about'];
     let ticking = false;
 
     const handleScroll = () => {
@@ -120,12 +102,6 @@ export const App: React.FC = () => {
         const pId = hash.replace('project-', '');
         const found = projects.find((p) => p.id === pId);
         if (found) setSelectedProject(found);
-      } else if (hash === 'graphic-work' || hash === 'graphics') {
-        const el = document.getElementById('work');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-          setActiveSection('work');
-        }
       } else {
         const el = document.getElementById(hash);
         if (el) {
@@ -140,6 +116,7 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
+  // Update hash when project changes without reloading
   const handleSelectProject = (projectId: string) => {
     const found = projects.find((p) => p.id === projectId);
     if (found) {
@@ -179,12 +156,12 @@ export const App: React.FC = () => {
       {/* Skip to Main Content Accessibility Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#D0FE1D] focus:text-[#00141F] focus:font-bold focus:rounded-full focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#D0FE1D] focus:text-[#00141F] focus:font-bold focus:rounded-full focus:shadow-[0_0_20px_rgba(208,254,29,0.5)] focus:outline-none"
       >
         Skip to main content
       </a>
 
-      {/* 1. Minimal Distinctive Navigation */}
+      {/* Top Header with Brand Logo & Quick Action */}
       <Navbar
         onOpenInquiry={handleOpenInquiry}
         onNavigate={handleNavigate}
@@ -193,7 +170,7 @@ export const App: React.FC = () => {
 
       {/* Main Studio Landing Body */}
       <main id="main-content" className="flex-1">
-        {/* 2. Memorable Hero Section */}
+        {/* 1. Hero Section */}
         <Hero
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}
@@ -202,60 +179,34 @@ export const App: React.FC = () => {
           onSelectProject={handleSelectProject}
         />
 
-        {/* 3. Selected Websites & Web Development Case Studies */}
+        {/* 2. Selected Work Section */}
         <SelectedWork
           projects={projects}
           onSelectProject={handleSelectProject}
-          onOpenInquiry={handleOpenInquiry}
+          onOpenInquiry={() => handleOpenInquiry()}
         />
 
-        {/* 4. Dedicated Logo Design & Brand Marks Section */}
-        <LogosSection
-          onSelectItem={setSelectedGraphicItem}
-          onOpenInquiry={handleOpenInquiry}
-        />
-
-        {/* 5. Dedicated Visiting Cards & Stationery Section */}
-        <VisitingCardsSection
-          onSelectItem={setSelectedGraphicItem}
-          onOpenInquiry={handleOpenInquiry}
-        />
-
-        {/* 6. Dedicated Social Media & Marketing Graphics Section */}
-        <SocialMediaSection
-          onSelectItem={setSelectedGraphicItem}
-          onOpenInquiry={handleOpenInquiry}
-        />
-
-        {/* 7. Clear Services Section (Web & Graphics) */}
+        {/* 3. Services Section */}
         <Services onOpenInquiry={handleOpenInquiry} />
 
-        {/* 8. Brand Standards & Visual Design Showcase */}
-        <VisualDesignShowcase onOpenInquiry={handleOpenInquiry} />
+        {/* 4. Why A&H Devlo (4 Principles) */}
+        <WhyDevlo />
 
-        {/* 9. How the Studio Works (Workflow & Standards merged) */}
+        {/* 5. Process Section (5 Steps) */}
         <Process onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 10. Compact Founders Section */}
+        {/* 6. About Section */}
         <About onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 11. Strong Contact CTA */}
+        {/* 7. Final CTA */}
         <FinalCTA
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}
         />
       </main>
 
-      {/* Accessible HD Portfolio Lightbox */}
-      <PortfolioLightbox
-        item={selectedGraphicItem}
-        itemsList={graphicDesignItems}
-        onClose={() => setSelectedGraphicItem(null)}
-        onSelectItem={setSelectedGraphicItem}
-        onOpenInquiry={handleOpenInquiry}
-      />
 
-      {/* Reusable Case Study Modal with Device Switcher */}
+      {/* Reusable Case Study View */}
       <Suspense fallback={null}>
         {selectedProject && (
           <CaseStudyModal
@@ -285,10 +236,10 @@ export const App: React.FC = () => {
         />
       </Suspense>
 
-      {/* 9. Clean Footer */}
+      {/* Footer */}
       <Footer
         onNavigate={handleNavigate}
-        onOpenInquiry={handleOpenInquiry}
+        onOpenInquiry={() => handleOpenInquiry()}
         onOpenLegal={(type) => setLegalType(type)}
       />
     </div>
