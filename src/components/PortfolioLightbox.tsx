@@ -170,13 +170,20 @@ export const PortfolioLightbox: React.FC<PortfolioLightboxProps> = ({
             {/* Ambient Backlight Glow */}
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(47,123,255,0.08)_0%,transparent_70%)]" />
 
-            {/* Asset Image */}
-            <picture className="relative z-10 max-w-full max-h-[500px] flex items-center justify-center">
+            {/* Asset Image (Rendered at crisp dimensions without artificial stretching or blurring filters) */}
+            <picture className="relative z-10 flex items-center justify-center p-4">
               {item.pngPath && <source srcSet={item.pngPath} type="image/png" />}
+              <source srcSet={item.assetPath} type="image/webp" />
               <img
-                src={item.assetPath}
+                src={item.pngPath || item.assetPath}
                 alt={item.title}
-                className="max-w-full max-h-[460px] w-auto h-auto object-contain rounded-lg filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.65)] select-none"
+                className={`${
+                  item.category === 'logo'
+                    ? 'max-w-[280px] max-h-[170px]'
+                    : item.category === 'visiting-card'
+                    ? 'max-w-[320px] max-h-[190px]'
+                    : 'max-w-[300px] max-h-[300px]'
+                } w-auto h-auto object-contain rounded-xl select-none shadow-2xl`}
               />
             </picture>
 

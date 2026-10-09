@@ -56,13 +56,18 @@ export const VisitingCardsSection: React.FC<VisitingCardsSectionProps> = ({
               className="group relative rounded-3xl bg-[#011421] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] hover:bg-[#021827] p-5 flex flex-col justify-between shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
             >
               {/* Natural 1.4:1 Mockup Viewport */}
-              <div className="relative aspect-[1.4/1] rounded-2xl overflow-hidden bg-[#00111a] border border-white/5 flex items-center justify-center p-2 mb-4 group-hover:border-white/10 transition-colors">
-                <img
-                  src={item.assetPath}
-                  alt={item.title}
-                  className="w-full h-full object-cover rounded-xl filter group-hover:scale-105 transition-transform duration-500 drop-shadow-lg"
-                  loading="lazy"
-                />
+              <div className="relative aspect-[1.5/1] rounded-2xl overflow-hidden bg-[#000d14] border border-white/5 flex items-center justify-center p-3 mb-4 group-hover:border-white/10 transition-colors">
+                <picture className="w-full h-full flex items-center justify-center">
+                  {item.pngPath && <source srcSet={item.pngPath} type="image/png" />}
+                  <source srcSet={item.assetPath} type="image/webp" />
+                  <img
+                    src={item.pngPath || item.assetPath}
+                    alt={item.title}
+                    className="max-w-[245px] max-h-[145px] w-auto h-auto object-contain rounded-lg shadow-xl group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
 
                 {/* Hover Reveal Action */}
                 <div className="absolute inset-0 bg-[#00141F]/65 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

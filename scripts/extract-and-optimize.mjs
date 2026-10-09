@@ -18,24 +18,24 @@ dirs.forEach(d => {
 });
 
 async function processAll() {
-  console.log('--- Starting Clean HD Extraction Pipeline ---');
+  console.log('--- Starting Lossless 1:1 Pixel-Perfect Extraction Pipeline ---');
+  console.log('Rule: Zero artificial upscaling, zero lossy re-compression, 100% native quality.');
 
   // ==========================================
-  // 1. EXTRACT LOGOS VOL 01 (7 logos)
-  // Strictly exclude top header line ("LOGO COLLECTION VOL 01") and side watermark arcs
+  // 1. EXTRACT LOGOS VOL 01 (7 logos) - Native 1:1 Lossless
   // ==========================================
   const vol1Path = path.join(SOURCE_ASSETS_DIR, 'original-logo-collection-vol-01.jpg');
   const vol1Logos = [
     {
       id: 'logo-abdullah-minhas',
       title: 'Abdullah Minhas',
-      box: { left: 22, top: 129, width: 134, height: 89 },
+      box: { left: 20, top: 128, width: 138, height: 90 },
       artBox: { left: 35, top: 132, width: 108, height: 82 }
     },
     {
       id: 'logo-orifice-medical',
       title: 'Orifice Healthcare',
-      box: { left: 22, top: 251, width: 134, height: 92 },
+      box: { left: 20, top: 250, width: 138, height: 92 },
       artBox: { left: 35, top: 254, width: 108, height: 84 }
     },
     {
@@ -47,62 +47,48 @@ async function processAll() {
     {
       id: 'logo-iqra-book-store',
       title: 'Iqra Book Store',
-      box: { left: 22, top: 501, width: 134, height: 92 },
+      box: { left: 20, top: 500, width: 138, height: 92 },
       artBox: { left: 35, top: 504, width: 108, height: 84 }
     },
     {
       id: 'logo-collab-and-connect',
       title: 'Collab & Connect',
-      box: { left: 22, top: 626, width: 134, height: 92 },
+      box: { left: 20, top: 625, width: 138, height: 92 },
       artBox: { left: 35, top: 628, width: 108, height: 84 }
     },
     {
       id: 'logo-horizon-skyline',
       title: 'Horizon Properties',
-      box: { left: 22, top: 751, width: 134, height: 94 },
+      box: { left: 20, top: 750, width: 138, height: 94 },
       artBox: { left: 32, top: 754, width: 114, height: 86 }
     },
     {
       id: 'logo-zuhair-ishaque',
       title: 'Zuhair Ishaque',
-      box: { left: 22, top: 878, width: 134, height: 94 },
+      box: { left: 20, top: 878, width: 138, height: 94 },
       artBox: { left: 35, top: 880, width: 108, height: 86 }
     }
   ];
 
   for (const item of vol1Logos) {
-    // 1. Clean full card lockup (4x resolution, with lanczos3 and subtle sharpening)
-    const cardImg = sharp(vol1Path)
-      .extract(item.box)
-      .resize({ width: 720, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.8, m2: 2.0 });
+    // 1. Lossless PNG & Lossless WebP at 100% native unscaled dimensions
+    const cardImg = sharp(vol1Path).extract(item.box);
+    await cardImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/logos/${item.id}.png`);
+    await cardImg.clone().webp({ lossless: true }).toFile(`public/portfolio/logos/${item.id}.webp`);
 
-    await cardImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/logos/${item.id}.webp`);
-    await cardImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/logos/${item.id}.png`);
+    // 2. Focused artwork mark at native dimensions
+    const artImg = sharp(vol1Path).extract(item.artBox);
+    await artImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/logos/${item.id}-mark.png`);
+    await artImg.clone().webp({ lossless: true }).toFile(`public/portfolio/logos/${item.id}-mark.webp`);
 
-    // 2. Focused isolated mark
-    const artImg = sharp(vol1Path)
-      .extract(item.artBox)
-      .resize({ width: 520, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.9, m2: 2.2 });
+    // 3. Thumbnail at native 1:1 dimensions without downscaling degradation
+    await cardImg.clone().webp({ lossless: true }).toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
 
-    await artImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/logos/${item.id}-mark.webp`);
-    await artImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/logos/${item.id}-mark.png`);
-
-    // 3. Retina thumbnail
-    await sharp(vol1Path)
-      .extract(item.box)
-      .resize({ width: 380, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 0.8, m1: 0.7, m2: 1.8 })
-      .webp({ quality: 92 })
-      .toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
-
-    console.log(`[Clean HD] Generated logo assets for: ${item.id}`);
+    console.log(`[Native Lossless] Extracted: ${item.id} (${item.box.width}x${item.box.height})`);
   }
 
   // ==========================================
-  // 2. EXTRACT LOGOS VOL 02 (6 logos)
-  // Strictly clean bounds
+  // 2. EXTRACT LOGOS VOL 02 (6 logos) - Native 1:1 Lossless
   // ==========================================
   const vol2Path = path.join(SOURCE_ASSETS_DIR, 'original-logo-collection-vol-02.jpg');
   const vol2Logos = [
@@ -115,19 +101,19 @@ async function processAll() {
     {
       id: 'logo-sigma-leathers',
       title: 'Sigma Leathers',
-      box: { left: 15, top: 299, width: 215, height: 85 },
+      box: { left: 15, top: 298, width: 215, height: 85 },
       artBox: { left: 25, top: 308, width: 195, height: 75 }
     },
     {
       id: 'logo-rizwaniat-fluid',
       title: 'Rizwaniat (Fluid)',
-      box: { left: 15, top: 414, width: 215, height: 85 },
+      box: { left: 15, top: 412, width: 215, height: 85 },
       artBox: { left: 30, top: 418, width: 185, height: 78 }
     },
     {
       id: 'logo-bawarchi-khana',
       title: 'Bawarchi Khana',
-      box: { left: 20, top: 526, width: 205, height: 92 },
+      box: { left: 20, top: 524, width: 205, height: 92 },
       artBox: { left: 35, top: 528, width: 175, height: 88 }
     },
     {
@@ -139,40 +125,27 @@ async function processAll() {
     {
       id: 'logo-rizwaniat-serif',
       title: 'Rizwaniat (Serif)',
-      box: { left: 20, top: 756, width: 205, height: 90 },
+      box: { left: 20, top: 754, width: 205, height: 90 },
       artBox: { left: 35, top: 758, width: 175, height: 84 }
     }
   ];
 
   for (const item of vol2Logos) {
-    const cardImg = sharp(vol2Path)
-      .extract(item.box)
-      .resize({ width: 860, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.8, m2: 2.0 });
+    const cardImg = sharp(vol2Path).extract(item.box);
+    await cardImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/logos/${item.id}.png`);
+    await cardImg.clone().webp({ lossless: true }).toFile(`public/portfolio/logos/${item.id}.webp`);
 
-    await cardImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/logos/${item.id}.webp`);
-    await cardImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/logos/${item.id}.png`);
+    const artImg = sharp(vol2Path).extract(item.artBox);
+    await artImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/logos/${item.id}-mark.png`);
+    await artImg.clone().webp({ lossless: true }).toFile(`public/portfolio/logos/${item.id}-mark.webp`);
 
-    const artImg = sharp(vol2Path)
-      .extract(item.artBox)
-      .resize({ width: 700, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.9, m2: 2.2 });
+    await cardImg.clone().webp({ lossless: true }).toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
 
-    await artImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/logos/${item.id}-mark.webp`);
-    await artImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/logos/${item.id}-mark.png`);
-
-    await sharp(vol2Path)
-      .extract(item.box)
-      .resize({ width: 440, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 0.8, m1: 0.7, m2: 1.8 })
-      .webp({ quality: 92 })
-      .toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
-
-    console.log(`[Clean HD] Generated logo assets for: ${item.id}`);
+    console.log(`[Native Lossless] Extracted: ${item.id} (${item.box.width}x${item.box.height})`);
   }
 
   // ==========================================
-  // 3. EXTRACT VISITING CARDS (6 mockups)
+  // 3. EXTRACT VISITING CARDS (6 mockups) - Native 1:1 Lossless
   // ==========================================
   const cardsPath = path.join(SOURCE_ASSETS_DIR, 'original-visiting-cards-collection.jpg');
   const visitingCards = [
@@ -209,26 +182,16 @@ async function processAll() {
   ];
 
   for (const item of visitingCards) {
-    const cardImg = sharp(cardsPath)
-      .extract(item.box)
-      .resize({ width: 980, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.85, m2: 2.2 });
+    const cardImg = sharp(cardsPath).extract(item.box);
+    await cardImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/visiting-cards/${item.id}.png`);
+    await cardImg.clone().webp({ lossless: true }).toFile(`public/portfolio/visiting-cards/${item.id}.webp`);
+    await cardImg.clone().webp({ lossless: true }).toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
 
-    await cardImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/visiting-cards/${item.id}.webp`);
-    await cardImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/visiting-cards/${item.id}.png`);
-
-    await sharp(cardsPath)
-      .extract(item.box)
-      .resize({ width: 500, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 0.8, m1: 0.8, m2: 1.8 })
-      .webp({ quality: 92 })
-      .toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
-
-    console.log(`[HD 4x] Generated visiting card assets for: ${item.id}`);
+    console.log(`[Native Lossless] Extracted: ${item.id} (${item.box.width}x${item.box.height})`);
   }
 
   // ==========================================
-  // 4. EXTRACT SOCIAL POSTS VOL 01 (3 Orifice Posts)
+  // 4. EXTRACT SOCIAL POSTS VOL 01 (3 Orifice Posts) - Native 1:1 Lossless
   // ==========================================
   const social1Path = path.join(SOURCE_ASSETS_DIR, 'original-social-posts-vol-01.jpg');
   const social1Posts = [
@@ -250,26 +213,16 @@ async function processAll() {
   ];
 
   for (const item of social1Posts) {
-    const postImg = sharp(social1Path)
-      .extract(item.box)
-      .resize({ width: 980, height: 980, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.85, m2: 2.2 });
+    const postImg = sharp(social1Path).extract(item.box);
+    await postImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/social-media/${item.id}.png`);
+    await postImg.clone().webp({ lossless: true }).toFile(`public/portfolio/social-media/${item.id}.webp`);
+    await postImg.clone().webp({ lossless: true }).toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
 
-    await postImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/social-media/${item.id}.webp`);
-    await postImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/social-media/${item.id}.png`);
-
-    await sharp(social1Path)
-      .extract(item.box)
-      .resize({ width: 480, height: 480, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 0.8, m1: 0.8, m2: 1.8 })
-      .webp({ quality: 92 })
-      .toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
-
-    console.log(`[HD 4x] Generated social media assets for: ${item.id}`);
+    console.log(`[Native Lossless] Extracted: ${item.id} (${item.box.width}x${item.box.height})`);
   }
 
   // ==========================================
-  // 5. EXTRACT SOCIAL POSTS VOL 02 (3 Toes to Nose Posts)
+  // 5. EXTRACT SOCIAL POSTS VOL 02 (3 Toes to Nose Posts) - Native 1:1 Lossless
   // ==========================================
   const social2Path = path.join(SOURCE_ASSETS_DIR, 'original-social-posts-vol-02.jpg');
   const social2Posts = [
@@ -291,28 +244,18 @@ async function processAll() {
   ];
 
   for (const item of social2Posts) {
-    const postImg = sharp(social2Path)
-      .extract(item.box)
-      .resize({ width: 980, height: 980, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.0, m1: 0.85, m2: 2.2 });
+    const postImg = sharp(social2Path).extract(item.box);
+    await postImg.clone().png({ compressionLevel: 9 }).toFile(`public/portfolio/social-media/${item.id}.png`);
+    await postImg.clone().webp({ lossless: true }).toFile(`public/portfolio/social-media/${item.id}.webp`);
+    await postImg.clone().webp({ lossless: true }).toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
 
-    await postImg.clone().webp({ quality: 98, effort: 6 }).toFile(`public/portfolio/social-media/${item.id}.webp`);
-    await postImg.clone().png({ compressionLevel: 8 }).toFile(`public/portfolio/social-media/${item.id}.png`);
-
-    await sharp(social2Path)
-      .extract(item.box)
-      .resize({ width: 480, height: 480, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 0.8, m1: 0.8, m2: 1.8 })
-      .webp({ quality: 92 })
-      .toFile(`public/portfolio/thumbnails/${item.id}-thumb.webp`);
-
-    console.log(`[HD 4x] Generated social media assets for: ${item.id}`);
+    console.log(`[Native Lossless] Extracted: ${item.id} (${item.box.width}x${item.box.height})`);
   }
 
-  console.log('--- Finished clean HD extraction! ---');
+  console.log('--- Finished lossless 1:1 extraction of all 25 portfolio assets! ---');
 }
 
 processAll().catch(err => {
-  console.error('HD Extraction error:', err);
+  console.error('Extraction error:', err);
   process.exit(1);
 });

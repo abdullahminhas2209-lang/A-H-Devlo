@@ -150,19 +150,22 @@ export const LogosSection: React.FC<LogosSectionProps> = ({
                 )}
               </div>
 
-              {/* Logo Mark Presentation Surface (Contain fit - Never cut off) */}
-              <div className="rounded-xl bg-[#00111a] border border-white/5 relative flex items-center justify-center p-6 min-h-[170px] sm:min-h-[190px] overflow-hidden group-hover:border-white/10 transition-colors">
-                <img
-                  src={item.assetPath}
-                  alt={item.title}
-                  className="max-w-full max-h-24 sm:max-h-28 w-auto h-auto object-contain filter group-hover:scale-105 transition-transform duration-500 drop-shadow-md"
-                  loading="lazy"
-                />
+              {/* Logo Mark Presentation Surface (Contain fit - Preserves original quality without distortion) */}
+              <div className="rounded-xl bg-[#00111a] border border-white/5 relative flex items-center justify-center p-4 min-h-[150px] sm:min-h-[160px] overflow-hidden group-hover:border-white/10 transition-colors">
+                <picture className="flex items-center justify-center max-w-[180px] max-h-[85px]">
+                  {item.pngPath && <source srcSet={item.pngPath} type="image/png" />}
+                  <img
+                    src={item.assetPath}
+                    alt={item.title}
+                    className="max-w-[180px] max-h-[85px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105 select-none"
+                    loading="lazy"
+                  />
+                </picture>
 
                 {/* Hover Reveal Action */}
-                <div className="absolute inset-0 bg-[#00141F]/65 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#00141F]/65 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#D0FE1D] text-[#00141F] font-heading font-bold text-xs tracking-tight shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-200">
-                    <span>Inspect Mark HD</span>
+                    <span>Inspect Mark</span>
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </span>
                 </div>
