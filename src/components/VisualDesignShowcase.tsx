@@ -393,10 +393,10 @@ export const VisualDesignShowcase: React.FC<VisualDesignShowcaseProps> = ({
             </p>
             <div>
               <a
-                href="#graphic-work"
+                href="#logos"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#021F33] hover:bg-[#0B3B61]/60 border border-[var(--border-subtle)] text-xs font-heading font-semibold text-[var(--color-heading)] transition-all group cursor-pointer"
               >
-                <span>Browse the full 25-piece Graphic Design gallery in Selected Work</span>
+                <span>Browse our dedicated Logos, Visiting Cards, and Social Media sections</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[var(--accent-lime)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>

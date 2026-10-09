@@ -120,7 +120,43 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
-                  Selected Work
+                  Websites
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#logos"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('logos');
+                  }}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Logos &amp; Marks
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#visiting-cards"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('visiting-cards');
+                  }}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Visiting Cards
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#social-media"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('social-media');
+                  }}
+                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+                >
+                  Social Media
                 </a>
               </li>
               <li>
@@ -133,18 +169,6 @@ export const Footer: React.FC<FooterProps> = ({
                   className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
                 >
                   Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#design"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('design');
-                  }}
-                  className="text-left text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
-                >
-                  Brand &amp; Design
                 </a>
               </li>
               <li>

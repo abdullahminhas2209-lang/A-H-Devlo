@@ -4,6 +4,12 @@ import type { ProjectData } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
+import { LogosSection } from './components/LogosSection';
+import { VisitingCardsSection } from './components/VisitingCardsSection';
+import { SocialMediaSection } from './components/SocialMediaSection';
+import { PortfolioLightbox } from './components/PortfolioLightbox';
+import { graphicDesignItems } from './data/portfolio';
+import type { GraphicDesignItem } from './types';
 import { Services } from './components/Services';
 import { VisualDesignShowcase } from './components/VisualDesignShowcase';
 import { Process } from './components/Process';
@@ -56,6 +62,7 @@ export const App: React.FC = () => {
     }
     return null;
   });
+  const [selectedGraphicItem, setSelectedGraphicItem] = useState<GraphicDesignItem | null>(null);
   const [activeSection, setActiveSection] = useState('hero');
 
   // Mark React hydrated and clear pending action
@@ -66,7 +73,18 @@ export const App: React.FC = () => {
 
   // Scroll spy to update activeSection in navigation
   useEffect(() => {
-    const sectionIds = ['hero', 'work', 'services', 'design', 'process', 'about', 'contact'];
+    const sectionIds = [
+      'hero',
+      'work',
+      'logos',
+      'visiting-cards',
+      'social-media',
+      'services',
+      'design',
+      'process',
+      'about',
+      'contact',
+    ];
     let ticking = false;
 
     const handleScroll = () => {
@@ -184,31 +202,58 @@ export const App: React.FC = () => {
           onSelectProject={handleSelectProject}
         />
 
-        {/* 3. Large Selected Work Portfolio */}
+        {/* 3. Selected Websites & Web Development Case Studies */}
         <SelectedWork
           projects={projects}
           onSelectProject={handleSelectProject}
           onOpenInquiry={handleOpenInquiry}
         />
 
-        {/* 4. Clear Services Section (Web & Graphics) */}
+        {/* 4. Dedicated Logo Design & Brand Marks Section */}
+        <LogosSection
+          onSelectItem={setSelectedGraphicItem}
+          onOpenInquiry={handleOpenInquiry}
+        />
+
+        {/* 5. Dedicated Visiting Cards & Stationery Section */}
+        <VisitingCardsSection
+          onSelectItem={setSelectedGraphicItem}
+          onOpenInquiry={handleOpenInquiry}
+        />
+
+        {/* 6. Dedicated Social Media & Marketing Graphics Section */}
+        <SocialMediaSection
+          onSelectItem={setSelectedGraphicItem}
+          onOpenInquiry={handleOpenInquiry}
+        />
+
+        {/* 7. Clear Services Section (Web & Graphics) */}
         <Services onOpenInquiry={handleOpenInquiry} />
 
-        {/* 5. Brand Identity & Visual Design Showcase */}
+        {/* 8. Brand Standards & Visual Design Showcase */}
         <VisualDesignShowcase onOpenInquiry={handleOpenInquiry} />
 
-        {/* 6. How the Studio Works (Workflow & Standards merged) */}
+        {/* 9. How the Studio Works (Workflow & Standards merged) */}
         <Process onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 7. Compact Founders Section */}
+        {/* 10. Compact Founders Section */}
         <About onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 8. Strong Contact CTA */}
+        {/* 11. Strong Contact CTA */}
         <FinalCTA
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}
         />
       </main>
+
+      {/* Accessible HD Portfolio Lightbox */}
+      <PortfolioLightbox
+        item={selectedGraphicItem}
+        itemsList={graphicDesignItems}
+        onClose={() => setSelectedGraphicItem(null)}
+        onSelectItem={setSelectedGraphicItem}
+        onOpenInquiry={handleOpenInquiry}
+      />
 
       {/* Reusable Case Study Modal with Device Switcher */}
       <Suspense fallback={null}>

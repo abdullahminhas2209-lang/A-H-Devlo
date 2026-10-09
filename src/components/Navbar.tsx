@@ -38,10 +38,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navLinks = [
-    { id: 'work', label: 'Work' },
+    { id: 'work', label: 'Websites' },
+    { id: 'logos', label: 'Logos' },
+    { id: 'visiting-cards', label: 'Cards' },
+    { id: 'social-media', label: 'Social' },
     { id: 'services', label: 'Services' },
-    { id: 'design', label: 'Brand & Graphics' },
-    { id: 'process', label: 'How We Work' },
     { id: 'about', label: 'Founders' },
   ];
 
