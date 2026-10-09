@@ -385,12 +385,21 @@ export const VisualDesignShowcase: React.FC<VisualDesignShowcaseProps> = ({
           </ScrollReveal>
         )}
 
-        {/* Closing Note for Graphic Design Section */}
+        {/* Closing Note & Direct Link to Dual Portfolio */}
         <ScrollReveal delayMs={200}>
-          <div className="text-center pt-2">
+          <div className="text-center pt-2 space-y-4">
             <p className="text-xs sm:text-sm text-[var(--text-muted)] font-sans">
               All vector marks, social templates, and marketing collateral are crafted in-house by A&amp;H Devlo Studio with 100% full commercial copyright transfer.
             </p>
+            <div>
+              <a
+                href="#graphic-work"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#021F33] hover:bg-[#0B3B61]/60 border border-[var(--border-subtle)] text-xs font-heading font-semibold text-[var(--color-heading)] transition-all group cursor-pointer"
+              >
+                <span>Browse the full 25-piece Graphic Design gallery in Selected Work</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[var(--accent-lime)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </div>
         </ScrollReveal>
 

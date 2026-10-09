@@ -102,6 +102,12 @@ export const App: React.FC = () => {
         const pId = hash.replace('project-', '');
         const found = projects.find((p) => p.id === pId);
         if (found) setSelectedProject(found);
+      } else if (hash === 'graphic-work' || hash === 'graphics') {
+        const el = document.getElementById('work');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection('work');
+        }
       } else {
         const el = document.getElementById(hash);
         if (el) {
