@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, ShieldCheck, Terminal } from 'lucide-react';
+import { ArrowUpRight, Code, Palette } from 'lucide-react';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -8,168 +8,63 @@ interface AboutProps {
 }
 
 export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
-  const techBadges = ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Figma', 'Vercel'];
+  const tools = ['Figma', 'Illustrator', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'];
 
   return (
-    <section id="about" className="py-10 sm:py-12 md:py-14 bg-transparent relative scroll-mt-20">
-      {/* Section Transition Top Divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent"></div>
+    <section id="about" className="py-14 sm:py-20 lg:py-24 bg-transparent relative scroll-mt-20">
+      {/* Hairline subtle top divider */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column (5 cols): Founding Partners Profile Cards */}
-          <div className="md:col-span-5 lg:col-span-5 space-y-4">
-            {/* Meet the Founders Subsection Header */}
-            <ScrollReveal>
-              <div className="space-y-2 pb-1">
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-heading)] font-heading">
-                  Meet the <span className="text-[#D0FE1D]">Founders</span>
-                </h3>
-                <p className="text-xs sm:text-sm text-[var(--text-body)] font-body leading-relaxed">
-                  Two complementary skill sets, one shared ambition: building better digital experiences.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Founder 1: Abdullah Minhas */}
-            <ScrollReveal delayMs={50}>
-              <div className="p-5 sm:p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-md shadow-2xl relative overflow-hidden hover:border-[var(--border-subtle-hover)] transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B3B61] to-[#021F33] border border-[#2F7BFF]/30 flex items-center justify-center text-white font-heading font-bold text-base shrink-0 shadow-md">
-                    AM
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-base font-bold text-[var(--color-heading)] font-heading tracking-tight truncate">
-                      Abdullah Minhas
-                    </h3>
-                    <div className="text-xs font-semibold text-[var(--accent-blue)] font-heading mt-0.5">
-                      Co-Founder · Design &amp; Frontend
-                    </div>
-                  </div>
-                </div>
-
-                <p className="mt-3.5 text-xs text-[var(--text-body)] font-body leading-relaxed">
-                  Focused on product vision, UI/UX, frontend engineering, and creating digital experiences that feel as good as they perform.
-                </p>
-
-                <div className="mt-4 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                  <a
-                    href="https://www.linkedin.com/in/abdullahminhas2209/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-heading font-medium text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors group/link"
-                  >
-                    <LinkedInIcon className="w-3.5 h-3.5 text-[var(--accent-blue)] group-hover/link:text-white transition-colors" />
-                    <span>Connect on LinkedIn</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover/link:text-[var(--accent-blue)] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Founder 2: M. Hassan Ali */}
-            <ScrollReveal delayMs={100}>
-              <div className="p-5 sm:p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-md shadow-2xl relative overflow-hidden hover:border-[var(--border-subtle-hover)] transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B3B61] to-[#021F33] border border-[#2F7BFF]/30 flex items-center justify-center text-white font-heading font-bold text-base shrink-0 shadow-md">
-                    HA
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-base font-bold text-[var(--color-heading)] font-heading tracking-tight truncate">
-                      M. Hassan Ali
-                    </h3>
-                    <div className="text-xs font-semibold text-[var(--accent-blue)] font-heading mt-0.5">
-                      Co-Founder · Engineering
-                    </div>
-                  </div>
-                </div>
-
-                <p className="mt-3.5 text-xs text-[var(--text-body)] font-body leading-relaxed">
-                  Focused on scalable architecture, full-stack development, performance, and turning ambitious ideas into reliable software.
-                </p>
-
-                <div className="mt-4 pt-3.5 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                  <a
-                    href="https://www.linkedin.com/in/muhammad-hassan-ali-b085a3351/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-heading font-medium text-[var(--text-body)] hover:text-[var(--color-heading)] transition-colors group/link"
-                  >
-                    <LinkedInIcon className="w-3.5 h-3.5 text-[var(--accent-blue)] group-hover/link:text-white transition-colors" />
-                    <span>Connect on LinkedIn</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover/link:text-[var(--accent-blue)] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        
+        {/* Section Header */}
+        <ScrollReveal>
+          <div className="max-w-3xl space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-lime)]" />
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent-lime)] font-semibold">
+                Behind the Studio
+              </span>
+            </div>
+            <h2 className="font-heading font-extrabold tracking-tight text-3xl sm:text-4xl lg:text-5xl text-[var(--color-heading)] leading-tight">
+              Meet the <span className="text-[#D0FE1D]">Founders</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body">
+              Two complementary skill sets, one shared goal: helping small businesses look remarkable online without agency overhead.
+            </p>
           </div>
+        </ScrollReveal>
 
-          {/* Right Column (7 cols): Studio Mission Statement & Tech Stack Badges */}
-          <div className="md:col-span-7 lg:col-span-7 space-y-6">
-            <ScrollReveal delayMs={100}>
-              <div className="space-y-4 max-w-xl">
-                <h2 className="section-title font-extrabold tracking-tight text-[var(--color-heading)] leading-tight font-heading">
-                  Bespoke digital architecture for <span className="text-[#D0FE1D]">enduring brands</span>.
-                </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          
+          {/* Left Column (5 cols): Concise Studio Mission & Tools */}
+          <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal delayMs={50}>
+              <div className="rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-xl p-6 sm:p-8 space-y-5 shadow-xl">
+                <h3 className="font-heading font-bold text-xl text-[var(--color-heading)] tracking-tight">
+                  Why We Started A&amp;H Devlo
+                </h3>
 
-                <div className="space-y-2">
-                  <h3 className="text-base sm:text-lg font-heading font-bold text-[var(--color-heading)] tracking-tight">
-                    A&amp;H Devlo Studio was founded on a singular standard.
-                  </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-body)] font-normal leading-relaxed font-body max-w-prose">
-                    Businesses should never have to choose between bloated agency retainers and fragile generic website templates.
-                  </p>
-                </div>
-
-                <p className="text-sm text-[var(--text-body)] font-normal leading-relaxed font-body max-w-prose">
-                  We engineer digital platforms as high-yield software assets—combining editorial typography, clean component architecture, and the conversion rigor required to turn casual visitors into committed clients.
+                <p className="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed font-body">
+                  Most small businesses are stuck between two bad options: expensive agencies with layers of account managers, or cheap generic website templates that make every business look identical.
                 </p>
-              </div>
-            </ScrollReveal>
 
-            {/* Core Values / Studio Pillars */}
-            <ScrollReveal delayMs={150}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-xl">
-                <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[#021F33]/50 space-y-1.5">
-                  <div className="flex items-center gap-2 text-[var(--color-heading)]">
-                    <Terminal className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
-                    <h4 className="text-sm font-heading font-bold tracking-tight text-[var(--color-heading)]">
-                      Architectural Integrity
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[var(--text-body)] leading-relaxed font-body">
-                    We write production-grade code designed to scale cleanly, load in milliseconds, and remain entirely free of unnecessary third-party dependencies.
-                  </p>
-                </div>
+                <p className="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed font-body">
+                  We built A&amp;H Devlo to offer something better: direct access to senior design and development craft. When you hire us, you work directly with the two people creating your website and brand assets.
+                </p>
 
-                <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[#021F33]/50 space-y-1.5">
-                  <div className="flex items-center gap-2 text-[var(--color-heading)]">
-                    <ShieldCheck className="w-4 h-4 text-[var(--accent-blue)] shrink-0" />
-                    <h4 className="text-sm font-heading font-bold tracking-tight text-[var(--color-heading)]">
-                      Complete IP Sovereignty
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[var(--text-body)] leading-relaxed font-body">
-                    You own 100% of your source code, design systems, and production assets upon delivery. Zero proprietary platform lock-in.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Tech Stack Badges & CTA */}
-            <ScrollReveal delayMs={200}>
-              <div className="pt-2 space-y-4 max-w-xl">
-                <div>
-                  <span className="text-xs font-heading font-semibold uppercase tracking-wider text-[var(--text-muted)] block mb-2">
-                    Engineered with Modern Standards
+                {/* Tools Strip */}
+                <div className="pt-2 border-t border-[var(--border-subtle)] space-y-2">
+                  <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider block">
+                    Our Core Stack
                   </span>
-                  <div className="flex flex-wrap items-center gap-2">
-                    {techBadges.map((badge) => (
+                  <div className="flex flex-wrap gap-1.5">
+                    {tools.map((tool) => (
                       <span
-                        key={badge}
-                        className="px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[#021F33]/60 text-[var(--text-body)] text-xs font-sans font-medium hover:border-[var(--accent-blue)]/50 transition-colors"
+                        key={tool}
+                        className="px-2.5 py-1 rounded-md bg-[#00141F] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-body)]"
                       >
-                        {badge}
+                        {tool}
                       </span>
                     ))}
                   </div>
@@ -177,18 +72,102 @@ export const About: React.FC<AboutProps> = ({ onOpenInquiry }) => {
 
                 <div className="pt-2">
                   <button
-                    data-inquiry=""
                     onClick={onOpenInquiry}
-                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs sm:text-sm font-bold tracking-tight transition-all shadow-md shadow-blue-950/50 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--accent-blue)] hover:bg-[var(--accent-blue-hover)] text-white text-xs font-bold font-heading transition-all shadow cursor-pointer"
                   >
-                    <span>Work With Us</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span>Work Directly With Us</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
             </ScrollReveal>
           </div>
+
+          {/* Right Column (7 cols): Two Compact Founder Cards */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            {/* Founder 1: Abdullah Minhas */}
+            <ScrollReveal delayMs={100} className="flex">
+              <div className="rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-xl p-6 sm:p-7 flex flex-col justify-between shadow-xl hover:border-[var(--border-subtle-hover)] transition-all group w-full">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0B3B61] to-[#021F33] border border-[#2F7BFF]/30 flex items-center justify-center text-[var(--accent-lime)] font-heading font-bold text-base shadow">
+                      AM
+                    </div>
+                    <div>
+                      <h4 className="font-heading font-bold text-base text-[var(--color-heading)] tracking-tight">
+                        Abdullah Minhas
+                      </h4>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-blue)] font-heading mt-0.5">
+                        <Palette className="w-3.5 h-3.5 shrink-0" />
+                        <span>Co-Founder · Design &amp; Frontend</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed font-body">
+                    Leads visual identity, UI/UX, and graphic design. Obsessed with clean layouts, considered typography, and digital experiences that feel effortless to browse.
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[var(--border-subtle)]">
+                  <a
+                    href="https://www.linkedin.com/in/abdullahminhas2209/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-heading font-medium text-[var(--text-body)] hover:text-white transition-colors group/link"
+                  >
+                    <LinkedInIcon className="w-3.5 h-3.5 text-[var(--accent-blue)]" />
+                    <span>Connect on LinkedIn</span>
+                    <ArrowUpRight className="w-3 h-3 text-[var(--text-muted)] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Founder 2: M. Hassan Ali */}
+            <ScrollReveal delayMs={150} className="flex">
+              <div className="rounded-3xl border border-[var(--border-subtle)] bg-[var(--surface-card)] backdrop-blur-xl p-6 sm:p-7 flex flex-col justify-between shadow-xl hover:border-[var(--border-subtle-hover)] transition-all group w-full">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0B3B61] to-[#021F33] border border-[#2F7BFF]/30 flex items-center justify-center text-cyan-300 font-heading font-bold text-base shadow">
+                      HA
+                    </div>
+                    <div>
+                      <h4 className="font-heading font-bold text-base text-[var(--color-heading)] tracking-tight">
+                        M. Hassan Ali
+                      </h4>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-cyan-400 font-heading mt-0.5">
+                        <Code className="w-3.5 h-3.5 shrink-0" />
+                        <span>Co-Founder · Engineering</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed font-body">
+                    Leads frontend development, site architecture, and integrations. Focused on fast load times, reliable code, and smooth mobile response across all devices.
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[var(--border-subtle)]">
+                  <a
+                    href="https://www.linkedin.com/in/muhammad-hassan-ali-b085a3351/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-heading font-medium text-[var(--text-body)] hover:text-white transition-colors group/link"
+                  >
+                    <LinkedInIcon className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Connect on LinkedIn</span>
+                    <ArrowUpRight className="w-3 h-3 text-[var(--text-muted)] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+
+          </div>
+
         </div>
+
       </div>
     </section>
   );

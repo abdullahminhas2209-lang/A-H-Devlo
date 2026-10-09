@@ -35,15 +35,15 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
 
   if (device === 'mobile') {
     return (
-      <div className={`mx-auto max-w-[340px] rounded-[36px] p-3 bg-[#161A26] border border-[#2B3247] shadow-2xl relative ${className}`}>
+      <div className={`mx-auto max-w-[340px] rounded-[36px] p-3 bg-[#021F33] border border-[var(--border-subtle)] shadow-2xl relative ${className}`}>
         {/* Dynamic Island / Speaker notch */}
-        <div className="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-[#0B0C10] rounded-full z-20 flex items-center justify-center">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#181B26] mr-2"></div>
-          <div className="w-2 h-2 rounded-full bg-blue-900/60"></div>
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-[#00141F] rounded-full z-20 flex items-center justify-center">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#021F33] mr-2"></div>
+          <div className="w-2 h-2 rounded-full bg-[var(--accent-blue)]/50"></div>
         </div>
 
         {/* Screen container */}
-        <div className="rounded-[28px] overflow-hidden bg-[#0B0C10] border border-[#232938] aspect-[9/18.5] relative group">
+        <div className="rounded-[28px] overflow-hidden bg-[#00141F] border border-[var(--border-subtle)] aspect-[9/18.5] relative group">
           {sources ? (
             <picture>
               <source srcSet={sources.avif} type="image/avif" />
@@ -79,13 +79,13 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
 
   if (device === 'tablet') {
     return (
-      <div className={`mx-auto max-w-[620px] rounded-[28px] p-4 bg-[#141722] border border-[#2A3144] shadow-2xl relative ${className}`}>
+      <div className={`mx-auto max-w-[620px] rounded-[28px] p-4 bg-[#021F33] border border-[var(--border-subtle)] shadow-2xl relative ${className}`}>
         {/* Top camera bezel */}
         <div className="flex items-center justify-center pb-2">
-          <div className="w-2 h-2 rounded-full bg-[#2A3144]"></div>
+          <div className="w-2 h-2 rounded-full bg-[var(--border-subtle)]"></div>
         </div>
         {/* Screen */}
-        <div className="rounded-[18px] overflow-hidden bg-[#0B0C10] border border-[#232938] aspect-[4/3] relative group">
+        <div className="rounded-[18px] overflow-hidden bg-[#00141F] border border-[var(--border-subtle)] aspect-[4/3] relative group">
           {sources ? (
             <picture>
               <source srcSet={sources.avif} type="image/avif" />

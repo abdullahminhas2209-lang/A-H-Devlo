@@ -5,7 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
 import { Services } from './components/Services';
-import { WhyDevlo } from './components/WhyDevlo';
+import { VisualDesignShowcase } from './components/VisualDesignShowcase';
 import { Process } from './components/Process';
 import { About } from './components/About';
 import { FinalCTA } from './components/FinalCTA';
@@ -64,9 +64,9 @@ export const App: React.FC = () => {
     window.__PENDING_ACTION__ = null;
   }, []);
 
-  // Scroll spy to update activeSection in the dock as user scrolls
+  // Scroll spy to update activeSection in navigation
   useEffect(() => {
-    const sectionIds = ['hero', 'work', 'services', 'why', 'process', 'about'];
+    const sectionIds = ['hero', 'work', 'services', 'design', 'process', 'about', 'contact'];
     let ticking = false;
 
     const handleScroll = () => {
@@ -116,7 +116,6 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  // Update hash when project changes without reloading
   const handleSelectProject = (projectId: string) => {
     const found = projects.find((p) => p.id === projectId);
     if (found) {
@@ -156,12 +155,12 @@ export const App: React.FC = () => {
       {/* Skip to Main Content Accessibility Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#D0FE1D] focus:text-[#00141F] focus:font-bold focus:rounded-full focus:shadow-[0_0_20px_rgba(208,254,29,0.5)] focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#D0FE1D] focus:text-[#00141F] focus:font-bold focus:rounded-full focus:outline-none"
       >
         Skip to main content
       </a>
 
-      {/* Top Header with Brand Logo & Quick Action */}
+      {/* 1. Minimal Distinctive Navigation */}
       <Navbar
         onOpenInquiry={handleOpenInquiry}
         onNavigate={handleNavigate}
@@ -170,7 +169,7 @@ export const App: React.FC = () => {
 
       {/* Main Studio Landing Body */}
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section */}
+        {/* 2. Memorable Hero Section */}
         <Hero
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}
@@ -179,34 +178,33 @@ export const App: React.FC = () => {
           onSelectProject={handleSelectProject}
         />
 
-        {/* 2. Selected Work Section */}
+        {/* 3. Large Selected Work Portfolio */}
         <SelectedWork
           projects={projects}
           onSelectProject={handleSelectProject}
-          onOpenInquiry={() => handleOpenInquiry()}
+          onOpenInquiry={handleOpenInquiry}
         />
 
-        {/* 3. Services Section */}
+        {/* 4. Clear Services Section (Web & Graphics) */}
         <Services onOpenInquiry={handleOpenInquiry} />
 
-        {/* 4. Why A&H Devlo (4 Principles) */}
-        <WhyDevlo />
+        {/* 5. Brand Identity & Visual Design Showcase */}
+        <VisualDesignShowcase onOpenInquiry={handleOpenInquiry} />
 
-        {/* 5. Process Section (5 Steps) */}
+        {/* 6. How the Studio Works (Workflow & Standards merged) */}
         <Process onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 6. About Section */}
+        {/* 7. Compact Founders Section */}
         <About onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 7. Final CTA */}
+        {/* 8. Strong Contact CTA */}
         <FinalCTA
           onOpenInquiry={() => handleOpenInquiry()}
           onViewWork={() => handleNavigate('work')}
         />
       </main>
 
-
-      {/* Reusable Case Study View */}
+      {/* Reusable Case Study Modal with Device Switcher */}
       <Suspense fallback={null}>
         {selectedProject && (
           <CaseStudyModal
@@ -236,10 +234,10 @@ export const App: React.FC = () => {
         />
       </Suspense>
 
-      {/* Footer */}
+      {/* 9. Clean Footer */}
       <Footer
         onNavigate={handleNavigate}
-        onOpenInquiry={() => handleOpenInquiry()}
+        onOpenInquiry={handleOpenInquiry}
         onOpenLegal={(type) => setLegalType(type)}
       />
     </div>

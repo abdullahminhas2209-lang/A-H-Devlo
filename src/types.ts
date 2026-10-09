@@ -37,4 +37,6 @@ export interface InquiryFormData {
   fullName: string;
   email: string;
   phone: string;
+  budgetTier?: string;
+  timeline?: string;
 }

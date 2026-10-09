@@ -38,12 +38,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navLinks = [
-    { id: 'hero', label: 'Home' },
     { id: 'work', label: 'Work' },
     { id: 'services', label: 'Services' },
-    { id: 'why', label: 'Why Devlo' },
-    { id: 'process', label: 'Process' },
-    { id: 'about', label: 'About' },
+    { id: 'design', label: 'Brand & Graphics' },
+    { id: 'process', label: 'How We Work' },
+    { id: 'about', label: 'Founders' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -60,6 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        
         {/* Left: Brand Logo & Wordmark */}
         <button
           onClick={() => handleNavClick('hero')}
@@ -88,13 +88,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className={`relative text-xs px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                   isActive
-                    ? 'text-[#38E1D8] font-bold shadow-sm'
+                    ? 'text-[var(--accent-lime)] font-bold shadow-sm'
                     : 'text-[var(--text-muted)] hover:text-white hover:bg-white/5 font-medium'
                 }`}
               >
                 <span>{link.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#38E1D8] rounded-full" />
+                  <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[var(--accent-lime)] rounded-full" />
                 )}
               </a>
             );
@@ -106,10 +106,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             data-inquiry=""
             onClick={() => onOpenInquiry()}
-            className="inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-2xl px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
+            className="inline-flex items-center gap-1.5 bg-[#D0FE1D] hover:brightness-105 text-[#00141F] rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-lime-950/20 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer font-heading"
           >
-            <span className="text-[#00141F]">Start Project</span>
-            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5] text-[#00141F]" />
+            <span>Start a Project</span>
+            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
           </button>
 
           {/* Mobile Menu Hamburger Toggle */}
@@ -136,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleNavClick(link.id)}
                   className={`text-left text-sm font-medium px-4 py-2.5 rounded-xl transition-colors cursor-pointer ${
                     isActive
-                      ? 'bg-white/10 text-[var(--color-heading)] font-semibold'
+                      ? 'bg-white/10 text-[var(--accent-lime)] font-semibold'
                       : 'text-[var(--text-body)] hover:text-[var(--color-heading)] hover:bg-white/5'
                   }`}
                 >
@@ -151,9 +151,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   onOpenInquiry();
                 }}
-                className="w-full text-center py-2.5 rounded-xl bg-[#D0FE1D] text-[#00141F] text-sm font-bold shadow transition-all hover:brightness-105 cursor-pointer font-heading"
+                className="w-full text-center py-2.5 rounded-full bg-[#D0FE1D] text-[#00141F] text-sm font-bold shadow transition-all hover:brightness-105 cursor-pointer font-heading"
               >
-                <span className="text-[#00141F]">Start Project</span>
+                <span>Start a Project</span>
               </button>
             </div>
           </nav>
@@ -164,4 +164,3 @@ export const Navbar: React.FC<NavbarProps> = ({
 };
 
 export default Navbar;
-
