@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   onOpenInquiry?: (serviceType?: string) => void;
@@ -9,189 +8,118 @@ interface HeroProps {
   activeSection?: string;
 }
 
-export const Hero: React.FC<HeroProps> = ({
-  onOpenInquiry,
-  onViewWork,
-  onSelectProject,
-}) => {
+/**
+ * AbstractArtwork
+ * Faithful, tactile, and physically realistic reproduction of the 4x3 architectural
+ * tile composition inspired by the reference design.
+ *
+ * Grid Structure (4 columns x 3 rows):
+ * - Row 0: 4 matte dark architectural discs
+ * - Row 1: 1 dark disc, Lime Teardrop (#D0FE1D), 2 dark discs
+ * - Row 2: 2 dark discs, Sunset Arch (#EA580C), 1 dark disc
+ */
+const AbstractArtwork: React.FC = () => {
+  // Tile dimensions across breakpoints:
+  // Mobile: 56px (w-14) | Tablet: 64px - 80px | Desktop: 80px - 112px
+  const tileClasses = 'w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-20 lg:h-20 xl:w-24 xl:h-24 2xl:w-28 2xl:h-28';
+
+  // Common styling for tactile dark architectural discs
+  const darkDiscStyle: React.CSSProperties = {
+    background: 'radial-gradient(circle at 38% 28%, #0d3b63 0%, #05233c 50%, #011422 100%)',
+    boxShadow:
+      '0 14px 28px -4px rgba(0, 0, 0, 0.65), 0 4px 10px -2px rgba(0, 0, 0, 0.45), inset 0 1px 1.5px rgba(255, 255, 255, 0.14), inset 0 -1.5px 2px rgba(0, 0, 0, 0.6)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
+  };
+
+  // Tactile satin lime teardrop: rounded top-left, bottom-left, bottom-right; sharp top-right corner
+  const limeTeardropStyle: React.CSSProperties = {
+    background: 'radial-gradient(circle at 32% 28%, #ecfe66 0%, #D0FE1D 48%, #9fca05 100%)',
+    borderRadius: '50% 0 50% 50%',
+    boxShadow:
+      '0 24px 50px -8px rgba(0, 0, 0, 0.8), 0 10px 20px -4px rgba(0, 0, 0, 0.5), 0 0 45px -8px rgba(208, 254, 29, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.48), inset 0 -2px 4px rgba(0, 0, 0, 0.25)',
+    border: '1px solid rgba(255, 255, 255, 0.22)',
+  };
+
+  // Tactile sunset arch: semicircular dome on top, flat base at bottom
+  const sunsetArchStyle: React.CSSProperties = {
+    background: 'linear-gradient(180deg, #FDBA74 0%, #F59E0B 28%, #EA580C 72%, #C2410C 100%)',
+    borderRadius: '50% 50% 0 0',
+    boxShadow:
+      '0 24px 50px -8px rgba(0, 0, 0, 0.8), 0 10px 20px -4px rgba(0, 0, 0, 0.5), 0 0 45px -8px rgba(234, 88, 12, 0.3), inset 0 2px 3px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.3)',
+    border: '1px solid rgba(255, 255, 255, 0.16)',
+  };
+
+  return (
+    <div className="relative select-none p-2 sm:p-4">
+      {/* Soft atmospheric ambient glow behind the matrix */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_50%,rgba(11,59,97,0.4)_0%,rgba(2,31,51,0.15)_60%,transparent_80%)] pointer-events-none -z-10" />
+
+      {/* 4x3 Physical Tile Matrix */}
+      <div className="grid grid-cols-4 gap-2.5 sm:gap-3.5 lg:gap-3.5 xl:gap-4">
+        {/* ROW 0 */}
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+
+        {/* ROW 1 */}
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        {/* The Focal Lime Teardrop */}
+        <div
+          className={`${tileClasses} cursor-pointer transition-transform duration-200 ease-out hover:scale-105 hover:-translate-y-0.5 active:scale-95`}
+          style={limeTeardropStyle}
+          aria-label="Focal Lime Accent Geometry"
+        />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+
+        {/* ROW 2 */}
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+        {/* The Warm Sunset Arch */}
+        <div
+          className={`${tileClasses} cursor-pointer transition-transform duration-200 ease-out hover:scale-105 hover:-translate-y-0.5 active:scale-95`}
+          style={sunsetArchStyle}
+          aria-label="Sunset Arch Accent Geometry"
+        />
+        <div className={`${tileClasses} rounded-full`} style={darkDiscStyle} />
+      </div>
+    </div>
+  );
+};
+
+export const Hero: React.FC<HeroProps> = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-76px)] flex items-center justify-center pt-8 pb-16 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="min-h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden py-8 sm:py-10 lg:py-14 px-4 sm:px-6 lg:px-8"
     >
-      {/* Subtle architectural ambient backdrop */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] sm:w-[980px] h-[480px] bg-[radial-gradient(ellipse_at_center,rgba(11,59,97,0.22)_0%,rgba(2,31,51,0.08)_55%,transparent_75%)] blur-[100px]" />
-      </div>
+      {/* Ambient Canvas Glow: Soft radial gradient seamlessly blending into site background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[500px] sm:h-[700px] bg-[radial-gradient(ellipse_at_center,rgba(11,59,97,0.3)_0%,rgba(2,31,51,0.1)_50%,transparent_75%)] blur-[140px] pointer-events-none -z-10" />
 
-      <div className="w-full max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          
-          {/* Left Column (7 cols): Studio Message, Hierarchy, Direct CTAs */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-6 sm:space-y-8">
-            
-            {/* Studio Status Pill (Restrained, no pulsing dot) */}
-            <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-[#021F33]/80 border border-[var(--border-subtle)] text-xs text-[var(--color-heading)] font-sans">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-lime)]" />
-              <span className="font-medium tracking-tight">Independent Creative Studio</span>
-              <span className="text-[var(--text-muted)]">/</span>
-              <span className="text-[var(--text-muted)] text-[11px]">Taking projects for 2026</span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="font-heading font-extrabold tracking-tight text-[var(--color-heading)] text-3xl sm:text-5xl md:text-6xl lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.06] text-balance">
-              Websites and visual brands that make small businesses look{' '}
-              <span className="text-[#D0FE1D]">remarkable</span> online.
+      {/* Hero Content Container - Fits seamlessly into website background without boxed container */}
+      <div className="w-full max-w-7xl mx-auto relative flex items-center">
+        {/* 2-Column Composition: Left Headline & Right Abstract Geometric Artwork */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center w-full min-h-[360px] sm:min-h-[420px] lg:min-h-[480px]">
+          {/* Left Column: Headline with dominant "professional" in solid #D0FE1D */}
+          <div className="lg:col-span-7 flex flex-col justify-center text-left">
+            <h1 className="font-extrabold sm:font-bold text-white tracking-tight leading-[1.08] sm:leading-[1.04] font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[5rem] 2xl:text-[5.5rem] select-none">
+              <span className="block text-white animate-hero-1">
+                Website that make
+              </span>
+              <span className="block text-white mt-1 sm:mt-2 animate-hero-2">
+                small businesses
+              </span>
+              <span className="block font-extrabold text-[#D0FE1D] mt-1 sm:mt-2 animate-hero-3">
+                professional
+              </span>
             </h1>
-
-            {/* Human, Jargon-Free Supporting Copy */}
-            <p className="text-base sm:text-lg text-[var(--text-body)] font-normal leading-relaxed max-w-2xl font-body">
-              A&amp;H Devlo is a design-led creative studio run directly by its founders. We partner with independent businesses to create bespoke websites, memorable brand identities, and sharp marketing graphics that win customer trust.
-            </p>
-
-            {/* Primary & Secondary Action Routes */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-              <button
-                data-inquiry=""
-                onClick={() => onOpenInquiry?.()}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#D0FE1D] hover:brightness-105 text-[#00141F] font-bold text-sm sm:text-base tracking-tight transition-all duration-200 shadow-xl shadow-lime-950/20 hover:scale-[1.02] active:scale-95 cursor-pointer font-heading"
-              >
-                <span>Start a Project</span>
-                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-              </button>
-
-              <button
-                onClick={onViewWork}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#021F33]/60 hover:bg-[#0B3B61]/50 text-[var(--color-heading)] border border-[var(--border-subtle)] hover:border-[var(--border-subtle-hover)] font-semibold text-sm transition-all duration-200 cursor-pointer font-heading group"
-              >
-                <span>Explore Selected Work</span>
-                <ArrowDown className="w-4 h-4 text-[var(--accent-blue)] transition-transform group-hover:translate-y-0.5" />
-              </button>
-            </div>
-
-            {/* Studio Guarantees Micro-Strip */}
-            <div className="pt-3 border-t border-[var(--border-subtle)]/70 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[var(--text-muted)] font-sans">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                Direct founder collaboration
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                Flat-rate milestone quotes
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-lime)]" />
-                100% full file &amp; code ownership
-              </span>
-            </div>
-
           </div>
 
-          {/* Right Column (5 cols): Asymmetric Editorial Work Showcase (Real Assets) */}
-          <div className="lg:col-span-5 relative select-none">
-            
-            {/* Layer 1: Primary Featured Project Card (Osteria Riva Dining Concept) */}
-            <div
-              onClick={() => onSelectProject?.('osteria-riva')}
-              className="relative rounded-2xl border border-[var(--border-subtle)] bg-[#021F33]/85 backdrop-blur-md p-3.5 sm:p-4 shadow-2xl transition-all duration-300 hover:border-[var(--accent-blue)]/50 hover:shadow-cyan-950/30 group cursor-pointer"
-            >
-              {/* Chrome bar */}
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--border-subtle)]">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                  <span className="ml-2 text-[11px] font-mono text-[var(--text-muted)] truncate max-w-[170px] sm:max-w-xs">
-                    osteriariva.com
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300">
-                  Concept Prototype
-                </span>
-              </div>
-
-              {/* Real Project Image Preview */}
-              <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-[#00141F]">
-                <picture>
-                  <source srcSet="/projects/osteria-riva.avif" type="image/avif" />
-                  <source srcSet="/projects/osteria-riva.webp" type="image/webp" />
-                  <img
-                    src="/projects/osteria-riva.jpg"
-                    alt="Osteria Riva Restaurant Concept Preview"
-                    width={900}
-                    height={560}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                    loading="eager"
-                  />
-                </picture>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00141F]/80 via-transparent to-transparent opacity-80" />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
-                  <div>
-                    <span className="text-white font-bold font-heading block text-sm">Osteria Riva</span>
-                    <span className="text-[var(--text-muted)] text-[11px]">Restaurant Website &amp; Digital Menu</span>
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-[var(--accent-lime)] text-[11px] font-semibold bg-[#00141F]/90 px-2.5 py-1 rounded-md border border-[var(--border-subtle)]">
-                    View Project
-                    <ArrowUpRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Layer 2: Overlapping Fashion Lookbook Card (Maison Forme) */}
-            <div
-              onClick={() => onSelectProject?.('maison-forme')}
-              className="mt-4 -ml-2 sm:-ml-6 sm:-mt-8 relative z-10 w-[92%] sm:w-[86%] rounded-2xl border border-[var(--border-subtle)] bg-[#00141F]/95 backdrop-blur-xl p-3.5 shadow-2xl transition-all duration-300 hover:border-[var(--accent-blue)]/50 group cursor-pointer"
-            >
-              <div className="flex items-center justify-between mb-2.5 text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)]" />
-                  <span className="font-heading font-bold text-[var(--color-heading)] text-xs">Maison Forme</span>
-                </div>
-                <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">
-                  Brand &amp; E-Commerce
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-20 sm:w-24 h-14 sm:h-16 rounded-lg overflow-hidden shrink-0 border border-[var(--border-subtle)] bg-[#021F33]">
-                  <picture>
-                    <source srcSet="/projects/maison-forme.avif" type="image/avif" />
-                    <source srcSet="/projects/maison-forme.webp" type="image/webp" />
-                    <img
-                      src="/projects/maison-forme.jpg"
-                      alt="Maison Forme Atelier Lookbook Preview"
-                      width={160}
-                      height={120}
-                      className="w-full h-full object-cover object-top"
-                      loading="lazy"
-                    />
-                  </picture>
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-xs text-[var(--text-body)] line-clamp-2 leading-relaxed">
-                    Minimalist fashion atelier storefront with editorial lookbook and cart drawer.
-                  </p>
-                  <div className="mt-1 flex items-center gap-1 text-[11px] font-medium text-[var(--accent-blue)] group-hover:text-cyan-300 transition-colors">
-                    <span>Explore Lookbook</span>
-                    <ArrowUpRight className="w-3 h-3" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Layer 3: Studio Seal / Creative Badge */}
-            <div className="hidden sm:flex absolute -bottom-6 -right-3 z-20 items-center gap-2.5 px-3.5 py-2 rounded-xl bg-[#021F33]/90 border border-[var(--border-subtle)] backdrop-blur-md shadow-xl text-xs text-[var(--color-heading)]">
-              <Sparkles className="w-3.5 h-3.5 text-[var(--accent-lime)] shrink-0" />
-              <div className="font-sans leading-tight">
-                <span className="font-bold block text-[11px] text-[var(--color-heading)]">100% Bespoke Design</span>
-                <span className="text-[10px] text-[var(--text-muted)]">Zero off-the-shelf templates</span>
-              </div>
-            </div>
-
+          {/* Right Column: Abstract Geometric Composition */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center relative select-none animate-hero-art">
+            <AbstractArtwork />
           </div>
-
         </div>
       </div>
     </section>
